@@ -27,11 +27,12 @@ DEBUG = True
 
 ALLOWED_HOSTS = []
 
-
+SITE_ID = 1
 # Application definition
 
 INSTALLED_APPS = [
     'django.contrib.admin',
+    'django.contrib.sites',
     'django.contrib.auth',
     'django.contrib.contenttypes',
     'django.contrib.sessions',
@@ -41,6 +42,8 @@ INSTALLED_APPS = [
     'bootstrap3',
     'autoslug',
     'blog',
+    'allauth',
+    'allauth.account',
 ]
 
 MIDDLEWARE_CLASSES = [
@@ -67,6 +70,14 @@ TEMPLATES = [
                 'django.template.context_processors.request',
                 'django.contrib.auth.context_processors.auth',
                 'django.contrib.messages.context_processors.messages',
+                'django.template.context_processors.debug',
+                'django.template.context_processors.request',
+                'django.contrib.auth.context_processors.auth',
+                'django.template.context_processors.i18n',
+                'django.template.context_processors.media',
+                'django.template.context_processors.static',
+                'django.template.context_processors.tz',
+                'django.contrib.messages.context_processors.messages',
             ],
         },
     },
@@ -82,14 +93,14 @@ WSGI_APPLICATION = 'mysite.wsgi.application'
 
 DATABASES = {
     'default': {
-        'ENGINE': 'django.db.backends.mysql',
-        'NAME': 'amakarudze$blog',
-        'USER': 'amakarudze',
-        'PASSWORD': 'T@wana03',
+        'ENGINE': 'django.db.backends.sqlite3',
+        'NAME': 'hamu',
+        'USER': '',
+        'PASSWORD': '',
         'OPTIONS': {
-          'autocommit': True,
+          #'autocommit': True,
         },
-        'HOST': 'amakarudze.mysql.pythonanywhere-services.com',
+        'HOST': '',
         'PORT': '',
     }
 }
@@ -120,6 +131,27 @@ EMAIL_PORT = 587
 EMAIL_HOST_USER = 'anntelebiz@gmail.com'
 EMAIL_HOST_PASSWORD = 'zgrwwmadzyizzknw'
 
+# AUTHENTICATION CONFIGURATION
+# ------------------------------------------------------------------------------
+AUTHENTICATION_BACKENDS = (
+        'django.contrib.auth.backends.ModelBackend',
+        'allauth.account.auth_backends.AuthenticationBackend',
+)
+
+
+# Some really nice defaults
+#ACCOUNT_AUTHENTICATION_METHOD = 'username'
+#ACCOUNT_EMAIL_REQUIRED = True
+#ACCOUNT_EMAIL_VERIFICATION = 'mandatory'
+
+# Custom user app defaults
+# Select the correct user model
+#AUTH_USER_MODEL = 'users.User'
+LOGIN_REDIRECT_URL = '/'
+#LOGIN_URL = 'account_login'
+
+# SLUGLIFIER
+#AUTOSLUG_SLUGIFY_FUNCTION = 'slugify.slugify'
 
 # Internationalization
 # https://docs.djangoproject.com/en/1.9/topics/i18n/

@@ -38,7 +38,7 @@
                 </ul></strong>
                 <strong>
                 <ul class="nav navbar-nav navbar-right">
-                  <li><a href="/accounts/login">Log In</a></li>
+                  <li><a href="localhost/8000/accounts/login">Log In</a></li>
                   </ul></strong>
             </div>
         </div>
