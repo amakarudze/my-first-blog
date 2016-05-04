@@ -25,7 +25,7 @@ APPS_DIR = ROOT_DIR.path('mysite')
 SECRET_KEY = 'ny@k99^@ku^onejlt&r!!1rpdv!lbocz(f)e*3^rlh0kok+&m-'
 
 # SECURITY WARNING: don't run with debug turned on in production!
-DEBUG = True
+DEBUG = False
 
 ALLOWED_HOSTS = []
 
@@ -97,14 +97,14 @@ WSGI_APPLICATION = 'mysite.wsgi.application'
 
 DATABASES = {
     'default': {
-        'ENGINE': 'django.db.backends.sqlite3',
-        'NAME': 'hamu',
-        'USER': '',
-        'PASSWORD': '',
+        'ENGINE': 'django.db.backends.mysql',
+        'NAME': 'amakarudze$blog',
+        'USER': 'amakarudze',
+        'PASSWORD': 'T@wana03',
         'OPTIONS': {
-          #'autocommit': True,
+          'autocommit': True,
         },
-        'HOST': '',
+        'HOST': 'amakarudze.mysql.pythonanywhere-services.com ',
         'PORT': '',
     }
 }
