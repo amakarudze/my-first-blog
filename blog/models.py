@@ -61,12 +61,13 @@ class Event(models.Model):
     name = models.CharField(max_length=200)
     fromdate = models.DateTimeField('from date', default=timezone.now)
     todate = models.DateTimeField('to date', default=timezone.now)
-    location =  models.CharField(max_length=200)
+    location = models.CharField(max_length=200)
     website = models.TextField()
     comments = models.TextField()
     dateposted = models.DateTimeField('Date posted', default=timezone.now)
     published_date = models.DateTimeField(
-    blank=True, null=True)
+                                          blank=True, null=True)
+    ispast = models.BooleanField()
 
     class Meta:
         managed = True

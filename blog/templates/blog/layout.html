@@ -37,9 +37,17 @@
                     <li><a href="{% url 'contact' %}">Contact</a></li>
                 </ul></strong>
                 <strong>
+      {% if user.is_authenticated %}
+      <ul class="nav navbar-nav navbar-right">
+        <li><span class="navbar-brand">Hello {{ user.username }}!</span></li>
+        <li><a href="/accounts/logout">Log Out</a></li>
+      </ul>
+      {% else %}
                 <ul class="nav navbar-nav navbar-right">
+                  <li><a href="/accounts/signup">Sign Up</a></li>
                   <li><a href="/accounts/login">Log In</a></li>
-                  </ul></strong>
+                </ul></strong>
+      {% endif %}
             </div>
         </div>
     </div>
