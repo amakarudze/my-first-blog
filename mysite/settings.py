@@ -11,12 +11,10 @@ https://docs.djangoproject.com/en/1.9/ref/settings/
 """
 
 import os
-import environ
 
 # Build paths inside the project like this: os.path.join(BASE_DIR, ...)
-ROOT_DIR = environ.Path(__file__) - 2 # (/a/b/myfile.py - 3 = /)
 BASE_DIR = os.path.dirname(os.path.dirname(os.path.abspath(__file__)))
-APPS_DIR = ROOT_DIR.path('mysite')
+
 
 # Quick-start development settings - unsuitable for production
 # See https://docs.djangoproject.com/en/1.9/howto/deployment/checklist/
@@ -25,11 +23,11 @@ APPS_DIR = ROOT_DIR.path('mysite')
 SECRET_KEY = 'ny@k99^@ku^onejlt&r!!1rpdv!lbocz(f)e*3^rlh0kok+&m-'
 
 # SECURITY WARNING: don't run with debug turned on in production!
-DEBUG = False
+DEBUG = True
 
 ALLOWED_HOSTS = []
 
-SITE_ID = 1
+
 # Application definition
 
 INSTALLED_APPS = [
@@ -64,23 +62,13 @@ ROOT_URLCONF = 'mysite.urls'
 TEMPLATES = [
     {
         'BACKEND': 'django.template.backends.django.DjangoTemplates',
-        'DIRS': [
-         str(APPS_DIR.path('templates')),
-],
+        'DIRS': [],
         'APP_DIRS': True,
         'OPTIONS': {
             'context_processors': [
                 'django.template.context_processors.debug',
                 'django.template.context_processors.request',
                 'django.contrib.auth.context_processors.auth',
-                'django.contrib.messages.context_processors.messages',
-                'django.template.context_processors.debug',
-                'django.template.context_processors.request',
-                'django.contrib.auth.context_processors.auth',
-                'django.template.context_processors.i18n',
-                'django.template.context_processors.media',
-                'django.template.context_processors.static',
-                'django.template.context_processors.tz',
                 'django.contrib.messages.context_processors.messages',
             ],
         },
@@ -104,7 +92,7 @@ DATABASES = {
         'OPTIONS': {
           'autocommit': True,
         },
-        'HOST': 'amakarudze.mysql.pythonanywhere-services.com ',
+        'HOST': 'amakarudze.mysql.pythonanywhere-services.com',
         'PORT': '',
     }
 }
@@ -126,7 +114,7 @@ AUTH_PASSWORD_VALIDATORS = [
     {
         'NAME': 'django.contrib.auth.password_validation.NumericPasswordValidator',
     },
-]
+    ]
 
 
 EMAIL_USE_TLS = True
@@ -134,6 +122,7 @@ EMAIL_HOST = 'smtp.gmail.com'
 EMAIL_PORT = 587
 EMAIL_HOST_USER = 'anntelebiz@gmail.com'
 EMAIL_HOST_PASSWORD = 'zgrwwmadzyizzknw'
+
 
 # AUTHENTICATION CONFIGURATION
 # ------------------------------------------------------------------------------
@@ -149,18 +138,19 @@ STATICFILES_FINDERS = (
 )
 
 # Some really nice defaults
-#ACCOUNT_AUTHENTICATION_METHOD = 'username'
-#ACCOUNT_EMAIL_REQUIRED = True
-#ACCOUNT_EMAIL_VERIFICATION = 'mandatory'
+# ACCOUNT_AUTHENTICATION_METHOD = 'username'
+# ACCOUNT_EMAIL_REQUIRED = True
+# ACCOUNT_EMAIL_VERIFICATION = 'mandatory'
 
 # Custom user app defaults
 # Select the correct user model
-#AUTH_USER_MODEL = 'users.User'
+# AUTH_USER_MODEL = 'users.User'
 LOGIN_REDIRECT_URL = '/'
-#LOGIN_URL = 'account_login'
+# LOGIN_URL = 'account_login'
 
 # SLUGLIFIER
-#AUTOSLUG_SLUGIFY_FUNCTION = 'slugify.slugify'
+# AUTOSLUG_SLUGIFY_FUNCTION = 'slugify.slugify'
+
 
 # Internationalization
 # https://docs.djangoproject.com/en/1.9/topics/i18n/
