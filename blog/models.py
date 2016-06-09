@@ -67,7 +67,7 @@ class Event(models.Model):
     dateposted = models.DateTimeField('Date posted', default=timezone.now)
     published_date = models.DateTimeField(
                                           blank=True, null=True)
-    ispast = models.BooleanField()
+    ispast = models.BooleanField(default=True)
 
     class Meta:
         managed = True
