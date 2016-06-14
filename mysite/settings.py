@@ -45,7 +45,12 @@ INSTALLED_APPS = [
     'blog',
     'allauth',
     'allauth.account',
-]
+    'allauth.socialaccount',
+    'allauth.socialaccount.providers.facebook',
+    'allauth.socialaccount.providers.google',
+    'allauth.socialaccount.providers.linkedin',
+    'allauth.socialaccount.providers.twitter',
+    ]
 
 MIDDLEWARE_CLASSES = [
     'django.middleware.security.SecurityMiddleware',
@@ -93,7 +98,7 @@ DATABASES = {
         'OPTIONS': {
           'autocommit': True,
         },
-        'HOST': 'amakarudze.mysql.pythonanywhere-services.com',
+        'HOST': '',
         'PORT': '',
     }
 }

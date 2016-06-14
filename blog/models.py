@@ -2,15 +2,14 @@ from django.db import models
 from django.utils import timezone
 from autoslug import AutoSlugField
 
+
 class Post(models.Model):
     author = models.ForeignKey('auth.User')
     title = models.CharField(max_length=200)
     summary = models.CharField(max_length=200)
     text = models.TextField()
-    created_date = models.DateTimeField(
-    default=timezone.now)
-    published_date = models.DateTimeField(
-    blank=True, null=True)
+    created_date = models.DateTimeField(default=timezone.now)
+    published_date = models.DateTimeField(blank=True, null=True)
     slug = AutoSlugField(populate_from='title', unique=True)
 
     def publish(self):
@@ -42,9 +41,8 @@ class Comment(models.Model):
     email = models.CharField("email address", max_length=120)
     comment = models.TextField()
     created_date = models.DateTimeField(default=timezone.now)
-    published_date = models.DateTimeField(
-    blank=True, null=True)
-    post = models.ForeignKey('Post', db_constraint=False)
+    published_date = models.DateTimeField(blank=True, null=True)
+    post = models.ForeignKey('Post')
 
     class Meta:
         managed = True
@@ -65,9 +63,9 @@ class Event(models.Model):
     website = models.TextField()
     comments = models.TextField()
     dateposted = models.DateTimeField('Date posted', default=timezone.now)
-    published_date = models.DateTimeField(
-                                          blank=True, null=True)
+    published_date = models.DateTimeField(blank=True, null=True)
     ispast = models.BooleanField(default=True)
+    isdisplayed = models.BooleanField(default=False)
 
     class Meta:
         managed = True
@@ -92,10 +90,8 @@ class Article(models.Model):
     summary = models.TextField()
     picture = models.ImageField(max_length=200, null=True, blank=True)
     text = models.TextField()
-    created_date = models.DateTimeField(
-    default=timezone.now)
-    published_date = models.DateTimeField(
-    blank=True, null=True)
+    created_date = models.DateTimeField(default=timezone.now)
+    published_date = models.DateTimeField(blank=True, null=True)
     slug = AutoSlugField(populate_from='title', unique=True)
 
     def publish(self):
@@ -111,10 +107,8 @@ class AboutPage(models.Model):
     title = models.CharField(max_length=200)
     picture = models.ImageField(max_length=200, null=True, blank=True)
     text = models.TextField()
-    created_date = models.DateTimeField(
-    default=timezone.now)
-    published_date = models.DateTimeField(
-    blank=True, null=True)
+    created_date = models.DateTimeField(default=timezone.now)
+    published_date = models.DateTimeField(blank=True, null=True)
 
     def publish(self):
         self.published_date = timezone.now()
@@ -128,13 +122,13 @@ class PythonArticle(models.Model):
     author = models.ForeignKey('auth.User')
     title = models.CharField(max_length=200)
     summary = models.TextField()
-    picture = models.ImageField(upload_to='presentations', max_length=200, null=True, blank=True)
-    attachment = models.FileField(upload_to='presentations', max_length=200, null=True, blank=True)
+    picture = models.ImageField(upload_to='presentations', max_length=200,
+                                null=True, blank=True)
+    attachment = models.FileField(upload_to='presentations', max_length=200,
+                                  null=True, blank=True)
     text = models.TextField()
-    created_date = models.DateTimeField(
-    default=timezone.now)
-    published_date = models.DateTimeField(
-    blank=True, null=True)
+    created_date = models.DateTimeField(default=timezone.now)
+    published_date = models.DateTimeField(blank=True, null=True)
     slug = AutoSlugField(populate_from='title', unique=True)
 
     def publish(self):
@@ -149,13 +143,13 @@ class DjangoArticle(models.Model):
     author = models.ForeignKey('auth.User')
     title = models.CharField(max_length=200)
     summary = models.TextField()
-    picture = models.ImageField(upload_to='presentations', max_length=200, null=True, blank=True)
-    attachment = models.FileField(upload_to='presentations', max_length=200, null=True, blank=True)
+    picture = models.ImageField(upload_to='presentations', max_length=200,
+                                null=True, blank=True)
+    attachment = models.FileField(upload_to='presentations', max_length=200,
+                                  null=True, blank=True)
     text = models.TextField()
-    created_date = models.DateTimeField(
-    default=timezone.now)
-    published_date = models.DateTimeField(
-    blank=True, null=True)
+    created_date = models.DateTimeField(default=timezone.now)
+    published_date = models.DateTimeField(blank=True, null=True)
     slug = AutoSlugField(populate_from='title', unique=True)
 
     def publish(self):
@@ -170,12 +164,12 @@ class Project(models.Model):
     name = models.CharField(max_length=200)
     startdate = models.DateTimeField('Start date', default=timezone.now)
     enddate = models.DateTimeField('End date', default=timezone.now)
-    description =  models.TextField()
+    description = models.TextField()
     website = models.TextField(null=True, blank=True)
     comments = models.TextField()
-    created_dateposted = models.DateTimeField('Date created', default=timezone.now)
-    published_date = models.DateTimeField(
-    blank=True, null=True)
+    created_dateposted = models.DateTimeField('Date created',
+                                              default=timezone.now)
+    published_date = models.DateTimeField(blank=True, null=True)
 
     class Meta:
         managed = True
