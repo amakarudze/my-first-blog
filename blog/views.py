@@ -14,7 +14,12 @@ from datetime import datetime
 
 from blog.forms import ContactForm, CommentForm
 from .models import (Post, Event, Article, AboutPage, DjangoArticle,
-                    PythonArticle, Project)
+                     PythonArticle, Project)
+
+
+def get_event():
+    events = Event.objects.filter(ispast=False).order_by('-published_date')
+    return events
 
 
 class HomeView(TemplateView):
@@ -22,8 +27,8 @@ class HomeView(TemplateView):
 
     def get_context_data(self, **kwargs):
         context = super(HomeView, self).get_context_data(**kwargs)
-        context['articles'] =  Article.objects.filter(published_date__lte=timezone.now()).order_by('-published_date')
-        context['events'] =  Event.objects.filter(published_date__lte=timezone.now()).order_by('-published_date')
+        context['articles'] = Article.objects.filter(published_date__lte=timezone.now()).order_by('-published_date')
+        context['events'] = get_event()
         context['title'] = 'Home Page'
         context['year'] = datetime.now().year
         return context
@@ -34,8 +39,8 @@ class AboutView(TemplateView):
 
     def get_context_data(self, **kwargs):
         context = super(AboutView, self).get_context_data(**kwargs)
-        context['aboutpage'] =  AboutPage.objects.all()
-        context['events'] =  Event.objects.filter(published_date__lte=timezone.now()).order_by('-published_date')
+        context['aboutpage'] = AboutPage.objects.all()
+        context['events'] = get_event()
         context['title'] = 'About Anna'
         context['year'] = datetime.now().year
         return context
@@ -46,8 +51,8 @@ class ProjectsView(TemplateView):
 
     def get_context_data(self, **kwargs):
         context = super(ProjectsView, self).get_context_data(**kwargs)
-        context['projects'] =  Project.objects.all().order_by('-pk')
-        context['events'] =  Event.objects.filter(published_date__lte=timezone.now()).order_by('-published_date')
+        context['projects'] = Project.objects.all().order_by('-pk')
+        context['events'] = get_event()
         context['title'] = 'Projects'
         context['year'] = datetime.now().year
         return context
@@ -59,7 +64,7 @@ class Project_DetailView(TemplateView):
     def get_context_data(self, pk, **kwargs):
         context = super(Project_DetailView, self).get_context_data(**kwargs)
         context['project'] = get_object_or_404(Project, pk=pk)
-        context['events'] =  Event.objects.filter(published_date__lte=timezone.now()).order_by('-published_date')
+        context['events'] = get_event()
         context['title'] = 'Projects'
         context['message'] = 'Projects'
         context['year'] = datetime.now().year
@@ -120,7 +125,7 @@ class EventsView(TemplateView):
 
     def get_context_data(self, **kwargs):
         context = super(EventsView, self).get_context_data(**kwargs)
-        context['events'] =  Event.objects.filter(published_date__lte=timezone.now()).order_by('-published_date')
+        context['events'] = get_event()
         context['title'] = 'Upcoming Events'
         context['year'] = datetime.now().year
         return context
@@ -132,7 +137,7 @@ class PythonView(TemplateView):
     def get_context_data(self, **kwargs):
         context = super(PythonView, self).get_context_data(**kwargs)
         context['articles'] =  PythonArticle.objects.all()
-        context['events'] =  Event.objects.filter(published_date__lte=timezone.now()).order_by('-published_date')
+        context['events'] = get_event()
         context['title'] = 'Python'
         context['year'] = datetime.now().year
         return context
@@ -144,7 +149,7 @@ class Python_DetailView(TemplateView):
     def get_context_data(self, pk, **kwargs):
         context = super(Python_DetailView, self).get_context_data(**kwargs)
         context['article'] = get_object_or_404(PythonArticle, pk=pk)
-        context['events'] =  Event.objects.filter(published_date__lte=timezone.now()).order_by('-published_date')
+        context['events'] = get_event()
         context['title'] = 'Python'
         context['message'] = 'Python'
         context['year'] = datetime.now().year
@@ -157,7 +162,7 @@ class DjangoView(TemplateView):
     def get_context_data(self, **kwargs):
         context = super(DjangoView, self).get_context_data(**kwargs)
         context['articles'] = DjangoArticle.objects.all()
-        context['events'] =  Event.objects.filter(published_date__lte=timezone.now()).order_by('-published_date')
+        context['events'] = get_event()
         context['title'] = 'Django'
         context['year'] = datetime.now().year
         return context
@@ -169,7 +174,7 @@ class Django_DetailView(TemplateView):
     def get_context_data(self, pk, **kwargs):
         context = super(Django_DetailView, self).get_context_data(**kwargs)
         context['article'] = get_object_or_404(DjangoArticle, pk=pk)
-        context['events'] =  Event.objects.filter(published_date__lte=timezone.now()).order_by('-published_date')
+        context['events'] = get_event()
         context['title'] = 'Django'
         context['message'] = 'Django'
         context['year'] = datetime.now().year
