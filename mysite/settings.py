@@ -92,13 +92,13 @@ WSGI_APPLICATION = 'mysite.wsgi.application'
 DATABASES = {
     'default': {
         'ENGINE': 'django.db.backends.mysql',
-        'NAME': 'blog',
-        'USER': 'root',
+        'NAME': 'amakarudze$blog',
+        'USER': 'amakarudze',
         'PASSWORD': 'T@wana03',
         'OPTIONS': {
           'autocommit': True,
         },
-        'HOST': '',
+        'HOST': 'amakarudze.mysql.pythonanywhere-services.com ',
         'PORT': '',
     }
 }
