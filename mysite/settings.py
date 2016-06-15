@@ -98,7 +98,7 @@ DATABASES = {
         'OPTIONS': {
           'autocommit': True,
         },
-        'HOST': 'amakarudze.mysql.pythonanywhere-services.com ',
+        'HOST': 'amakarudze.mysql.pythonanywhere-services.com',
         'PORT': '',
     }
 }
