@@ -2,6 +2,153 @@
 
 {% block content %}
 
+    <!-- Navigation -->
+    <nav class="navbar navbar-inverse navbar-fixed-top" role="navigation">
+        <div class="container">
+            <!-- Brand and toggle get grouped for better mobile display -->
+            <div class="navbar-header">
+                <button type="button" class="navbar-toggle" data-toggle="collapse" data-target="#bs-example-navbar-collapse-1">
+                    <span class="sr-only">Toggle navigation</span>
+                    <span class="icon-bar"></span>
+                    <span class="icon-bar"></span>
+                    <span class="icon-bar"></span>
+                </button>
+                <a class="navbar-brand" href="#">Geek Talk with Anna!</a>
+            </div>
+            <!-- Collect the nav links, forms, and other content for toggling -->
+            <div class="navbar-collapse collapse">
+              <div class="nav navbar-nav">
+                <div class = "dropdown"><button class="dropbtn">
+                  <a href="{% url 'home' %}">Home</a></button></div>
+                <div class = "dropdown"><button class="dropbtn">
+                  <a href="{% url 'about' %}">About</a></button></div>
+                <div class = "dropdown"><button class="dropbtn">
+                  <a href="{% url 'events' %}">Events</a></button></div>
+                <div class = "dropdown"><button class="dropbtn">
+                  <a href="{% url 'post_list' %}">Blog</a></button></div>
+                <div class = "dropdown"><button class="dropbtn">
+                  <a href="#">Gallery</a></button></div>
+                <div class = "dropdown"><button class="dropbtn">
+                  <a href="{% url 'contact' %}">Contact</a></button></div>
+                <div class="dropdown">
+                  <button class="dropbtn">My Work</button>
+                    <div class="dropdown-content">
+                      <a href="{% url 'projects' %}">Projects</a>
+                      <a href="{% url 'django' %}">Django</a>
+                      <a href="{% url 'python' %}">Python</a>
+                    </div>
+                  </div>
+                {% if user.is_authenticated %}
+                <div class="dropdown">
+                  <button class="dropbtn">Sign Out</button>
+                    <div class="dropdown-content">
+                      <a href="{% url 'account_email' %}">Change E-mail</a>
+                      <a href="{% url 'account_logout' %}">Sign Out</a>
+                    </div>
+                  </div>
+                {% else %}
+                <div class="dropdown">
+                  <button class="dropbtn">Sign In</button>
+                    <div class="dropdown-content">
+                      <a href="{% url 'account_signup' %}">Sign Up</a>
+                      <a href="{% url 'account_login' %}">Sign In</a>
+                    </div>
+                  </div>
+                {% endif %}
+              </div>
+            </div>
+            <!-- /.navbar-collapse -->
+        </div>
+        <!-- /.container -->
+    </nav>
+
+    <!-- Full Page Image Background Carousel Header -->
+    <div id="myCarousel" class="carousel slide">
+        <!-- Indicators -->
+        <ol class="carousel-indicators">
+            <li data-target="#myCarousel" data-slide-to="0" class="active"></li>
+            <li data-target="#myCarousel" data-slide-to="1"></li>
+            <li data-target="#myCarousel" data-slide-to="2"></li>
+            <li data-target="#myCarousel" data-slide-to="3"></li>
+            <li data-target="#myCarousel" data-slide-to="4"></li>
+            <li data-target="#myCarousel" data-slide-to="5"></li>
+            <li data-target="#myCarousel" data-slide-to="6"></li>
+            <li data-target="#myCarousel" data-slide-to="7"></li>
+        </ol>
+
+        <!-- Wrapper for Slides -->
+        <div class="carousel-inner">
+            <div class="item active">
+                <!-- Set the first background image using inline CSS below. -->
+                <img src="static/blog/images/Anna2-min.jpg" alt="Anna">
+                <div class="carousel-caption">
+                    <h2>Anna taking a moment to pause for a photo while coaching</h2>
+                </div>
+            </div>
+            <div class="item">
+                <!-- Set the second background image using inline CSS below. -->
+                <img src="static/blog/images/djangogirlswin3-min.jpg" alt="Anna">
+                <div class="carousel-caption">
+                    <h2>Friends like these!</h2>
+                </div>
+            </div>
+            <div class="item">
+                <!-- Set the third background image using inline CSS below. -->
+                <img src="static/blog/images/djangogirlswin2-min.jpg" alt="Friends">
+                <div class="carousel-caption">
+                    <h2>Anna with other Django Girls Windhoek Coaches</h2>
+                </div>
+            </div>
+            <div class="item">
+                <!-- Set the first background image using inline CSS below. -->
+                <img src="static/blog//images/coaching2-min.jpg" alt="Anna">
+                <div class="carousel-caption">
+                    <h2>Hush! Workshop in progress!</h2>
+                </div>
+            </div>
+            <div class="item">
+                <!-- Set the second background image using inline CSS below. -->
+                <img src="static/blog/images/codelikeagirl-min.jpg" alt="Anna">
+                <div class="carousel-caption">
+                    <h2>Code like a girl!</h2>
+                </div>
+            </div>
+            <div class="item">
+                <!-- Set the third background image using inline CSS below. -->
+                <img src="static/blog/images/djangogirlswn-min.jpg" alt="Friends">
+                <div class="carousel-caption">
+                    <h2>Group photo</h2>
+                </div>
+            </div>
+            <div class="item">
+                <!-- Set the first background image using inline CSS below. -->
+                <img src="/static/blog/images/django_stickers-min.jpg" alt="Anna">
+                <div class="carousel-caption">
+                    <h2>Who doesn't like Django???</h2>
+                </div>
+            </div>
+            <div class="item">
+                <!-- Set the second background image using inline CSS below. -->
+                <img src="static/blog/images/bg02-min.jpg" alt="Anna">
+                <div class="carousel-caption">
+                    <h2>Anna with one of the participants in her group</h2>
+                </div>
+            </div>
+          </div>
+
+        <!-- Controls -->
+        <a class="left carousel-control" href="#myCarousel" data-slide="prev">
+            <span class="icon-prev"></span>
+        </a>
+        <a class="right carousel-control" href="#myCarousel" data-slide="next">
+            <span class="icon-next"></span>
+        </a>
+
+    </div>
+
+    <!-- Page Content -->
+    <div class="container">
+
 <div class="row">
   <div class="col-md-9">
       {% for article in articles %}
@@ -23,6 +170,10 @@
       {% endfor %}
 </div>
 </div>
+
 </div>
+
+</div>
+
 
 {% endblock %}

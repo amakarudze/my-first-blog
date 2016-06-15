@@ -1,13 +1,25 @@
 ﻿<!DOCTYPE html>
 <html>
 <head>
-    <meta charset="utf-8" />
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta charset="utf-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <meta name="description" content="">
+  <meta name="author" content="">
     <title>{{ title }} - ZimboGeekGirl Blog</title>
     {% load staticfiles %}
-    <link rel="stylesheet" type="text/css" href="{% static 'blog/content/bootstrap.min.css' %}" />
+    <link rel="stylesheet" type="text/css" href="{% static 'blog/css/bootstrap.min.css' %}" />
     <link rel="stylesheet" type="text/css" href="{% static 'blog/content/site.css' %}" />
     <link rel="stylesheet" type="text/css" href="{% static 'blog/content/default.css' %}" />
+    <!-- Custom CSS -->
+    <link href="{% static 'blog/css/full-slider.css' %}" rel="stylesheet">
+
+    <!-- HTML5 Shim and Respond.js IE8 support of HTML5 elements and media queries -->
+    <!-- WARNING: Respond.js doesn't work if you view the page via file:// -->
+    <!--[if lt IE 9]
+        <script src="https://oss.maxcdn.com/libs/html5shiv/3.7.0/html5shiv.js"></script>
+        <script src="https://oss.maxcdn.com/libs/respond.js/1.4.2/respond.min.js"></script>
+    <![endif]-->
     <script src="{% static 'blog/scripts/modernizr-2.6.2.js' %}"></script>
 </head>
 
@@ -30,8 +42,7 @@
      }(document, 'script', 'facebook-jssdk'));
   </script>
 
-  <div id="header-wrapper" >
-     <div id="header" class="container">
+  <div id="header" class="container">
     <div class="navbar navbar-inverse navbar-fixed-top">
         <div class="container">
             <div class="navbar-header">
@@ -86,7 +97,7 @@
         </div>
     </div>
   </div>
-</div>
+
 
     <div class="container body-content">
 {% block content %}{% endblock %}
@@ -113,10 +124,27 @@
         </footer>
     </div>
 
-    <script src="{% static 'app/scripts/jquery-1.10.2.js' %}"></script>
-    <script src="{% static 'app/scripts/bootstrap.js' %}"></script>
-    <script src="{% static 'app/scripts/respond.js' %}"></script>
-{% block scripts %}{% endblock %}
+
+{% block scripts %}
+<script src="{% static 'blog/scripts/jquery-1.10.2.js' %}"></script>
+<script src="{% static 'blog/scripts/bootstrap.js' %}"></script>
+<script src="{% static 'blog/scripts/bootstrap.mini.js' %}"></script>
+<script src="{% static 'blog/scripts/respond.js' %}"></script>
+<!-- /.container -->
+
+<!-- jQuery -->
+<script src="static/js/jquery.js"></script>
+
+<!-- Bootstrap Core JavaScript -->
+<script src="static/js/bootstrap.min.js"></script>
+
+<!-- Script to Activate the Carousel -->
+<script>
+$('.carousel').carousel({
+interval: 5000 //changes the speed
+})
+</script>
+{% endblock %}
 
 </body>
 </html>

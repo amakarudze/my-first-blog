@@ -27,8 +27,7 @@
          <form action="{% url 'contact' %}" method=post>
           {% csrf_token %}
           {{ form }}
-          <input class="btn-default" type="submit" name="sendemail" id="sendemail" value="Send Email" />
-          </form>
+        </form>
     </div>
 </div>
 {% endblock %}
