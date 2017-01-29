@@ -8,9 +8,9 @@
     <div class="col-md-1">
     </div>
     <div class="col-md-10">
+        <h2>Upcoming Events</h2>
 {% for event in events %}
    <div>
-    <h2>Events</h2>
     <h3>{{ event.name }} </h3>
     <p><strong>Location:</strong> {{ event.location }} </p>
     <p><strong>Date:</strong> {{ event.fromdate }} -  {{ event.todate }}</p>
@@ -18,6 +18,19 @@
     <p>{{ event.comments }} </p> </div>
     <br />
   {% endfor %}
+
+  <h2>Past Events</h2>
+{% for event in past_events %}
+   <div>
+    <h3>{{ event.name }} </h3>
+    <p><strong>Location:</strong> {{ event.location }} </p>
+    <p><strong>Date:</strong> {{ event.fromdate }} -  {{ event.todate }}</p>
+    <p><strong>Website:</strong> <a href="">{{ event.website }}</a></p>
+    <p>{{ event.comments }} </p> </div>
+    <br />
+  {% endfor %}
+  </div>
+
   </div>
   <div class="col-md-1">
 

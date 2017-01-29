@@ -1,4 +1,4 @@
-﻿<!DOCTYPE html>
+<!DOCTYPE html>
 <html>
 <head>
   <meta charset="utf-8">
@@ -64,17 +64,10 @@
                 <div class = "dropdown"><button class="dropbtn">
                   <a href="{% url 'post_list' %}">Blog</a></button></div>
                 <div class = "dropdown"><button class="dropbtn">
-                  <a href="#">Gallery</a></button></div>
-                <div class = "dropdown"><button class="dropbtn">
                   <a href="{% url 'contact' %}">Contact</a></button></div>
                 <div class="dropdown">
-                  <button class="dropbtn">My Work</button>
-                    <div class="dropdown-content">
-                      <a href="{% url 'projects' %}">Projects</a>
-                      <a href="{% url 'django' %}">Django</a>
-                      <a href="{% url 'python' %}">Python</a>
-                    </div>
-                  </div>
+                  <button class="dropbtn">
+                      <a href="{% url 'talks' %}">Talks</a></button></div>
                 {% if user.is_authenticated %}
                 <div class="dropdown">
                   <button class="dropbtn">Sign Out</button>

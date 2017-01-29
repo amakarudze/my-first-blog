@@ -13,13 +13,16 @@ from django.utils import timezone
 from datetime import datetime
 
 from blog.forms import ContactForm, CommentForm
-from .models import (Post, Event, Article, AboutPage, DjangoArticle,
-                     PythonArticle, Project)
+from .models import (Post, Event, Article, AboutPage, Project)
 
 
 def get_event():
-    events = Event.objects.filter(ispast=False).order_by('-published_date')
+    events = Event.objects.filter(ispast=False).order_by('fromdate')
     return events
+
+def past_event():
+    past_events = Event.objects.filter(ispast=True).order_by('-fromdate')
+    return past_events
 
 
 class HomeView(TemplateView):
@@ -46,27 +49,27 @@ class AboutView(TemplateView):
         return context
 
 
-class ProjectsView(TemplateView):
-    template_name = "blog/projects.html"
+class TalksView(TemplateView):
+    template_name = "blog/talks.html"
 
     def get_context_data(self, **kwargs):
-        context = super(ProjectsView, self).get_context_data(**kwargs)
+        context = super(TalksView, self).get_context_data(**kwargs)
         context['projects'] = Project.objects.all().order_by('-pk')
         context['events'] = get_event()
-        context['title'] = 'Projects'
+        context['title'] = 'Talks'
         context['year'] = datetime.now().year
         return context
 
 
-class Project_DetailView(TemplateView):
-    template_name = "blog/project_details.html"
+class Talk_DetailView(TemplateView):
+    template_name = "blog/talk_details.html"
 
     def get_context_data(self, pk, **kwargs):
-        context = super(Project_DetailView, self).get_context_data(**kwargs)
+        context = super(Talk_DetailView, self).get_context_data(**kwargs)
         context['project'] = get_object_or_404(Project, pk=pk)
         context['events'] = get_event()
-        context['title'] = 'Projects'
-        context['message'] = 'Projects'
+        context['title'] = 'Talk Details'
+        context['message'] = 'Talk Details'
         context['year'] = datetime.now().year
         return context
 
@@ -110,73 +113,14 @@ class ContactView(TemplateView):
                 return HttpResponse('Invalid header found.')
 
 
-class GalleryView(TemplateView):
-    template_name = "blog/gallery.html"
-
-    def get_context_data(self, **kwargs):
-        context = super(GalleryView, self).get_context_data(**kwargs)
-        context['title'] = 'My Work in Pictures'
-        context['year'] = datetime.now().year
-        return context
-
-
 class EventsView(TemplateView):
     template_name = "blog/events.html"
 
     def get_context_data(self, **kwargs):
         context = super(EventsView, self).get_context_data(**kwargs)
         context['events'] = get_event()
-        context['title'] = 'Upcoming Events'
-        context['year'] = datetime.now().year
-        return context
-
-
-class PythonView(TemplateView):
-    template_name = "blog/python.html"
-
-    def get_context_data(self, **kwargs):
-        context = super(PythonView, self).get_context_data(**kwargs)
-        context['articles'] =  PythonArticle.objects.all()
-        context['events'] = get_event()
-        context['title'] = 'Python'
-        context['year'] = datetime.now().year
-        return context
-
-
-class Python_DetailView(TemplateView):
-    template_name = "blog/python_details.html"
-
-    def get_context_data(self, pk, **kwargs):
-        context = super(Python_DetailView, self).get_context_data(**kwargs)
-        context['article'] = get_object_or_404(PythonArticle, pk=pk)
-        context['events'] = get_event()
-        context['title'] = 'Python'
-        context['message'] = 'Python'
-        context['year'] = datetime.now().year
-        return context
-
-
-class DjangoView(TemplateView):
-    template_name = "blog/django.html"
-
-    def get_context_data(self, **kwargs):
-        context = super(DjangoView, self).get_context_data(**kwargs)
-        context['articles'] = DjangoArticle.objects.all()
-        context['events'] = get_event()
-        context['title'] = 'Django'
-        context['year'] = datetime.now().year
-        return context
-
-
-class Django_DetailView(TemplateView):
-    template_name = "blog/django_details.html"
-
-    def get_context_data(self, pk, **kwargs):
-        context = super(Django_DetailView, self).get_context_data(**kwargs)
-        context['article'] = get_object_or_404(DjangoArticle, pk=pk)
-        context['events'] = get_event()
-        context['title'] = 'Django'
-        context['message'] = 'Django'
+        context['past_events'] = past_event()
+        context['title'] = 'My Events'
         context['year'] = datetime.now().year
         return context
 
