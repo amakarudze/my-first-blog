@@ -2,15 +2,7 @@
 <project version="4">
   <component name="ChangeListManager">
     <list default="true" id="92170f53-029a-4138-8365-45e814d91e2c" name="Default" comment="">
-      <change type="DELETED" beforePath="$PROJECT_DIR$/blog/static/blog/img/post-sample-image.jpg" afterPath="" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/blog/static/blog/img/about-bg.jpg" afterPath="$PROJECT_DIR$/blog/static/blog/img/about-bg.jpg" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/blog/static/blog/img/home-bg.jpg" afterPath="$PROJECT_DIR$/blog/static/blog/img/home-bg.jpg" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/blog/static/blog/img/post-bg.jpg" afterPath="$PROJECT_DIR$/blog/static/blog/img/post-bg.jpg" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/blog/templates/blog/about.html" afterPath="$PROJECT_DIR$/blog/templates/blog/about.html" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/blog/templates/blog/past_events.html" afterPath="$PROJECT_DIR$/blog/templates/blog/past_events.html" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/blog/templates/blog/talk.html" afterPath="$PROJECT_DIR$/blog/templates/blog/talk.html" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/blog/templates/blog/talks.html" afterPath="$PROJECT_DIR$/blog/templates/blog/talks.html" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/blog/templates/blog/upcoming_events.html" afterPath="$PROJECT_DIR$/blog/templates/blog/upcoming_events.html" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/blog/templates/blog/post.html" afterPath="$PROJECT_DIR$/blog/templates/blog/post.html" />
     </list>
     <option name="EXCLUDED_CONVERTED_TO_IGNORED" value="true" />
     <option name="TRACKING_ENABLED" value="true" />
@@ -53,7 +45,7 @@
           </provider>
         </entry>
       </file>
-      <file leaf-file-name="upcoming_events.html" pinned="false" current-in-tab="true">
+      <file leaf-file-name="upcoming_events.html" pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/blog/templates/blog/upcoming_events.html">
           <provider selected="true" editor-type-id="text-editor">
             <state relative-caret-position="108">
@@ -95,14 +87,12 @@
           </provider>
         </entry>
       </file>
-      <file leaf-file-name="post.html" pinned="false" current-in-tab="false">
+      <file leaf-file-name="post.html" pinned="false" current-in-tab="true">
         <entry file="file://$PROJECT_DIR$/blog/templates/blog/post.html">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="0">
-              <caret line="0" column="0" lean-forward="false" selection-start-line="0" selection-start-column="0" selection-end-line="0" selection-end-column="0" />
-              <folding>
-                <element signature="n#style#0;n#header#0;n#!!top" expanded="true" />
-              </folding>
+            <state relative-caret-position="135">
+              <caret line="5" column="60" lean-forward="false" selection-start-line="5" selection-start-column="60" selection-end-line="5" selection-end-column="60" />
+              <folding />
             </state>
           </provider>
         </entry>
@@ -154,7 +144,6 @@
         <option value="$PROJECT_DIR$/blog/templates/blog/layout.html" />
         <option value="$PROJECT_DIR$/blog/views.py" />
         <option value="$PROJECT_DIR$/blog/models.py" />
-        <option value="$PROJECT_DIR$/blog/templates/blog/post.html" />
         <option value="$PROJECT_DIR$/blog/templates/blog/thankyou.html" />
         <option value="$PROJECT_DIR$/blog/templates/blog/contact.html" />
         <option value="$PROJECT_DIR$/blog/templates/blog/index.html" />
@@ -163,6 +152,7 @@
         <option value="$PROJECT_DIR$/blog/templates/blog/past_events.html" />
         <option value="$PROJECT_DIR$/blog/templates/blog/talk.html" />
         <option value="$PROJECT_DIR$/blog/templates/blog/upcoming_events.html" />
+        <option value="$PROJECT_DIR$/blog/templates/blog/post.html" />
       </list>
     </option>
   </component>
@@ -593,16 +583,6 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/blog/templates/blog/post.html">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="0">
-          <caret line="0" column="0" lean-forward="false" selection-start-line="0" selection-start-column="0" selection-end-line="0" selection-end-column="0" />
-          <folding>
-            <element signature="n#style#0;n#header#0;n#!!top" expanded="true" />
-          </folding>
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/mysite/settings.py">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="3413">
@@ -711,6 +691,14 @@
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="108">
           <caret line="4" column="94" lean-forward="false" selection-start-line="4" selection-start-column="94" selection-end-line="4" selection-end-column="94" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/blog/templates/blog/post.html">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="135">
+          <caret line="5" column="60" lean-forward="false" selection-start-line="5" selection-start-column="60" selection-end-line="5" selection-end-column="60" />
           <folding />
         </state>
       </provider>
