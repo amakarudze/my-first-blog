@@ -2,104 +2,7 @@
 <project version="4">
   <component name="ChangeListManager">
     <list default="true" id="92170f53-029a-4138-8365-45e814d91e2c" name="Default" comment="">
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/blog/templates/blog/past_events.html" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/blog/templates/blog/talk.html" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/blog/templates/blog/upcoming_events.html" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/$blog" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/3dcmgvol.3pk.txt" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/blog/static/blog/content/bootstrap.css" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/blog/static/blog/content/bootstrap.min.css" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/blog/static/blog/content/default.css" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/blog/static/blog/content/full-slider.css" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/blog/static/blog/content/site.css" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/blog/static/blog/css/bootstrap.css" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/blog/static/blog/css/bootstrap.min.css" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/blog/static/blog/css/default.css" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/blog/static/blog/css/full-slider.css" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/blog/static/blog/fonts/glyphicons-halflings-regular.eot" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/blog/static/blog/fonts/glyphicons-halflings-regular.svg" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/blog/static/blog/fonts/glyphicons-halflings-regular.ttf" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/blog/static/blog/fonts/glyphicons-halflings-regular.woff" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/blog/static/blog/fonts/glyphicons-halflings-regular.woff2" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/blog/static/blog/js/bootstrap.js" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/blog/static/blog/js/bootstrap.min.js" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/blog/static/blog/js/jquery.js" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/blog/static/blog/scripts/_references.js" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/blog/static/blog/scripts/bootstrap.js" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/blog/static/blog/scripts/bootstrap.min.js" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/blog/static/blog/scripts/jquery-1.10.2.intellisense.js" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/blog/static/blog/scripts/jquery-1.10.2.js" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/blog/static/blog/scripts/jquery-1.10.2.min.js" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/blog/static/blog/scripts/jquery-1.10.2.min.map" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/blog/static/blog/scripts/jquery.validate-vsdoc.js" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/blog/static/blog/scripts/jquery.validate.js" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/blog/static/blog/scripts/jquery.validate.min.js" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/blog/static/blog/scripts/jquery.validate.unobtrusive.js" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/blog/static/blog/scripts/jquery.validate.unobtrusive.min.js" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/blog/static/blog/scripts/modernizr-2.6.2.js" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/blog/static/blog/scripts/respond.js" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/blog/static/blog/scripts/respond.min.js" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/blog/templates/blog/django.html" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/blog/templates/blog/django_details.html" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/blog/templates/blog/events.html" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/blog/templates/blog/handlers.html" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/blog/templates/blog/post_edit.html" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/blog/templates/blog/post_list.html" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/blog/templates/blog/post_new.html" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/blog/templates/blog/project_details.html" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/blog/templates/blog/projects.html" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/blog/templates/blog/python.html" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/blog/templates/blog/python_details.html" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/blog/templates/blog/talk_details.html" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/blog/templates/emails/webenquiry.txt" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/hamu" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/mysite/static/css/project.css" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/mysite/static/fonts/.gitkeep" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/mysite/static/images/.gitkeep" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/mysite/static/images/favicon.ico" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/mysite/static/js/project.js" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/mysite/static/sass/project.scss" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/mysite/templates/404.html" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/mysite/templates/500.html" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/mysite/templates/account/base.html" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/mysite/templates/account/email.html" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/mysite/templates/account/email_confirm.html" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/mysite/templates/account/email_confirmed.html" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/mysite/templates/account/login.html" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/mysite/templates/account/logout.html" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/mysite/templates/account/password_change.html" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/mysite/templates/account/password_reset.html" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/mysite/templates/account/password_reset_done.html" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/mysite/templates/account/password_reset_from_key.html" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/mysite/templates/account/password_reset_from_key_done.html" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/mysite/templates/account/password_set.html" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/mysite/templates/account/signup.html" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/mysite/templates/account/signup_closed.html" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/mysite/templates/account/verification_sent.html" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/mysite/templates/account/verified_email_required.html" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/mysite/templates/base.html" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/mysite/templates/base.html.bkp" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/mysite/templates/pages/about.html" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/mysite/templates/pages/home.html" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/mysite/templates/users/user_detail.html" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/mysite/templates/users/user_form.html" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/mysite/templates/users/user_list.html" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/settings/production.txt" afterPath="" />
-      <change type="MOVED" beforePath="$PROJECT_DIR$/blog/templates/blog/post_detail.html" afterPath="$PROJECT_DIR$/blog/templates/blog/post.html" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/.gitignore" afterPath="$PROJECT_DIR$/.gitignore" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/blog/admin.py" afterPath="$PROJECT_DIR$/blog/admin.py" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/blog/forms.py" afterPath="$PROJECT_DIR$/blog/forms.py" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/blog/models.py" afterPath="$PROJECT_DIR$/blog/models.py" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/blog/templates/blog/about.html" afterPath="$PROJECT_DIR$/blog/templates/blog/about.html" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/blog/templates/blog/contact.html" afterPath="$PROJECT_DIR$/blog/templates/blog/contact.html" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/blog/templates/blog/index.html" afterPath="$PROJECT_DIR$/blog/templates/blog/index.html" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/blog/templates/blog/layout.html" afterPath="$PROJECT_DIR$/blog/templates/blog/layout.html" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/blog/templates/blog/talks.html" afterPath="$PROJECT_DIR$/blog/templates/blog/talks.html" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/blog/templates/blog/thankyou.html" afterPath="$PROJECT_DIR$/blog/templates/blog/thankyou.html" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/blog/urls.py" afterPath="$PROJECT_DIR$/blog/urls.py" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/blog/views.py" afterPath="$PROJECT_DIR$/blog/views.py" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/mysite/urls.py" afterPath="$PROJECT_DIR$/mysite/urls.py" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/requirements.txt" afterPath="$PROJECT_DIR$/requirements.txt" />
     </list>
     <option name="EXCLUDED_CONVERTED_TO_IGNORED" value="true" />
     <option name="TRACKING_ENABLED" value="true" />
@@ -110,19 +13,6 @@
   </component>
   <component name="FileEditorManager">
     <leaf>
-      <file leaf-file-name="index.html" pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/blog/templates/blog/index.html">
-          <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="108">
-              <caret line="4" column="71" lean-forward="false" selection-start-line="4" selection-start-column="59" selection-end-line="4" selection-end-column="71" />
-              <folding>
-                <element signature="e#1695#1702#1" expanded="true" />
-                <element signature="e#2240#2247#1" expanded="true" />
-              </folding>
-            </state>
-          </provider>
-        </entry>
-      </file>
       <file leaf-file-name="talks.html" pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/blog/templates/blog/talks.html">
           <provider selected="true" editor-type-id="text-editor">
@@ -148,16 +38,6 @@
           </provider>
         </entry>
       </file>
-      <file leaf-file-name="talk.html" pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/blog/templates/blog/talk.html">
-          <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="135">
-              <caret line="5" column="71" lean-forward="false" selection-start-line="5" selection-start-column="71" selection-end-line="5" selection-end-column="71" />
-              <folding />
-            </state>
-          </provider>
-        </entry>
-      </file>
       <file leaf-file-name="upcoming_events.html" pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/blog/templates/blog/upcoming_events.html">
           <provider selected="true" editor-type-id="text-editor">
@@ -171,7 +51,7 @@
           </provider>
         </entry>
       </file>
-      <file leaf-file-name=".gitignore" pinned="false" current-in-tab="true">
+      <file leaf-file-name=".gitignore" pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/.gitignore">
           <provider selected="true" editor-type-id="text-editor">
             <state relative-caret-position="0">
@@ -184,8 +64,8 @@
       <file leaf-file-name="past_events.html" pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/blog/templates/blog/past_events.html">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="-5">
-              <caret line="0" column="32" lean-forward="true" selection-start-line="0" selection-start-column="32" selection-end-line="0" selection-end-column="32" />
+            <state relative-caret-position="537">
+              <caret line="49" column="106" lean-forward="true" selection-start-line="49" selection-start-column="20" selection-end-line="49" selection-end-column="106" />
               <folding>
                 <element signature="n#style#0;n#header#0;n#!!top" expanded="true" />
                 <element signature="e#1613#1620#1" expanded="true" />
@@ -229,6 +109,20 @@
           </provider>
         </entry>
       </file>
+      <file leaf-file-name="index.html" pinned="false" current-in-tab="true">
+        <entry file="file://$PROJECT_DIR$/blog/templates/blog/index.html">
+          <provider selected="true" editor-type-id="text-editor">
+            <state relative-caret-position="616">
+              <caret line="57" column="27" lean-forward="false" selection-start-line="57" selection-start-column="27" selection-end-line="57" selection-end-column="27" />
+              <folding>
+                <element signature="n#style#0;n#header#0;n#!!top" expanded="true" />
+                <element signature="e#1695#1702#1" expanded="true" />
+                <element signature="e#2106#2113#1" expanded="true" />
+              </folding>
+            </state>
+          </provider>
+        </entry>
+      </file>
     </leaf>
   </component>
   <component name="FileTemplateManagerImpl">
@@ -264,7 +158,6 @@
         <option value="$PROJECT_DIR$/blog/templates/blog/layout.html" />
         <option value="$PROJECT_DIR$/blog/views.py" />
         <option value="$PROJECT_DIR$/blog/models.py" />
-        <option value="$PROJECT_DIR$/blog/templates/blog/index.html" />
         <option value="$PROJECT_DIR$/blog/templates/blog/past_events.html" />
         <option value="$PROJECT_DIR$/blog/templates/blog/upcoming_events.html" />
         <option value="$PROJECT_DIR$/blog/templates/blog/talk.html" />
@@ -273,6 +166,7 @@
         <option value="$PROJECT_DIR$/blog/templates/blog/thankyou.html" />
         <option value="$PROJECT_DIR$/blog/templates/blog/about.html" />
         <option value="$PROJECT_DIR$/blog/templates/blog/contact.html" />
+        <option value="$PROJECT_DIR$/blog/templates/blog/index.html" />
       </list>
     </option>
   </component>
@@ -513,14 +407,6 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/mysite/settings.py">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="975">
-          <caret line="149" column="21" lean-forward="false" selection-start-line="149" selection-start-column="21" selection-end-line="149" selection-end-column="21" />
-          <folding />
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/blog/templates/blog/python_details.html">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="0">
@@ -672,7 +558,7 @@
         <state relative-caret-position="216">
           <caret line="8" column="62" lean-forward="false" selection-start-line="8" selection-start-column="62" selection-end-line="8" selection-end-column="62" />
           <folding>
-            <element signature="e#0#32#0" expanded="true" />
+            <element signature="e#0#32#0" expanded="false" />
           </folding>
         </state>
       </provider>
@@ -730,17 +616,6 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/blog/templates/blog/index.html">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="108">
-          <caret line="4" column="71" lean-forward="false" selection-start-line="4" selection-start-column="59" selection-end-line="4" selection-end-column="71" />
-          <folding>
-            <element signature="e#1695#1702#1" expanded="true" />
-            <element signature="e#2240#2247#1" expanded="true" />
-          </folding>
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/blog/templates/blog/contact.html">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="702">
@@ -771,18 +646,6 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/blog/templates/blog/past_events.html">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="-5">
-          <caret line="0" column="32" lean-forward="true" selection-start-line="0" selection-start-column="32" selection-end-line="0" selection-end-column="32" />
-          <folding>
-            <element signature="n#style#0;n#header#0;n#!!top" expanded="true" />
-            <element signature="e#1613#1620#1" expanded="true" />
-            <element signature="e#2160#2167#1" expanded="true" />
-          </folding>
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/blog/templates/blog/upcoming_events.html">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="-346">
@@ -794,11 +657,43 @@
         </state>
       </provider>
     </entry>
+    <entry file="file://$PROJECT_DIR$/mysite/settings.py">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="3413">
+          <caret line="137" column="0" lean-forward="true" selection-start-line="137" selection-start-column="0" selection-end-line="137" selection-end-column="0" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
     <entry file="file://$PROJECT_DIR$/.gitignore">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="0">
           <caret line="0" column="0" lean-forward="false" selection-start-line="0" selection-start-column="0" selection-end-line="0" selection-end-column="0" />
           <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/blog/templates/blog/past_events.html">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="537">
+          <caret line="49" column="106" lean-forward="true" selection-start-line="49" selection-start-column="20" selection-end-line="49" selection-end-column="106" />
+          <folding>
+            <element signature="n#style#0;n#header#0;n#!!top" expanded="true" />
+            <element signature="e#1613#1620#1" expanded="true" />
+            <element signature="e#2160#2167#1" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/blog/templates/blog/index.html">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="616">
+          <caret line="57" column="27" lean-forward="false" selection-start-line="57" selection-start-column="27" selection-end-line="57" selection-end-column="27" />
+          <folding>
+            <element signature="n#style#0;n#header#0;n#!!top" expanded="true" />
+            <element signature="e#1695#1702#1" expanded="true" />
+            <element signature="e#2106#2113#1" expanded="true" />
+          </folding>
         </state>
       </provider>
     </entry>

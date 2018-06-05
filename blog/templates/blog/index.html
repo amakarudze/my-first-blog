@@ -47,15 +47,16 @@
                                 <span class="sr-only">Previous</span>
                             </a>
                         </li>
-                    {% endif %}
-                    <li class="page-item"><a class="page-link" href="?page={{ page }}">{{ page }}</a></li>
-                    {% if posts.has_next %}
+                     {% elseif posts.has_next %}
                         <li class="page-item">
                             <a class="page-link" href="?page={{ posts.next_page_number }}" aria-label="Next">
                                 <span aria-hidden="true">&raquo;</span>
                                 <span class="sr-only">Next</span>
                             </a>
                         </li>
+
+                    {% else  %}
+                       <li class="page-item"><a class="page-link" href="?page={{ page }}">{{ page }}</a></li>
                     {% endif %}
                     {% endfor %}
                 </ul>
