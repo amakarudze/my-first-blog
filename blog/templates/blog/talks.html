@@ -2,37 +2,70 @@
 
 {% block content %}
 
-<div class="row">
-  <div class="col-md-9">
-      <br />
-      <br />
-      {% if projects %}
-      {% for project in projects %}
-        <div>
-        <h2><a href="{% url 'project_details' pk=project.pk %}">{{ project.name }}</a></h2>
-        <p><strong>Period:</strong> {{ project.startdate }} -  {{ project.enddate }}</p>
-        <p><strong>Description:</strong> {{ project.description|linebreaks }}</a></p>
-        <br />
-        <a href="{% url 'project_details' pk=project.pk %}">Read more...</a>
+<!-- Page Header -->
+    <header class="masthead" style="background-image: url('static/blog/img/about-bg.jpg')">
+      <div class="overlay"></div>
+      <div class="container">
+        <div class="row">
+          <div class="col-lg-8 col-md-10 mx-auto">
+            <div class="page-heading">
+              <h1>Past Talks</h1>
+              <span class="subheading">My previous conference talks.</span>
+            </div>
+          </div>
         </div>
-          <br />
-        {% endfor %}
-        {% else %}
-        <h3>Talks coming soon.</h3>
+      </div>
+    </header>
 
-        {% endif %}
-  </div>
-  <div class="col-md-3">
-    <h2><a href="{% url 'events' %}">Upcoming Events</a></h2>
-    {% for event in events %}
-      <div>
-        <h4>{{ event.name }} </h4>
-        <p><strong>Location:</strong> {{ event.location }} </p>
-        <p><strong>Date:</strong> {{ event.fromdate }} -  {{ event.todate }}</p>
-        <p><strong>Website:</strong> <a href="">{{ event.website }}</a></p>
-        <br />
-      {% endfor %}
-</div>
-</div>
-</div>
+<!-- Page Content -->
+     <div class="container">
+      <div class="row">
+        <div class="col-lg-10 col-md-10 mx-auto">
+          {% if talks %}
+            {% for talk in talks %}
+          <div class="post-preview">
+            <a href="{% url 'talk' pk=talk.pk %}">
+              <h2 class="post-title">
+                {{ talk.title }}
+              </h2>
+              <h3 class="post-subtitle">
+                {{ talk.event }}
+              </h3>
+            </a>
+            <p class="post-meta">
+              <a href="{{ talk.slides }}">{{ talk.slides }}</a>
+              on {{ talk.date_presented }}</p>
+              <p class="btn btn-primary"><a href="{% url 'talk' pk=talk.pk %}">Read more...</a></p>
+          </div>
+            {% endfor %}
+          <nav>
+                <ul class="pagination">
+                    {% for page in talks.paginator.page_range %}
+                    {% if talks.has_previous %}
+                        <li class="page-item">
+                            <a class="page-link" href="?page={{ talks.previous_page_number }}" aria-label="Previous">
+                                <span aria-hidden="true">&laquo;</span>
+                                <span class="sr-only">Previous</span>
+                            </a>
+                        </li>
+                    {% endif %}
+                    <li class="page-item"><a class="page-link" href="?page={{ page }}">{{ page }}</a></li>
+                    {% if talks.has_next %}
+                        <li class="page-item">
+                            <a class="page-link" href="?page={{ talks.next_page_number }}" aria-label="Next">
+                                <span aria-hidden="true">&raquo;</span>
+                                <span class="sr-only">Next</span>
+                            </a>
+                        </li>
+                    {% endif %}
+                    {% endfor %}
+                </ul>
+            </nav>
+          {% else %}
+          <p>No past talks have been uploaded yet</p>
+          {% endif %}
+        </div>
+      </div>
+     </div>
+
 {% endblock %}

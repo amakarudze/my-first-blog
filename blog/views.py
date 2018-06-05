@@ -1,19 +1,16 @@
 from __future__ import absolute_import
 from django.views.generic import TemplateView
-from django.shortcuts import render, get_object_or_404
-from django.core.mail import send_mail, BadHeaderError, EmailMessage
-from django.http import HttpResponse, HttpResponseRedirect
-from django.template import RequestContext
-from django.core.urlresolvers import reverse_lazy
-from django.template.loader import render_to_string
-from django.dispatch import receiver
-from django.db.models.signals import post_save
+from django.shortcuts import get_object_or_404
+from django.core.mail import send_mail
+from django.http import HttpRequest, HttpResponseRedirect
 from django.utils import timezone
+from django.shortcuts import render
+from django.core.paginator import Paginator, EmptyPage, PageNotAnInteger
 
 from datetime import datetime
 
-from blog.forms import ContactForm, CommentForm
-from .models import (Post, Event, Article, AboutPage, Project)
+from blog.forms import ContactForm
+from .models import Post, Event, Talk, Contact
 
 
 def get_event():
@@ -25,16 +22,104 @@ def past_event():
     return past_events
 
 
-class HomeView(TemplateView):
-    template_name = "blog/index.html"
+def home(request):
+    assert isinstance(request, HttpRequest)
+    post_list = Post.objects.filter(published_date__lte=timezone.now()).order_by('-published_date')
 
-    def get_context_data(self, **kwargs):
-        context = super(HomeView, self).get_context_data(**kwargs)
-        context['articles'] = Article.objects.filter(published_date__lte=timezone.now()).order_by('-published_date')
-        context['events'] = get_event()
-        context['title'] = 'Home Page'
-        context['year'] = datetime.now().year
-        return context
+    paginator = Paginator(post_list, 5)  # Show 5 posts per page
+    page = request.GET.get('page')
+    try:
+        posts = paginator.page(page)
+    except PageNotAnInteger:
+        # If page is not an integer, deliver first page.
+        posts = paginator.page(1)
+    except EmptyPage:
+        # If page is out of range (e.g. 9999), deliver last page of results.
+        posts = paginator.page(paginator.num_pages)
+    return render(
+        request,
+        'blog/index.html',
+        {
+            'title': 'Home',
+            'year': datetime.now().year,
+            'posts': posts,
+        }
+    )
+
+
+def talks(request):
+    assert isinstance(request, HttpRequest)
+    talk_list = Talk.objects.all().order_by('-pk')
+
+    paginator = Paginator(talk_list, 5)  # Show 5 talks per page
+    page = request.GET.get('page')
+    try:
+        talks = paginator.page(page)
+    except PageNotAnInteger:
+        # If page is not an integer, deliver first page.
+        talks = paginator.page(1)
+    except EmptyPage:
+        # If page is out of range (e.g. 9999), deliver last page of results.
+        talks = paginator.page(paginator.num_pages)
+    return render(
+        request,
+        'blog/talks.html',
+        {
+            'title': 'Talks',
+            'year': datetime.now().year,
+            'talks': talks,
+        }
+    )
+
+
+def upcoming_events(request):
+    assert isinstance(request, HttpRequest)
+    event_list = Event.objects.filter(ispast=False).order_by('fromdate')
+
+    paginator = Paginator(event_list, 5)  # Show 5 events per page
+    page = request.GET.get('page')
+    try:
+        events = paginator.page(page)
+    except PageNotAnInteger:
+        # If page is not an integer, deliver first page.
+        events = paginator.page(1)
+    except EmptyPage:
+        # If page is out of range (e.g. 9999), deliver last page of results.
+        events = paginator.page(paginator.num_pages)
+    return render(
+        request,
+        'blog/upcoming_events.html',
+        {
+            'title': 'Upcoming Events',
+            'year': datetime.now().year,
+            'events': events,
+        }
+    )
+
+
+def past_events(request):
+    assert isinstance(request, HttpRequest)
+    past_event_list = Event.objects.filter(ispast=True).order_by('-fromdate')
+
+    paginator = Paginator(past_event_list, 5)  # Show 5 events per page
+    page = request.GET.get('page')
+    try:
+        events = paginator.page(page)
+    except PageNotAnInteger:
+        # If page is not an integer, deliver first page.
+        events = paginator.page(1)
+    except EmptyPage:
+        # If page is out of range (e.g. 9999), deliver last page of results.
+        events = paginator.page(paginator.num_pages)
+    return render(
+        request,
+        'blog/past_events.html',
+        {
+            'title': 'Past Events',
+            'year': datetime.now().year,
+            'events': events,
+        }
+    )
 
 
 class AboutView(TemplateView):
@@ -42,34 +127,18 @@ class AboutView(TemplateView):
 
     def get_context_data(self, **kwargs):
         context = super(AboutView, self).get_context_data(**kwargs)
-        context['aboutpage'] = AboutPage.objects.all()
-        context['events'] = get_event()
-        context['title'] = 'About Anna'
+        context['title'] = 'About Me'
         context['year'] = datetime.now().year
         return context
 
 
-class TalksView(TemplateView):
-    template_name = "blog/talks.html"
-
-    def get_context_data(self, **kwargs):
-        context = super(TalksView, self).get_context_data(**kwargs)
-        context['projects'] = Project.objects.all().order_by('-pk')
-        context['events'] = get_event()
-        context['title'] = 'Talks'
-        context['year'] = datetime.now().year
-        return context
-
-
-class Talk_DetailView(TemplateView):
-    template_name = "blog/talk_details.html"
+class TalkView(TemplateView):
+    template_name = "blog/talk.html"
 
     def get_context_data(self, pk, **kwargs):
-        context = super(Talk_DetailView, self).get_context_data(**kwargs)
-        context['project'] = get_object_or_404(Project, pk=pk)
-        context['events'] = get_event()
+        context = super(TalkView, self).get_context_data(**kwargs)
+        context['talk'] = get_object_or_404(Talk, pk=pk)
         context['title'] = 'Talk Details'
-        context['message'] = 'Talk Details'
         context['year'] = datetime.now().year
         return context
 
@@ -91,38 +160,39 @@ class ContactView(TemplateView):
         contact_form = ContactForm(request.POST)
         contact_form.save()
 
-        to = ['anna@anntele.com']
+        to = ['harare@pyladies.com']
         subject = request.POST.get('subject', '')
         details = request.POST.get('message', '')
         email = request.POST.get('email', '')
-        phone =  request.POST.get('phone')
+        phone = request.POST.get('phone')
         name = request.POST.get('name')
 
-        ctx = {'name': name,
-               'phone': phone,
-               'email': email,
-               'details': details,
-               }
+        if contact_form.is_valid():
+            # process the data in feedback_form.cleaned_data as required
+            obj = Contact()  # gets new object
+            obj.name = contact_form.cleaned_data['name']
+            obj.phone = contact_form.cleaned_data['phone']
+            obj.email = contact_form.cleaned_data['email']
+            obj.subject = contact_form.cleaned_data['subject']
+            obj.message = contact_form.cleaned_data['message']
+            # finally save the object in db
+            obj.save()
 
-        if subject and details and email:
-            try:
-                message = render_to_string('emails/webenquiry.txt', ctx)
-                EmailMessage(subject, message, to=to).send()
-                return HttpResponseRedirect('thankyou')
-            except BadHeaderError:
-                return HttpResponse('Invalid header found.')
+            # send email to infoharare@genaulabs.com
+            subject = "Message on Contact Form - " + contact_form.cleaned_data['subject']
+            message = 'A message was submitted on the website\n\n'
+            message += 'Name: ' + contact_form.cleaned_data['name'] + '\n'
+            message += 'Email: ' + contact_form.cleaned_data['email'] + '\n'
+            message += 'Phone: ' + contact_form.cleaned_data['phone'] + '\n'
+            message += 'Message:\n ' + contact_form.cleaned_data['message'] + '\n'
 
+            sender = 'anntelebiz@gmail.com'
 
-class EventsView(TemplateView):
-    template_name = "blog/events.html"
+            recipient_list = ['anna@anntele.com']
+            send_mail(subject, message, sender, recipient_list)
 
-    def get_context_data(self, **kwargs):
-        context = super(EventsView, self).get_context_data(**kwargs)
-        context['events'] = get_event()
-        context['past_events'] = past_event()
-        context['title'] = 'My Events'
-        context['year'] = datetime.now().year
-        return context
+            # redirect to a new URL:
+            return HttpResponseRedirect('thankyou')
 
 
 class ThankYouView(TemplateView):
@@ -135,31 +205,12 @@ class ThankYouView(TemplateView):
         return context
 
 
-class Post_ListView(TemplateView):
-    template_name = "blog/post_list.html"
-
-    def get_context_data(self, **kwargs):
-        context = super(Post_ListView, self).get_context_data(**kwargs)
-        context['title'] = 'Blog Posts'
-        context['year'] = datetime.now().year
-        context['posts'] =  Post.objects.filter(published_date__lte=timezone.now()).order_by('-published_date')
-        return context
-
-
-class Post_DetailView(TemplateView):
-    comment_form = CommentForm()
-    template_name = "blog/post_detail.html"
+class PostView(TemplateView):
+    template_name = "blog/post.html"
 
     def get_context_data(self, pk, **kwargs):
-        context = super(Post_DetailView, self).get_context_data(**kwargs)
-        comment_form = CommentForm()
-        context['comment_form'] = comment_form
+        context = super(PostView, self).get_context_data(**kwargs)
         context['post'] = get_object_or_404(Post, pk=pk)
-        context['title'] = 'My Blog'
-        context['message'] = 'My Blog'
+        context['title'] = 'Blog Post'
         context['year'] = datetime.now().year
         return context
-
-    def post(self, request):
-        comment_form = CommentForm(request.POST)
-        comment_form.save()

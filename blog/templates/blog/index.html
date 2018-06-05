@@ -1,119 +1,70 @@
 {% extends "blog/layout.html" %}
 
 {% block content %}
-
-    <!-- Full Page Image Background Carousel Header -->
-    <div id="myCarousel" class="carousel slide">
-        <!-- Indicators -->
-        <ol class="carousel-indicators">
-            <li data-target="#myCarousel" data-slide-to="0" class="active"></li>
-            <li data-target="#myCarousel" data-slide-to="1"></li>
-            <li data-target="#myCarousel" data-slide-to="2"></li>
-            <li data-target="#myCarousel" data-slide-to="3"></li>
-            <li data-target="#myCarousel" data-slide-to="4"></li>
-            <li data-target="#myCarousel" data-slide-to="5"></li>
-            <li data-target="#myCarousel" data-slide-to="6"></li>
-            <li data-target="#myCarousel" data-slide-to="7"></li>
-        </ol>
-
-        <!-- Wrapper for Slides -->
-        <div class="carousel-inner">
-            <div class="item active">
-                <!-- Set the first background image using inline CSS below. -->
-                <img src="static/blog/images/anna2-min.jpg" alt="Anna">
-                <div class="carousel-caption">
-                    <h2>Anna taking a moment to pause for a photo while coaching</h2>
-                </div>
-            </div>
-            <div class="item">
-                <!-- Set the second background image using inline CSS below. -->
-                <img src="static/blog/images/djangogirlswin3-min.jpg" alt="Anna">
-                <div class="carousel-caption">
-                    <h2>Friends like these!</h2>
-                </div>
-            </div>
-            <div class="item">
-                <!-- Set the third background image using inline CSS below. -->
-                <img src="static/blog/images/djangogirlswin2-min.jpg" alt="Friends">
-                <div class="carousel-caption">
-                    <h2>Anna with other Django Girls Windhoek Coaches</h2>
-                </div>
-            </div>
-            <div class="item">
-                <!-- Set the first background image using inline CSS below. -->
-                <img src="static/blog//images/coaching2-min.jpg" alt="Anna">
-                <div class="carousel-caption">
-                    <h2>Hush! Workshop in progress!</h2>
-                </div>
-            </div>
-            <div class="item">
-                <!-- Set the second background image using inline CSS below. -->
-                <img src="static/blog/images/codelikeagirl-min.jpg" alt="Anna">
-                <div class="carousel-caption">
-                    <h2>Code like a girl!</h2>
-                </div>
-            </div>
-            <div class="item">
-                <!-- Set the third background image using inline CSS below. -->
-                <img src="static/blog/images/djangogirlswn-min.jpg" alt="Friends">
-                <div class="carousel-caption">
-                    <h2>Group photo</h2>
-                </div>
-            </div>
-            <div class="item">
-                <!-- Set the first background image using inline CSS below. -->
-                <img src="/static/blog/images/django_stickers-min.jpg" alt="Anna">
-                <div class="carousel-caption">
-                    <h2>Who doesn't like Django???</h2>
-                </div>
-            </div>
-            <div class="item">
-                <!-- Set the second background image using inline CSS below. -->
-                <img src="static/blog/images/bg02-min.JPG" alt="Anna">
-                <div class="carousel-caption">
-                    <h2>Anna with one of the participants in her group</h2>
-                </div>
+<!-- Page Header -->
+    <header class="masthead" style="background-image: url('static/blog/img/home-bg.jpg')">
+      <div class="overlay"></div>
+      <div class="container">
+        <div class="row">
+          <div class="col-lg-8 col-md-10 mx-auto">
+            <div class="site-heading">
+              <h1>Blog Home</h1>
+              <span class="subheading">For my Python/Django OSS Experiences</span>
             </div>
           </div>
-
-        <!-- Controls -->
-        <a class="left carousel-control" href="#myCarousel" data-slide="prev">
-            <span class="icon-prev"></span>
-        </a>
-        <a class="right carousel-control" href="#myCarousel" data-slide="next">
-            <span class="icon-next"></span>
-        </a>
-
-    </div>
+        </div>
+      </div>
+    </header>
 
     <!-- Page Content -->
-    <div class="container">
-
-<div class="row">
-  <div class="col-md-9">
-      {% for article in articles %}
-        <div>
-          <h2><a href="#">{{ article.title }}</a></h2>
-          <p>{{ article.summary|linebreaks }} </p> <a href="#">Read more...</a></div>
-          <br />
-        {% endfor %}
-  </div>
-  <div class="col-md-3">
-    <h2><a href="{% url 'events' %}">Upcoming Events</a></h2>
-    {% for event in events %}
-      <div>
-        <h4>{{ event.name }} </h4>
-        <p><strong>Location:</strong> {{ event.location }} </p>
-        <p><strong>Date:</strong> {{ event.fromdate }} -  {{ event.todate }}</p>
-        <p><strong>Website:</strong> <a href="">{{ event.website }}</a></p>
-        <br />
-      {% endfor %}
-</div>
-</div>
-
-</div>
-
-</div>
-
+     <div class="container">
+      <div class="row">
+        <div class="col-lg-10 col-md-10 mx-auto">
+            {% if posts %}
+            {% for post in posts %}
+          <div class="post-preview">
+            <a href="{% url 'post' pk=post.pk %}">
+              <h2 class="post-title">
+                {{ post.title }}
+              </h2>
+              <h3 class="post-subtitle">
+                {{ post.summary }}
+              </h3>
+            </a>
+            <p class="post-meta">Posted by
+              <a href="#">Anna Makarudze</a>
+              on {{ post.published_date }}</p>
+              <p class="btn btn-primary"><a href="{% url 'post' pk=post.pk %}">Read more...</a></p>
+          </div>
+            {% endfor %}
+            <nav>
+                <ul class="pagination">
+                    {% for page in posts.paginator.page_range %}
+                    {% if posts.has_previous %}
+                        <li class="page-item">
+                            <a class="page-link" href="?page={{ posts.previous_page_number }}" aria-label="Previous">
+                                <span aria-hidden="true">&laquo;</span>
+                                <span class="sr-only">Previous</span>
+                            </a>
+                        </li>
+                    {% endif %}
+                    <li class="page-item"><a class="page-link" href="?page={{ page }}">{{ page }}</a></li>
+                    {% if posts.has_next %}
+                        <li class="page-item">
+                            <a class="page-link" href="?page={{ posts.next_page_number }}" aria-label="Next">
+                                <span aria-hidden="true">&raquo;</span>
+                                <span class="sr-only">Next</span>
+                            </a>
+                        </li>
+                    {% endif %}
+                    {% endfor %}
+                </ul>
+            </nav>
+            {% else %}
+            <p>No posts available at this time</p>
+            {% endif %}
+        </div>
+      </div>
+     </div>
 
 {% endblock %}

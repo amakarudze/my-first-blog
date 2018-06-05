@@ -1,18 +1,14 @@
-from django.conf.urls import url, patterns
+from django.conf.urls import url
 from . import views
-from blog.views import (HomeView, Post_ListView, ContactView, EventsView,
-                        AboutView, ThankYouView, Post_DetailView, TalksView,
-                        Talk_DetailView)
-
 
 urlpatterns = [
-    url(r'^$', HomeView.as_view(), name='home'),
-    url(r'^post_list/', Post_ListView.as_view(), name='post_list'),
-    url(r'^post/(?P<pk>\d+)/$', Post_DetailView.as_view(), name='post_detail'),
-    url(r'^about/$', AboutView.as_view(), name='about'),
-    url(r'^contact$', ContactView.as_view(), name='contact'),
-    url(r'^events/', EventsView.as_view(), name='events'),
-    url(r'^talks/$', TalksView.as_view(), name='talks'),
-    url(r'^talk/(?P<pk>\d+)/$', Talk_DetailView.as_view(), name='talk_details'),
-    url(r'^thankyou$', ThankYouView.as_view(), name='thankyou'),
+    url(r'^$', views.home, name='home'),
+    url(r'^post/(?P<pk>\d+)/$', views.PostView.as_view(), name='post'),
+    url(r'^about/$', views.AboutView.as_view(), name='about'),
+    url(r'^contact$', views.ContactView.as_view(), name='contact'),
+    url(r'^past_events/', views.past_events, name='past_events'),
+    url(r'^upcoming_events/', views.upcoming_events, name='upcoming_events'),
+    url(r'^talks/$', views.talks, name='talks'),
+    url(r'^talk/(?P<pk>\d+)/$', views.TalkView.as_view(), name='talk'),
+    url(r'^thankyou$', views.ThankYouView.as_view(), name='thankyou'),
     ]

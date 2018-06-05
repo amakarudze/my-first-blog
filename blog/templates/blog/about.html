@@ -2,6 +2,54 @@
 
 {% block content %}
 
+<!-- Page Header -->
+    <header class="masthead" style="background-image: url('static/blog/img/about-bg.jpg')">
+      <div class="overlay"></div>
+      <div class="container">
+        <div class="row">
+          <div class="col-lg-8 col-md-10 mx-auto">
+            <div class="page-heading">
+              <h1>About Me</h1>
+              <span class="subheading">This is what I do.</span>
+            </div>
+          </div>
+        </div>
+      </div>
+    </header>
+
+<!-- Main Content -->
+    <div class="container">
+      <div class="row">
+        <div class="col-lg-8 col-md-10 mx-auto">
+          <p>I am a freelance Full Stack Python Developer based in Harare,
+          Zimbabwe. I am currently employed by Django Girls Foundation as the Fundraising
+          Coordinator on a part-time basis. I am a volunteer and secretary of the Python
+          Zimbabwe Trust, a non-profit that organises Python events in Zimbabwe like
+            PyCon Zimbabwe (an annual conference for Python programmers in Zimbabwe).</p>
+
+            <p>I have also organised several Django Girls Harare,
+            Django Girls Masvingo and Django Girls Heidelberg events. I was one of the organisers
+              of DjangoCon Europe 2018, held in Heidelberg, Germany from 23rd to 27th May 2018.
+              I am also founder and organiser of PyLadies Harare, a mentorship group for women
+              interested in Python programming.</p>
+
+            <p>I have also coached at Django Girls Windhoek three times and spoke at many conferences.
+              These include DjangoCon Europe 2017, PyCon Italy 2017, Codemotion Milan 2017,
+              PyCon Namibia 2016, 2017 & 2018, PyCon South Africa 2016 and PyCon Zimbabwe 2016.
+              I also sit in the Django Software Foundation Board of Directors for 2018
+              and have volunteered in the Django Software Foundation Code of Conduct Committee
+              since February 2017.</p>
+
+          <p>I am a holder of a BSc (Hons.) in Computer Science from the Midlands State
+            University and a MSc in Strategic Management from Chinhoyi University. I have
+            worked in various positions in the ICT industry in Zimbabwe. These include Senior ICT
+            Technician at the Women’s University in Africa, Network Operations Centre Technician
+            and Billing Analyst at Spiritage Communications and Senior BSS/OSS (Business
+            Support Systems/Operations Support Systems) Consultant for Rubiem Technologies.</p>
+        </div>
+      </div>
+    </div>
+
 <div class="row">
   <div class="col-md-9">
       {% for about in aboutpage %}
@@ -11,17 +59,7 @@
           <br />
         {% endfor %}
   </div>
-  <div class="col-md-3">
-    <h2><a href="{% url 'events' %}">Upcoming Events</a></h2>
-    {% for event in events %}
-      <div>
-        <h4>{{ event.name }} </h4>
-        <p><strong>Location:</strong> {{ event.location }} </p>
-        <p><strong>Date:</strong> {{ event.fromdate }} -  {{ event.todate }}</p>
-        <p><strong>Website:</strong> <a href="">{{ event.website }}</a></p>
-        <br />
-      {% endfor %}
-</div>
+
 </div>
 </div>
 {% endblock %}

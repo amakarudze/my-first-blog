@@ -1,142 +1,122 @@
 <!DOCTYPE html>
 <html>
 <head>
-  <meta charset="utf-8">
-  <meta http-equiv="X-UA-Compatible" content="IE=edge">
-  <meta name="viewport" content="width=device-width, initial-scale=1">
-  <meta name="description" content="">
-  <meta name="author" content="">
-    <title>{{ title }} - Geek Talk with Anna</title>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+    <meta name="description" content="">
+    <meta name="author" content="">
+
+    <title>{{ title }} - Anna Makarudze</title>
+
     {% load staticfiles %}
-    <link rel="stylesheet" type="text/css" href="{% static 'blog/css/bootstrap.min.css' %}" />
-    <link rel="stylesheet" type="text/css" href="{% static 'blog/content/site.css' %}" />
-    <link rel="stylesheet" type="text/css" href="{% static 'blog/content/default.css' %}" />
-    <!-- Custom CSS -->
-    <link href="{% static 'blog/css/full-slider.css' %}" rel="stylesheet">
+    <!-- Bootstrap core CSS -->
+    <link rel="stylesheet" type="text/css" href="{% static 'blog/vendor/bootstrap/css/bootstrap.min.css' %}" />
 
-    <!-- HTML5 Shim and Respond.js IE8 support of HTML5 elements and media queries -->
-    <!-- WARNING: Respond.js doesn't work if you view the page via file:// -->
-    <!--[if lt IE 9]
-        <script src="https://oss.maxcdn.com/libs/html5shiv/3.7.0/html5shiv.js"></script>
-        <script src="https://oss.maxcdn.com/libs/respond.js/1.4.2/respond.min.js"></script>
-    <![endif]-->
-    <script src="{% static 'blog/scripts/modernizr-2.6.2.js' %}"></script>
+    <!-- Custom fonts for this template -->
+    <link rel="stylesheet" type="text/css" href="{% static 'blog/vendor/font-awesome/css/font-awesome.min.css' %}" />
+    <link href='https://fonts.googleapis.com/css?family=Lora:400,700,400italic,700italic' rel='stylesheet' type='text/css'>
+    <link href='https://fonts.googleapis.com/css?family=Open+Sans:300italic,400italic,600italic,700italic,800italic,400,300,600,700,800' rel='stylesheet' type='text/css'>
+
+    <!-- Custom styles for this template -->
+    <link rel="stylesheet" type="text/css" href="{% static 'blog/css/clean-blog.min.css' %}" />
 </head>
-
 <body>
-  <script>
-    window.fbAsyncInit = function() {
-      FB.init({
-        appId      : '245982179113232',
-        xfbml      : true,
-        version    : 'v2.6'
-      });
-    };
-
-    (function(d, s, id){
-       var js, fjs = d.getElementsByTagName(s)[0];
-       if (d.getElementById(id)) {return;}
-       js = d.createElement(s); js.id = id;
-       js.src = "//connect.facebook.net/en_US/sdk.js";
-       fjs.parentNode.insertBefore(js, fjs);
-     }(document, 'script', 'facebook-jssdk'));
-  </script>
-
-  <div id="header" class="container">
-    <div class="navbar navbar-inverse navbar-fixed-top">
-        <div class="container">
-            <div class="navbar-header">
-                <button type="button" class="navbar-toggle" data-toggle="collapse" data-target=".navbar-collapse">
-                    <span class="icon-bar"></span>
-                    <span class="icon-bar"></span>
-                    <span class="icon-bar"></span>
-                </button>
-                <a href="{% url 'home' %}" class="navbar-brand">Geek Talk with Anna!</a>
-            </div>
-            <div class="navbar-collapse collapse">
-              <div class="nav navbar-nav">
-                <div class = "dropdown"><button class="dropbtn">
-                  <a href="{% url 'home' %}">Home</a></button></div>
-                <div class = "dropdown"><button class="dropbtn">
-                  <a href="{% url 'about' %}">About</a></button></div>
-                <div class = "dropdown"><button class="dropbtn">
-                  <a href="{% url 'events' %}">Events</a></button></div>
-                <div class = "dropdown"><button class="dropbtn">
-                  <a href="{% url 'post_list' %}">Blog</a></button></div>
-                <div class = "dropdown"><button class="dropbtn">
-                  <a href="{% url 'contact' %}">Contact</a></button></div>
-                <div class="dropdown">
-                  <button class="dropbtn">
-                      <a href="{% url 'talks' %}">Talks</a></button></div>
-                {% if user.is_authenticated %}
-                <div class="dropdown">
-                  <button class="dropbtn">Sign Out</button>
-                    <div class="dropdown-content">
-                      <a href="{% url 'account_email' %}">Change E-mail</a>
-                      <a href="{% url 'account_logout' %}">Sign Out</a>
-                    </div>
-                  </div>
-                {% else %}
-                <div class="dropdown">
-                  <button class="dropbtn">Sign In</button>
-                    <div class="dropdown-content">
-                      <a href="{% url 'account_signup' %}">Sign Up</a>
-                      <a href="{% url 'account_login' %}">Sign In</a>
-                    </div>
-                  </div>
-                {% endif %}
-              </div>
-            </div>
+<!-- Navigation -->
+    <nav class="navbar navbar-expand-lg navbar-light fixed-top" id="mainNav">
+      <div class="container">
+        <a class="navbar-brand" href="{% url 'home' %}">Anna Makarudze</a>
+        <button class="navbar-toggler navbar-toggler-right" type="button" data-toggle="collapse" data-target="#navbarResponsive" aria-controls="navbarResponsive" aria-expanded="false" aria-label="Toggle navigation">
+          Menu
+          <i class="fa fa-bars"></i>
+        </button>
+        <div class="collapse navbar-collapse" id="navbarResponsive">
+          <ul class="navbar-nav ml-auto">
+            <li class="nav-item">
+              <a class="nav-link" href="{% url 'home' %}">Home</a>
+            </li>
+            <li class="nav-item">
+              <a class="nav-link" href="{% url 'about' %}">About</a>
+            </li>
+              <li class="nav-item">
+              <a class="nav-link" href="{% url 'talks' %}">Past Talks</a>
+            </li>
+            <li class="nav-item">
+              <a class="nav-link" href="{% url 'upcoming_events' %}">Upcoming Events</a>
+            </li>
+              <li class="nav-item">
+              <a class="nav-link" href="{% url 'past_events' %}">Past Events</a>
+            </li>
+            <li class="nav-item">
+              <a class="nav-link" href="{% url 'contact' %}">Contact</a>
+            </li>
+          </ul>
         </div>
-    </div>
-  </div>
+      </div>
+    </nav>
 
 
-    <div class="container body-content">
+
+
+    <div class="container-fluid">
 {% block content %}{% endblock %}
-<div
-  class="fb-like"
-  data-share="true"
-  data-width="450"
-  data-show-faces="true">
-</div>
+
         <hr/>
+        <!-- Footer -->
         <footer>
-            <p>&copy; {{ year }} - Anna Makarudze</p>
-            <ul class="nav navbar-nav navbar-right">
-              <li><a href="https://twitter.com/amakarudze" target="_blank" >
-                <img src="{% static 'blog/images/twitter1.jpg' %}" height="35"
-                width="35" alt="Twitter alt"></a></li>
-              <li><a href="https://zw.linkedin.com/in/anna-makarudze-b23b4527"
-                target="_blank"><img src="{% static 'blog/images/linkedin1.jpg' %}"
-                height="35" width="35" alt="Linkedin alt"></a></li>
-              <li><a href="https://plus.google.com/u/0/103055930747967011610/about/p/pub"
-                target="_blank"><img src="{% static 'blog/images/google+2.jpg' %}"
-                height="35" width="35" alt="Google+ alt"></a></li>
-            </ul>
+        <div class="container">
+            <div class="row">
+                <div class="col-lg-8 col-md-10 mx-auto">
+                    <ul class="list-inline text-center">
+                        <li class="list-inline-item">
+                            <a href="https://twitter.com/amakarudze">
+                                <span class="fa-stack fa-lg">
+                                    <i class="fa fa-circle fa-stack-2x"></i>
+                                    <i class="fa fa-twitter fa-stack-1x fa-inverse"></i>
+                                </span>
+                            </a>
+                        </li>
+                        <li class="list-inline-item">
+                        <a href="https://www.facebook.com/amakarudze">
+                            <span class="fa-stack fa-lg">
+                                <i class="fa fa-circle fa-stack-2x"></i>
+                                <i class="fa fa-facebook fa-stack-1x fa-inverse"></i>
+                            </span>
+                        </a>
+                        </li>
+                        <li class="list-inline-item">
+                        <a href="https://github.com/amakarudze">
+                            <span class="fa-stack fa-lg">
+                                <i class="fa fa-circle fa-stack-2x"></i>
+                                <i class="fa fa-github fa-stack-1x fa-inverse"></i>
+                            </span>
+                        </a>
+                        </li>
+                        <li class="list-inline-item">
+                        <a href="https://zw.linkedin.com/in/anna-makarudze-b23b4527">
+                            <span class="fa-stack fa-lg">
+                                <i class="fa fa-circle fa-stack-2x"></i>
+                                <i class="fa fa-linkedin fa-stack-1x fa-inverse"></i>
+                            </span>
+                        </a>
+                        </li>
+                    </ul>
+            <p class="copyright text-muted">Copyright &copy; Anna Makarudze {{ year }}</p>
+                </div>
+        </div>
+      </div>
         </footer>
     </div>
 
 
 {% block scripts %}
-<script src="{% static 'blog/scripts/jquery-1.10.2.js' %}"></script>
-<script src="{% static 'blog/scripts/bootstrap.js' %}"></script>
-<script src="{% static 'blog/scripts/bootstrap.mini.js' %}"></script>
-<script src="{% static 'blog/scripts/respond.js' %}"></script>
-<!-- /.container -->
+    <!-- Bootstrap core JavaScript -->
+    <script src="{% static 'blog/vendor/jquery/jquery.min.js' %}"></script>
+    <script src="{% static 'blog/vendor/bootstrap/js/bootstrap.bundle.min.js' %}"></script>
 
-<!-- jQuery -->
-<script src="static/js/jquery.js"></script>
+    <!-- Custom scripts for this template -->
+    <script src="{% static 'blog/js/clean-blog.min.js' %}"></script>
 
-<!-- Bootstrap Core JavaScript -->
-<script src="static/js/bootstrap.min.js"></script>
 
-<!-- Script to Activate the Carousel -->
-<script>
-$('.carousel').carousel({
-interval: 5000 //changes the speed
-})
-</script>
 {% endblock %}
 
 </body>
