@@ -1,4 +1,4 @@
-*.pyc
+~*.pyc
 __pycache__
 myvenv
 db.sqlite3
@@ -6,3 +6,11 @@ db.sqlite3
 .DS_Store
 mysite/settings.py
 ./idea.idea/workspace.xml
+#IDE
+.idea/
+
+#pycache
+.pycache/
+
+#test logs
+geckodriver.log
