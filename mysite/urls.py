@@ -18,13 +18,14 @@ Including another URLconf
 from __future__ import unicode_literals
 
 from django.conf import settings
-from django.conf.urls import url
+from django.urls import path
 from django.contrib import admin
 from django.conf.urls import include
 from django.conf.urls.static import static
-from django.views import defaults as default_views
 
 urlpatterns = [
-    url(r'^admin/', admin.site.urls),
-    url(r'', include('blog.urls')),
+    path('admin/', admin.site.urls),
+    path('blog/', include('blog.urls')),
+    path('', include('core.urls')),
+    path('resume/', include('resume.urls'))
 ] + static(settings.MEDIA_URL, document_root=settings.MEDIA_ROOT)
