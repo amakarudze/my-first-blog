@@ -1,0 +1,53 @@
+{% extends "blog/layout.html" %}
+
+{% block content %}
+    <!-- Page Header -->
+    <header class="masthead" style="background-image: url('/static/blog/img/past-events-bg.jpg')">
+      <div class="overlay"></div>
+      <div class="container">
+        <div class="row">
+          <div class="col-lg-8 col-md-10 mx-auto">
+            <div class="page-heading">
+              <h1>Past Events</h1>
+              <span class="subheading">Events I have attended</span>
+            </div>
+          </div>
+        </div>
+      </div>
+    </header>
+
+     <!-- Page Content -->
+     <div class="container">
+      <div class="row">
+        <div class="col-lg-10 col-md-10 mx-auto">
+            {% if events %}
+            {% for past_event in events %}
+          <div class="post-preview">
+            <a href="">
+              <h2 class="post-title">
+                {{ past_event.name }}
+              </h2>
+              <h3 class="post-subtitle">
+                {{ past_event.location }}
+              </h3>
+            </a>
+            <p class="post-meta">Date: {{ past_event.fromdate }} -  {{ past_event.todate }}
+              <a href="">{{ past_event.website }}</a>
+            </p>
+          </div>
+            {% endfor %}
+            <nav>
+                <ul class="pagination">
+                    {% for page in events.paginator.page_range %}
+                        <li class="page-item"><a class="page-link" href="?page={{ page }}">{{ page }}</a></li>
+                    {% endfor %}
+                </ul>
+            </nav>
+            {% else %}
+            <p>No past events have been added yet.</p>
+            {% endif %}
+        </div>
+      </div>
+     </div>
+
+{% endblock %}

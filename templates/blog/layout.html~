@@ -1,0 +1,74 @@
+﻿<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>{{ title }} - ZimboGeekGirl Blog</title>
+    {% load staticfiles %}
+    <link rel="stylesheet" type="text/css" href="{% static 'blog/content/bootstrap.min.css' %}" />
+    <link rel="stylesheet" type="text/css" href="{% static 'blog/content/site.css' %}" />
+    <link rel="stylesheet" type="text/css" href="{% static 'blog/content/default.css' %}" />
+    <script src="{% static 'blog/scripts/modernizr-2.6.2.js' %}"></script>
+</head>
+
+<body>
+  <div id="header-wrapper" >
+     <div id="header" class="container">
+    <div class="navbar navbar-inverse navbar-fixed-top">
+        <div class="container">
+            <div class="navbar-header">
+                <button type="button" class="navbar-toggle" data-toggle="collapse" data-target=".navbar-collapse">
+                    <span class="icon-bar"></span>
+                    <span class="icon-bar"></span>
+                    <span class="icon-bar"></span>
+                </button>
+                <a href="{% url 'home' %}" class="navbar-brand">Zimbo girl who speaks geek!</a>
+            </div>
+            <div class="navbar-collapse collapse"><strong>
+                <ul class="nav navbar-nav">
+                    <li><a href="{% url 'home' %}">Home</a></li>
+                    <li><a href="{% url 'about' %}">About</a></li>
+                    <li><a href="{% url 'events' %}">Events</a></li>
+                    <li><a href="{% url 'projects' %}">Projects</a></li>
+                    <li><a href="{% url 'django' %}">Django</a></li>
+                    <li><a href="{% url 'python' %}">Python</a></li>
+                    <li><a href="{% url 'post_list' %}">Blog</a></li>
+                    <li><a href="#">Gallery</a></li>
+                    <li><a href="{% url 'contact' %}">Contact</a></li>
+                </ul></strong>
+                <strong>
+                <ul class="nav navbar-nav navbar-right">
+                  <li><a href="localhost/8000/accounts/login">Log In</a></li>
+                  </ul></strong>
+            </div>
+        </div>
+    </div>
+  </div>
+</div>
+
+    <div class="container body-content">
+{% block content %}{% endblock %}
+        <hr/>
+        <footer>
+            <p>&copy; {{ year }} - Anna Makarudze</p>
+            <ul class="nav navbar-nav navbar-right">
+              <li><a href="https://twitter.com/amakarudze" target="_blank" >
+                <img src="{% static 'blog/images/twitter1.jpg' %}" height="35"
+                width="35" alt="Twitter alt"></a></li>
+              <li><a href="https://zw.linkedin.com/in/anna-makarudze-b23b4527"
+                target="_blank"><img src="{% static 'blog/images/linkedin1.jpg' %}"
+                height="35" width="35" alt="Linkedin alt"></a></li>
+              <li><a href="https://plus.google.com/u/0/103055930747967011610/about/p/pub"
+                target="_blank"><img src="{% static 'blog/images/google+2.jpg' %}"
+                height="35" width="35" alt="Google+ alt"></a></li>
+            </ul>
+        </footer>
+    </div>
+
+    <script src="{% static 'app/scripts/jquery-1.10.2.js' %}"></script>
+    <script src="{% static 'app/scripts/bootstrap.js' %}"></script>
+    <script src="{% static 'app/scripts/respond.js' %}"></script>
+{% block scripts %}{% endblock %}
+
+</body>
+</html>

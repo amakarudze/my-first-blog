@@ -4,7 +4,7 @@ from autoslug import AutoSlugField
 
 
 class Post(models.Model):
-    author = models.ForeignKey('auth.User')
+    author = models.ForeignKey('auth.User', on_delete=models.CASCADE)
     title = models.CharField(max_length=200)
     summary = models.CharField(max_length=200)
     text = models.TextField()
@@ -69,7 +69,7 @@ class Talk(models.Model):
     title = models.CharField(max_length=200)
     description = models.TextField()
     code = models.URLField(verbose_name="demo code", blank=True, null=True)
-    event = models.ForeignKey(Event)
+    event = models.ForeignKey(Event, on_delete=models.CASCADE)
     presenter = models.CharField(max_length=200, default='')
     slides = models.URLField(verbose_name="slides URL")
     date_presented = models.DateTimeField(default=timezone.now)
