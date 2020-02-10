@@ -11,7 +11,7 @@ django-crispy-forms==1.8.1
 djangorestframework==3.11.0
 more-itertools==4.2.0
 mysqlclient==1.4.6
-Pillow==5.1.0
+Pillow==6.2.0
 pluggy==0.6.0
 py==1.5.3
 pytest==3.6.1
