@@ -2,7 +2,6 @@
 __pycache__
 myvenv
 db.sqlite3
-/static
 .DS_Store
 mysite/settings.py
 .idea/workspace.xml
@@ -17,3 +16,4 @@ mysite/settings.py
 geckodriver.log
 
 ~*.xml
+'.idea' 
