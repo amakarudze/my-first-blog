@@ -24,7 +24,7 @@
           {% if talks %}
             {% for talk in talks %}
           <div class="post-preview">
-            <a href="{% url 'talk' pk=talk.pk %}">
+            <a href="{% url 'blog:talk' pk=talk.pk %}">
               <h2 class="post-title">
                 {{ talk.title }}
               </h2>
@@ -35,7 +35,7 @@
             <p class="post-meta">
               <a href="{{ talk.slides }}">{{ talk.slides }}</a>
               on {{ talk.date_presented }}</p>
-              <p class="btn btn-primary"><a href="{% url 'talk' pk=talk.pk %}">Read more...</a></p>
+              <p class="btn btn-primary"><a href="{% url 'blog:talk' pk=talk.pk %}">Read more...</a></p>
           </div>
             {% endfor %}
           <nav>

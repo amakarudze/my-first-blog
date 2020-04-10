@@ -122,16 +122,6 @@ def past_events(request):
     )
 
 
-class AboutView(TemplateView):
-    template_name = "blog/about.html"
-
-    def get_context_data(self, **kwargs):
-        context = super(AboutView, self).get_context_data(**kwargs)
-        context['title'] = 'About Me'
-        context['year'] = datetime.now().year
-        return context
-
-
 class TalkView(TemplateView):
     template_name = "blog/talk.html"
 

@@ -23,7 +23,7 @@
             {% if posts %}
             {% for post in posts %}
           <div class="post-preview">
-            <a href="{% url 'post' pk=post.pk %}">
+            <a href="{% url 'blog:post' pk=post.pk %}">
               <h2 class="post-title">
                 {{ post.title }}
               </h2>
@@ -34,7 +34,7 @@
             <p class="post-meta">Posted by
               <a href="#">Anna Makarudze</a>
               on {{ post.published_date }}</p>
-              <p class="btn btn-primary"><a href="{% url 'post' pk=post.pk %}">Read more...</a></p>
+              <p class="btn btn-primary"><a href="{% url 'blog:post' pk=post.pk %}">Read more...</a></p>
           </div>
             {% endfor %}
             <nav>
