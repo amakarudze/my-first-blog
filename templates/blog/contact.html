@@ -41,7 +41,7 @@
         <br />
         {% load crispy_forms_tags %}
         {% crispy contact_form contact_form.helper %}
-         <form action="{% url 'contact' %}" method=post>
+         <form action="{% url 'blog:contact' %}" method=post>
           {% csrf_token %}
           {{ form }}
         </form>
