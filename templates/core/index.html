@@ -16,7 +16,7 @@
 
   <!-- Custom fonts for this template -->
   <link href="{% static 'core/vendor/fontawesome-free/css/all.min.css' %}" rel="stylesheet">
-  <link rel="stylesheet" href="vendor/simple-line-icons/css/simple-line-icons.css">
+  <link rel="stylesheet" href="{% static 'core/vendor/simple-line-icons/css/simple-line-icons.css' %}">
   <link href="https://fonts.googleapis.com/css?family=Lato" rel="stylesheet">
   <link href="https://fonts.googleapis.com/css?family=Catamaran:100,200,300,400,500,600,700,800,900" rel="stylesheet">
   <link href="https://fonts.googleapis.com/css?family=Muli" rel="stylesheet">
@@ -59,7 +59,7 @@
           <div class="header-content mx-auto">
             <h1 class="mb-5">Welcome to my website! Here I showcase my coding skills as well
             as my non-technical skills. I also showcase my blog, resume and conference talks.</h1>
-            <a href="#download" class="btn btn-outline btn-xl js-scroll-trigger">Start Now for Free!</a>
+            <a href="{% url 'resume:resume' %}" class="btn btn-outline btn-xl js-scroll-trigger">Check out my resume!</a>
           </div>
         </div>
         <div class="col-lg-5 my-auto">
@@ -110,7 +110,7 @@
               <div class="device">
                 <div class="screen">
                   <!-- Demo image for screen mockup, you can put an image here, some HTML, an animation, video, or anything else! -->
-                  <img src="img/demo-screen-1.jpg" class="img-fluid" alt="">
+                  <img src="{% static 'core/img/demo-screen-1.jpg' %}" class="img-fluid" alt="">
                 </div>
                 <div class="button">
                   <!-- You can hook the "home button" to some JavaScript events or just remove it -->
@@ -162,8 +162,8 @@
   <section class="cta">
     <div class="cta-content">
       <div class="container">
-        <h2>Stop waiting.<br>Start building.</h2>
-        <a href="#contact" class="btn btn-outline btn-xl js-scroll-trigger">Let's Get Started!</a>
+        <h2>Stop waiting.<br>Start exploring.</h2>
+        <a href="{% url 'blog:blog' %}" class="btn btn-outline btn-xl js-scroll-trigger">Read my Blog!</a>
       </div>
     </div>
     <div class="overlay"></div>
@@ -171,23 +171,23 @@
 
   <section class="contact bg-primary" id="contact">
     <div class="container">
-      <h2>We
+      <h2>I
         <i class="fas fa-heart"></i>
         new friends!</h2>
       <ul class="list-inline list-social">
         <li class="list-inline-item social-twitter">
-          <a href="#">
+          <a href="https://twitter.com/amakarudze">
             <i class="fab fa-twitter"></i>
           </a>
         </li>
         <li class="list-inline-item social-facebook">
-          <a href="#">
+          <a href="https://m.facebook.com/amakarudze">
             <i class="fab fa-facebook-f"></i>
           </a>
         </li>
-        <li class="list-inline-item social-google-plus">
-          <a href="#">
-            <i class="fab fa-google-plus-g"></i>
+        <li class="list-inline-item social-linkedin">
+          <a href="https://www.linkedin.com/in/anna-makarudze-b23b4527/">
+            <i class="fab fa-linkedin"></i>
           </a>
         </li>
       </ul>
