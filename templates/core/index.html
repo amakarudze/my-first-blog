@@ -16,7 +16,7 @@
 
   <!-- Custom fonts for this template -->
   <link href="{% static 'core/vendor/fontawesome-free/css/all.min.css' %}" rel="stylesheet">
-  <link rel="stylesheet" href="vendor/simple-line-icons/css/simple-line-icons.css">
+  <link rel="stylesheet" href="{% static 'core/vendor/simple-line-icons/css/simple-line-icons.css' %}">
   <link href="https://fonts.googleapis.com/css?family=Lato" rel="stylesheet">
   <link href="https://fonts.googleapis.com/css?family=Catamaran:100,200,300,400,500,600,700,800,900" rel="stylesheet">
   <link href="https://fonts.googleapis.com/css?family=Muli" rel="stylesheet">
@@ -59,7 +59,7 @@
           <div class="header-content mx-auto">
             <h1 class="mb-5">Welcome to my website! Here I showcase my coding skills as well
             as my non-technical skills. I also showcase my blog, resume and conference talks.</h1>
-            <a href="#download" class="btn btn-outline btn-xl js-scroll-trigger">Start Now for Free!</a>
+            <a href="{% url 'resume:resume' %}" class="btn btn-outline btn-xl js-scroll-trigger">Check out my resume!</a>
           </div>
         </div>
         <div class="col-lg-5 my-auto">
@@ -81,26 +81,11 @@
     </div>
   </header>
 
-  <section class="download bg-primary text-center" id="download">
-    <div class="container">
-      <div class="row">
-        <div class="col-md-8 mx-auto">
-          <h2 class="section-heading">Discover what all the buzz is about!</h2>
-          <p>Our app is available on any mobile device! Download now to get started!</p>
-          <div class="badges">
-            <a class="badge-link" href="#"><img src="{% static 'core/img/google-play-badge.svg' %}" alt=""></a>
-            <a class="badge-link" href="#"><img src="{% static 'core/img/app-store-badge.svg' %}" alt=""></a>
-          </div>
-        </div>
-      </div>
-    </div>
-  </section>
-
   <section class="features" id="features">
     <div class="container">
       <div class="section-heading text-center">
-        <h2>Unlimited Features, Unlimited Fun</h2>
-        <p class="text-muted">Check out what you can do with this app theme!</p>
+        <h2>New Features</h2>
+        <p class="text-muted">Check out the new stuff on my website!</p>
         <hr>
       </div>
       <div class="row">
@@ -110,7 +95,7 @@
               <div class="device">
                 <div class="screen">
                   <!-- Demo image for screen mockup, you can put an image here, some HTML, an animation, video, or anything else! -->
-                  <img src="img/demo-screen-1.jpg" class="img-fluid" alt="">
+                  <img src="{% static 'core/img/demo-screen-1.jpg' %}" class="img-fluid" alt="">
                 </div>
                 <div class="button">
                   <!-- You can hook the "home button" to some JavaScript events or just remove it -->
@@ -124,32 +109,34 @@
             <div class="row">
               <div class="col-lg-6">
                 <div class="feature-item">
-                  <i class="icon-screen-smartphone text-primary"></i>
-                  <h3>Device Mockups</h3>
-                  <p class="text-muted">Ready to use HTML/CSS device mockups, no Photoshop required!</p>
+                  <i class="icon-event text-primary"></i>
+                  <h3><a href="#">Conferences & Events</a></h3>
+                  <p class="text-muted">Read about my experiences attending, organising and speaking at conferences
+                    as well as my upcoming events!</p>
                 </div>
               </div>
               <div class="col-lg-6">
                 <div class="feature-item">
-                  <i class="icon-camera text-primary"></i>
-                  <h3>Flexible Use</h3>
-                  <p class="text-muted">Put an image, video, animation, or anything else in the screen!</p>
+                  <i class="icon-people text-primary"></i>
+                  <h3><a href="#">Community Related Posts</a></h3>
+                  <p class="text-muted">Read about my opinion and perspective to various community related subjects!</p>
                 </div>
               </div>
             </div>
             <div class="row">
               <div class="col-lg-6">
                 <div class="feature-item">
-                  <i class="icon-present text-primary"></i>
-                  <h3>Free to Use</h3>
-                  <p class="text-muted">As always, this theme is free to download and use for any purpose!</p>
+                  <i class="icon-screen-desktop text-primary"></i>
+                  <h3><a href="#">Technical Posts</a></h3>
+                  <p class="text-muted">I have been learning a lot of technologies this year and over the past years.
+                    Learn more about some of my projects!</p>
                 </div>
               </div>
               <div class="col-lg-6">
                 <div class="feature-item">
-                  <i class="icon-lock-open text-primary"></i>
-                  <h3>Open Source</h3>
-                  <p class="text-muted">Since this theme is MIT licensed, you can use it commercially!</p>
+                  <i class="icon-notebook text-primary"></i>
+                  <h3><a href="#">My Online Resume</a></h3>
+                  <p class="text-muted">Are you hiring? I am currently looking for a DevOps/SRE role. Check out my resume!</p>
                 </div>
               </div>
             </div>
@@ -162,8 +149,8 @@
   <section class="cta">
     <div class="cta-content">
       <div class="container">
-        <h2>Stop waiting.<br>Start building.</h2>
-        <a href="#contact" class="btn btn-outline btn-xl js-scroll-trigger">Let's Get Started!</a>
+        <h2>Stop waiting.<br>Start exploring.</h2>
+        <a href="{% url 'blog:blog' %}" class="btn btn-outline btn-xl js-scroll-trigger">Read my Blog!</a>
       </div>
     </div>
     <div class="overlay"></div>
@@ -171,23 +158,23 @@
 
   <section class="contact bg-primary" id="contact">
     <div class="container">
-      <h2>We
+      <h2>I
         <i class="fas fa-heart"></i>
         new friends!</h2>
       <ul class="list-inline list-social">
-        <li class="list-inline-item social-twitter">
-          <a href="#">
+        <li class="list-inline-item">
+          <a href="https://twitter.com/amakarudze">
             <i class="fab fa-twitter"></i>
           </a>
         </li>
-        <li class="list-inline-item social-facebook">
-          <a href="#">
+        <li class="list-inline-item">
+          <a href="https://m.facebook.com/amakarudze">
             <i class="fab fa-facebook-f"></i>
           </a>
         </li>
-        <li class="list-inline-item social-google-plus">
-          <a href="#">
-            <i class="fab fa-google-plus-g"></i>
+        <li class="list-inline-item">
+          <a href="https://www.linkedin.com/in/anna-makarudze-b23b4527/">
+            <i class="fab fa-linkedin"></i>
           </a>
         </li>
       </ul>
