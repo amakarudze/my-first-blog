@@ -25,37 +25,50 @@
     <nav class="navbar navbar-expand-lg navbar-light fixed-top" id="mainNav">
       <div class="container">
         <a class="navbar-brand" href="{% url 'core:home' %}">Home</a>
-        <button class="navbar-toggler navbar-toggler-right" type="button" data-toggle="collapse" data-target="#navbarResponsive" aria-controls="navbarResponsive" aria-expanded="false" aria-label="Toggle navigation">
+        <button class="navbar-toggler navbar-toggler-right" type="button" data-toggle="collapse"
+                data-target="#navbarResponsive" aria-controls="navbarResponsive"
+                aria-expanded="false" aria-label="Toggle navigation">
           Menu
           <i class="fa fa-bars"></i>
         </button>
         <div class="collapse navbar-collapse" id="navbarResponsive">
           <ul class="navbar-nav ml-auto">
-            <li class="nav-item">
-              <a class="nav-link" href="{% url 'blog:blog' %}">Blog</a>
-            </li>
-            <li class="nav-item">
-              <a class="nav-link" href="{% url 'blog:talks' %}">Past Talks</a>
-            </li>
-            <li class="nav-item">
-              <a class="nav-link" href="{% url 'blog:upcoming_events' %}">Upcoming Events</a>
-            </li>
+              <li class="nav-item dropdown show">
+                <a class="nav-link dropdown-toggle" href="{% url 'blog:blog' %}" role="button"
+                   id="dropdownMenuLink" data-toggle="dropdown" aria-haspopup="true"
+                   aria-expanded="false">Blog</a>
+                  <div class="dropdown-menu" aria-labelledby="dropdownMenuLink">
+                    <a class="nav-link dropdown-item" href="#">Community</a>
+                    <a class="nav-link dropdown-item" href="#">Conference & Events</a>
+                      <a class="nav-link dropdown-item" href="#">Technical</a>
+                  </div>
+              </li>
+              <li class="nav-item dropdown show">
+                <a class="nav-link dropdown-toggle" href="{% url 'blog:talks' %}" role="button" id="dropdownMenuLink"
+                   data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">Talks</a>
+                  <div class="dropdown-menu" aria-labelledby="dropdownMenuLink">
+                    <a class="nav-link dropdown-item" href="#">Community Talks</a>
+                    <a class="nav-link dropdown-item" href="#">Technical Talks</a>
+                  </div>
+              </li>
+              <li class="nav-item dropdown show">
+                <a class="nav-link dropdown-toggle" href="#" role="button" id="dropdownMenuLink"
+                   data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">Events</a>
+                  <div class="dropdown-menu" aria-labelledby="dropdownMenuLink">
+                    <a class="nav-link dropdown-item" href="{% url 'blog:upcoming_events' %}">Upcoming Events</a>
+                    <a class="nav-link dropdown-item" href="{% url 'blog:past_events' %}">Past Events</a>
+                  </div>
+              </li>
               <li class="nav-item">
-              <a class="nav-link" href="{% url 'blog:past_events' %}">Past Events</a>
-            </li>
-            <li class="nav-item">
-              <a class="nav-link" href="{% url 'blog:contact' %}">Contact</a>
-            </li>
+                <a class="nav-link" href="{% url 'blog:contact' %}">Contact</a>
+              </li>
           </ul>
         </div>
       </div>
     </nav>
 
-
-
-
     <div class="container-fluid">
-{% block content %}{% endblock %}
+        {% block content %}{% endblock %}
 
         <hr/>
         <!-- Footer -->

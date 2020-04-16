@@ -1,0 +1,54 @@
+{% extends "blog/layout.html" %}
+
+{% block content %}
+<!-- Page Header -->
+    <header class="masthead" style="background-image: url('/static/blog/img/home-bg.jpg')">
+      <div class="overlay"></div>
+      <div class="container">
+        <div class="row">
+          <div class="col-lg-8 col-md-10 mx-auto">
+            <div class="site-heading">
+              <h1>Blog Home</h1>
+              <span class="subheading">For my Python/Django OSS Experiences</span>
+            </div>
+          </div>
+        </div>
+      </div>
+    </header>
+
+    <!-- Page Content -->
+     <div class="container">
+      <div class="row">
+        <div class="col-lg-10 col-md-10 mx-auto">
+            {% if posts %}
+            {% for post in posts %}
+          <div class="post-preview">
+            <a href="{% url 'blog:post' pk=post.pk %}">
+              <h2 class="post-title">
+                {{ post.title }}
+              </h2>
+              <h3 class="post-subtitle">
+                {{ post.summary }}
+              </h3>
+            </a>
+            <p class="post-meta">Posted by
+              <a href="#">Anna Makarudze</a>
+              on {{ post.published_date }}</p>
+              <p class="btn btn-primary"><a href="{% url 'blog:post' pk=post.pk %}">Read more...</a></p>
+          </div>
+            {% endfor %}
+            <nav>
+                <ul class="pagination">
+                    {% for page in posts.paginator.page_range %}
+                    <li class="page-item"><a class="page-link" href="?page={{ page }}">{{ page }}</a></li>
+                    {% endfor %}
+                </ul>
+            </nav>
+            {% else %}
+            <p>No posts available at this time</p>
+            {% endif %}
+        </div>
+      </div>
+     </div>
+
+{% endblock %}

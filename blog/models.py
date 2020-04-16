@@ -3,10 +3,28 @@ from django.utils import timezone
 from autoslug import AutoSlugField
 
 
+CATEGORY_CHOICES = [
+    ('Community', 'Community'),
+    ('Python', 'Python'),
+    ('Django', 'Django'),
+    ('Serverless', 'Serverless'),
+    ('DevOps', 'DevOps')
+]
+
+LEVEL_CHOICES = [
+    ('Beginner', 'Beginner'),
+    ('Intermediate', 'Intermediate'),
+    ('Advanced', 'Advanced'),
+    ('Expert', 'Expert')
+]
+
+
 class Post(models.Model):
     author = models.ForeignKey('auth.User', on_delete=models.CASCADE)
     title = models.CharField(max_length=200)
     summary = models.CharField(max_length=200)
+    category = models.CharField(max_length=50, choices=CATEGORY_CHOICES, blank=True)
+    level = models.CharField(max_length=20, choices=LEVEL_CHOICES, blank=True)
     text = models.TextField()
     created_date = models.DateTimeField(default=timezone.now)
     published_date = models.DateTimeField(blank=True, null=True)
@@ -69,6 +87,8 @@ class Talk(models.Model):
     title = models.CharField(max_length=200)
     description = models.TextField()
     code = models.URLField(verbose_name="demo code", blank=True, null=True)
+    category = models.CharField(max_length=20, choices=CATEGORY_CHOICES, blank=True)
+    level = models.CharField(max_length=20, choices=LEVEL_CHOICES, blank=True)
     event = models.ForeignKey(Event, on_delete=models.CASCADE)
     presenter = models.CharField(max_length=200, default='')
     slides = models.URLField(verbose_name="slides URL")
