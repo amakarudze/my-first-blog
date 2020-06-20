@@ -1,53 +1,42 @@
 {% extends "blog/layout.html" %}
 
 {% block content %}
-<!-- Page Header -->
-    <header class="masthead" style="background-image: url('/static/blog/img/home-bg.jpg')">
-      <div class="overlay"></div>
-      <div class="container">
-        <div class="row">
-          <div class="col-lg-8 col-md-10 mx-auto">
-            <div class="site-heading">
-              <h1>Blog Home</h1>
-              <span class="subheading">For my Python/Django OSS Experiences</span>
-            </div>
-          </div>
-        </div>
-      </div>
-    </header>
 
+<h1 class="my-4">{{ title }}
+          <small>{{ sub_title}}</small>
+        </h1>
     <!-- Page Content -->
-     <div class="container">
-        <div class="row">
-        <div class="col-lg-4">
-          <div class="features-icons-item mx-auto mb-5 mb-lg-0 mb-lg-3">
-            <div class="features-icons-icon d-flex">
-              <i class="icon-screen-desktop m-auto text-primary"></i>
-            </div>
-            <h3>Community</h3>
-            <p class="lead mb-0">Learn about everything community as I share my own experiences!</p>
-          </div>
-        </div>
-        <div class="col-lg-4">
-          <div class="features-icons-item mx-auto mb-5 mb-lg-0 mb-lg-3">
-            <div class="features-icons-icon d-flex">
-              <i class="icon-layers m-auto text-primary"></i>
-            </div>
-            <h3>Conferences & Events</h3>
-            <p class="lead mb-0">Want to learn about organising conferences and events?
-                Learn about my own experiences!</p>
-          </div>
-        </div>
-        <div class="col-lg-4">
-          <div class="features-icons-item mx-auto mb-0 mb-lg-3">
-            <div class="features-icons-icon d-flex">
-              <i class="icon-check m-auto text-primary"></i>
-            </div>
-            <h3>Technical</h3>
-            <p class="lead mb-0">Learn a few things about several technologies I love working with!</p>
-          </div>
+      <div class="row">
+        <div class="col-md-12 col-md-12 mx-auto">
+            {% if posts %}
+            {% for post in posts %}
+              <!-- Blog Post -->
+              <div class="card mb-4">
+                <img class="card-img-top" src="http://placehold.it/750x300" alt="Card image cap">
+                <div class="card-body">
+                  <h2 class="card-title">{{ post.title }}</h2>
+                  <p class="card-text">{{ post.summary }}</p>
+                  <a href="{% url 'blog:post' pk=post.pk %}" class="btn btn-primary">Read More &rarr;</a>
+                </div>
+                <div class="card-footer text-muted">
+                  {{ post.published_date }} by
+                  <a href="{% url 'resume:resume' %}">{{ post.author }}</a>
+                </div>
+              </div>
+
+            {% endfor %}
+            <nav>
+                <ul class="pagination justify-content-center mb-4">
+                    {% for page in posts.paginator.page_range %}
+                    <li class="page-item"><a class="page-link" href="?page={{ page }}">{{ page }}</a></li>
+                    {% endfor %}
+                </ul>
+            </nav>
+        {% else %}
+            <p>No posts available at this time</p>
+        {% endif %}
+
         </div>
       </div>
-     </div>
 
 {% endblock %}

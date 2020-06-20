@@ -5,10 +5,8 @@ from autoslug import AutoSlugField
 
 CATEGORY_CHOICES = [
     ('Community', 'Community'),
-    ('Python', 'Python'),
-    ('Django', 'Django'),
-    ('Serverless', 'Serverless'),
-    ('DevOps', 'DevOps')
+    ('Conferences', 'Conferences'),
+    ('Technical', 'Technical')
 ]
 
 LEVEL_CHOICES = [

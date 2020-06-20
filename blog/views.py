@@ -2,7 +2,7 @@ from __future__ import absolute_import
 from django.views.generic import TemplateView
 from django.shortcuts import get_object_or_404
 from django.core.mail import send_mail
-from django.http import HttpRequest, HttpResponseRedirect
+from django.http import HttpResponseRedirect
 from django.utils import timezone
 from django.shortcuts import render
 from django.core.paginator import Paginator, EmptyPage, PageNotAnInteger
@@ -23,7 +23,6 @@ def past_event():
 
 
 def home(request):
-    assert isinstance(request, HttpRequest)
     post_list = Post.objects.filter(published_date__lte=timezone.now()).order_by('-published_date')
 
     paginator = Paginator(post_list, 5)  # Show 5 posts per page
@@ -38,7 +37,7 @@ def home(request):
         posts = paginator.page(paginator.num_pages)
     return render(
         request,
-        'blog/index.html',
+        'blog/blog.html',
         {
             'title': 'Home',
             'year': datetime.now().year,
@@ -48,7 +47,6 @@ def home(request):
 
 
 def talks(request):
-    assert isinstance(request, HttpRequest)
     talk_list = Talk.objects.all().order_by('-pk')
 
     paginator = Paginator(talk_list, 5)  # Show 5 talks per page
@@ -67,13 +65,12 @@ def talks(request):
         {
             'title': 'Talks',
             'year': datetime.now().year,
-            'talks': talks,
+            'talks': talks
         }
     )
 
 
 def upcoming_events(request):
-    assert isinstance(request, HttpRequest)
     event_list = Event.objects.filter(ispast=False).order_by('fromdate')
 
     paginator = Paginator(event_list, 5)  # Show 5 events per page
@@ -98,7 +95,6 @@ def upcoming_events(request):
 
 
 def past_events(request):
-    assert isinstance(request, HttpRequest)
     past_event_list = Event.objects.filter(ispast=True).order_by('-fromdate')
 
     paginator = Paginator(past_event_list, 5)  # Show 5 events per page
@@ -128,7 +124,7 @@ class TalkView(TemplateView):
     def get_context_data(self, pk, **kwargs):
         context = super(TalkView, self).get_context_data(**kwargs)
         context['talk'] = get_object_or_404(Talk, pk=pk)
-        context['title'] = 'Talk Details'
+        context['title'] = 'Talk'
         context['year'] = datetime.now().year
         return context
 

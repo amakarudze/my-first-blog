@@ -12,17 +12,17 @@
 
   {% load static %}
   <!-- Bootstrap core CSS -->
-  <link href="{% static 'core/vendor/bootstrap/css/bootstrap.min.css' %}" rel="stylesheet">
+  <link href="{% static 'vendor/bootstrap/css/bootstrap.min.css' %}" rel="stylesheet">
 
   <!-- Custom fonts for this template -->
-  <link href="{% static 'core/vendor/fontawesome-free/css/all.min.css' %}" rel="stylesheet">
-  <link rel="stylesheet" href="{% static 'core/vendor/simple-line-icons/css/simple-line-icons.css' %}">
+  <link href="{% static 'vendor/fontawesome-free/css/all.min.css' %}" rel="stylesheet">
+  <link rel="stylesheet" href="{% static 'vendor/simple-line-icons/css/simple-line-icons.css' %}">
   <link href="https://fonts.googleapis.com/css?family=Lato" rel="stylesheet">
   <link href="https://fonts.googleapis.com/css?family=Catamaran:100,200,300,400,500,600,700,800,900" rel="stylesheet">
   <link href="https://fonts.googleapis.com/css?family=Muli" rel="stylesheet">
 
   <!-- Custom styles for this template -->
-  <link href="{% static 'core/css/new-age.min.css' %}" rel="stylesheet">
+  <link href="{% static 'css/new-age.min.css' %}" rel="stylesheet">
 
 </head>
 
@@ -60,8 +60,8 @@
       <div class="row h-100">
         <div class="col-lg-7 my-auto">
           <div class="header-content mx-auto">
-            <h1 class="mb-5">Welcome to my website! Here I showcase my coding skills as well
-            as my non-technical skills. I also showcase my blog, resume and conference talks.</h1>
+            <h1 class="mb-5">Welcome to my website! Here I showcase my coding skills,
+              blog, resume and conference talks.</h1>
             <a href="{% url 'resume:resume' %}" class="btn btn-outline btn-xl js-scroll-trigger">Check out my resume!</a>
           </div>
         </div>
@@ -71,7 +71,7 @@
               <div class="device">
                 <div class="screen">
                   <!-- Demo image for screen mockup, you can put an image here, some HTML, an animation, video, or anything else! -->
-                  <img src="{% static 'core/img/anna-dcus-2018.jpg' %}" class="img-fluid" alt="">
+                  <img src="{% static 'img/anna-dcus-2018.jpg' %}" class="img-fluid" alt="">
                 </div>
                 <div class="button">
                   <!-- You can hook the "home button" to some JavaScript events or just remove it -->
@@ -98,7 +98,7 @@
               <div class="device">
                 <div class="screen">
                   <!-- Demo image for screen mockup, you can put an image here, some HTML, an animation, video, or anything else! -->
-                  <img src="{% static 'resume/img/profile.jpg' %}" class="img-fluid" alt="">
+                  <img src="{% static 'img/profile.jpg' %}" class="img-fluid" alt="">
                 </div>
                 <div class="button">
                   <!-- You can hook the "home button" to some JavaScript events or just remove it -->
@@ -138,8 +138,8 @@
               <div class="col-lg-6">
                 <div class="feature-item">
                   <i class="icon-list text-primary"></i>
-                  <h3><a href="#">My Online Resume</a></h3>
-                  <p class="text-muted">Are you hiring? I am currently looking for a DevOps/SRE role. Check out my resume!</p>
+                  <h3><a href="{% url 'resume:resume' %}">My Online Resume</a></h3>
+                  <p class="text-muted">Are you hiring? I am currently looking for a Python/Django backend developer role. Check out my resume!</p>
                 </div>
               </div>
             </div>
@@ -202,14 +202,14 @@
   </footer>
 
   <!-- Bootstrap core JavaScript -->
-  <script src="{% static 'core/vendor/jquery/jquery.min.js' %}"></script>
-  <script src="{% static 'core/vendor/bootstrap/js/bootstrap.bundle.min.js' %}"></script>
+  <script src="{% static 'vendor/jquery/jquery.min.js' %}"></script>
+  <script src="{% static 'vendor/bootstrap/js/bootstrap.bundle.min.js' %}"></script>
 
   <!-- Plugin JavaScript -->
-  <script src="{% static 'core/vendor/jquery-easing/jquery.easing.min.js' %}"></script>
+  <script src="{% static 'vendor/jquery-easing/jquery.easing.min.js' %}"></script>
 
   <!-- Custom scripts for this template -->
-  <script src="{% static 'core/js/new-age.min.js' %}"></script>
+  <script src="{% static 'js/new-age.min.js' %}"></script>
 
 </body>
 
