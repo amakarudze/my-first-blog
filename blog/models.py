@@ -3,12 +3,6 @@ from django.utils import timezone
 from autoslug import AutoSlugField
 
 
-CATEGORY_CHOICES = [
-    ('Community', 'Community'),
-    ('Conferences', 'Conferences'),
-    ('Technical', 'Technical')
-]
-
 LEVEL_CHOICES = [
     ('Beginner', 'Beginner'),
     ('Intermediate', 'Intermediate'),
@@ -17,16 +11,29 @@ LEVEL_CHOICES = [
 ]
 
 
+class Category(models.Model):
+    name = models.CharField(max_length=100)
+    description = models.TextField()
+
+    class Meta:
+        managed = True
+        verbose_name_plural = 'Categories'
+
+    def __str__(self):
+        return self.name
+
+
 class Post(models.Model):
     author = models.ForeignKey('auth.User', on_delete=models.CASCADE)
     title = models.CharField(max_length=200)
     summary = models.CharField(max_length=200)
-    category = models.CharField(max_length=50, choices=CATEGORY_CHOICES, blank=True)
+    category = models.ForeignKey(Category, on_delete=models.CASCADE)
     level = models.CharField(max_length=20, choices=LEVEL_CHOICES, blank=True)
     text = models.TextField()
     created_date = models.DateTimeField(default=timezone.now)
     published_date = models.DateTimeField(blank=True, null=True)
     slug = AutoSlugField(populate_from='title', unique=True)
+    cover = models.ImageField(upload_to='covers', default='http://placehold.it/750x300')
 
     def publish(self):
         self.published_date = timezone.now()
@@ -85,12 +92,13 @@ class Talk(models.Model):
     title = models.CharField(max_length=200)
     description = models.TextField()
     code = models.URLField(verbose_name="demo code", blank=True, null=True)
-    category = models.CharField(max_length=20, choices=CATEGORY_CHOICES, blank=True)
+    category = models.ForeignKey(Category, on_delete=models.CASCADE)
     level = models.CharField(max_length=20, choices=LEVEL_CHOICES, blank=True)
     event = models.ForeignKey(Event, on_delete=models.CASCADE)
     presenter = models.CharField(max_length=200, default='')
     slides = models.URLField(verbose_name="slides URL")
     date_presented = models.DateTimeField(default=timezone.now)
+    cover = models.ImageField(upload_to='covers', default='http://placehold.it/750x300')
 
     class Meta:
         managed = True
