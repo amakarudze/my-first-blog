@@ -25,22 +25,22 @@
   <!-- Navigation -->
   <nav class="navbar navbar-expand-lg navbar-light bg-primary fixed-top">
     <div class="container">
-      <a class="navbar-brand" href="{% url 'core:home' %}">Home</a>
+      <a class="navbar-brand text-white" href="{% url 'core:home' %}">Home</a>
       <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarResponsive" aria-controls="navbarResponsive" aria-expanded="false" aria-label="Toggle navigation">
         <span class="navbar-toggler-icon"></span>
       </button>
       <div class="collapse navbar-collapse" id="navbarResponsive">
         <ul class="navbar-nav ml-auto">
           <li class="nav-item active">
-            <a class="nav-link" href="{% url 'blog:blog' %}">Blog
+            <a class="nav-link text-white" href="{% url 'blog:blog' %}">Blog
               <span class="sr-only">(current)</span>
             </a>
           </li>
           <li class="nav-item">
-            <a class="nav-link" href="{% url 'blog:talks' %}">Talks</a>
+            <a class="nav-link text-white" href="{% url 'blog:talks' %}">Talks</a>
           </li>
           <li class="nav-item dropdown show">
-                <a class="nav-link dropdown-toggle" href="#" role="button" id="dropdownMenuLink"
+                <a class="nav-link text-white dropdown-toggle" href="#" role="button" id="dropdownMenuLink"
                    data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">Events</a>
                   <div class="dropdown-menu" aria-labelledby="dropdownMenuLink">
                     <a class="nav-item dropdown-item" href="{% url 'blog:upcoming_events' %}">Upcoming Events</a>
@@ -48,7 +48,7 @@
                   </div>
               </li>
           <li class="nav-item">
-            <a class="nav-link" href="{% url 'blog:contact' %}">Contact</a>
+            <a class="nav-link text-white" href="{% url 'blog:contact' %}">Contact</a>
           </li>
         </ul>
       </div>
@@ -80,12 +80,14 @@
         <div class="card my-4">
           <h5 class="card-header">Search</h5>
           <div class="card-body">
+            <form method="GET" action="{% url 'search' %}">
             <div class="input-group">
               <input type="text" class="form-control" placeholder="Search for...">
               <span class="input-group-append">
                 <button class="btn btn-secondary" type="button">Go!</button>
               </span>
             </div>
+            </form>
           </div>
         </div>
 
@@ -93,40 +95,18 @@
         <div class="card my-4">
           <h5 class="card-header">Categories</h5>
           <div class="card-body">
-            <div class="row">
-              <div class="col-lg-6">
-                <ul class="list-unstyled mb-0">
-                  <li>
-                    <a href="#">Web Design</a>
-                  </li>
-                  <li>
-                    <a href="#">HTML</a>
-                  </li>
-                  <li>
-                    <a href="#">Freebies</a>
-                  </li>
-                </ul>
-              </div>
-              <div class="col-lg-6">
-                <ul class="list-unstyled mb-0">
-                  <li>
-                    <a href="#">JavaScript</a>
-                  </li>
-                  <li>
-                    <a href="#">CSS</a>
-                  </li>
-                  <li>
-                    <a href="#">Tutorials</a>
-                  </li>
-                </ul>
-              </div>
-            </div>
+            {% for category in categories %}
+            {% if forloop.first %}<div class="row">{% endif %}
+            <div class="col-lg-6"> <a href="{% url 'blog:category' category.id %}">{{ category.name }}</a></div>
+            {% if forloop.counter|divisibleby:2 %}</div><div class="row">{% endif %}
+            {% if forloop.last %}</div>{% endif %}
+            {% endfor %}
           </div>
         </div>
 
         <!-- Side Widget -->
         <div class="card my-4">
-          <h5 class="card-header">Side Widget</h5>
+          <h5 class="card-header">Coding Tip of the Day</h5>
           <div class="card-body">
             You can put anything you want inside of these side widgets. They are easy to use, and feature the new Bootstrap 4 card containers!
           </div>

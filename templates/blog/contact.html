@@ -2,24 +2,18 @@
 
 {% block content %}
 
-<div class="row">
-    <div class="col-md-5">
-<h3>{{ message }}</h3>
-        <br />
+    <div>
+        <address>
+            <abbr title="Phone">P:</abbr> +263 718 902 962
+        </address>
 
-<address>
-    <abbr title="Phone">P:</abbr>
-    +263 718 902 962
-</address>
+        <address>
+        <strong>Email:</strong> <a href="mailto:anna@makarudze.com">anna@makarudze.com</a>
+        </address>
 
-<address>
-    <strong>Email:</strong> <a href="mailto:anna@makarudze.com">anna@makarudze.com</a>
-    </address>
+    </div>
 
-</div>
-
-
-    <div class="col-md-7">
+    <div>
         <h3>Send me a message:</h3>
         <p>Want to get in touch? Fill out the form below to send me a message and
             I will get back to you as soon as possible!</p>
@@ -31,5 +25,5 @@
           {{ form }}
         </form>
     </div>
-</div>
+
 {% endblock %}
