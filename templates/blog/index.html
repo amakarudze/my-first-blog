@@ -17,7 +17,7 @@
                 </div>
                 <div class="card-footer text-muted">
                   {{ post.published_date }} by
-                  <a href="{% url 'resume:resume' %}">{{ post.author }}</a>
+                  {{ post.user.get_full_name }}
                 </div>
               </div>
 
