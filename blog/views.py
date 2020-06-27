@@ -1,5 +1,5 @@
 from datetime import datetime
-from itertools import chain
+from random import randint
 
 from django.core.mail import send_mail
 from django.core.paginator import Paginator, EmptyPage, PageNotAnInteger
@@ -19,13 +19,15 @@ def get_categories():
 
 
 def tips():
-    tip = Tip.objects.get()
+    try:
+        count = Tip.objects.count()
+        tip = Tip.objects.all()[randint(0, count - 1)]
+    except ValueError:
+        tip = None
     return tip
 
 
 def home(request):
-    categories = get_categories()
-
     post_list = Post.objects.filter(published_date__lte=timezone.now()).order_by('-published_date')
 
     paginator = Paginator(post_list, 5)  # Show 5 posts per page
@@ -40,18 +42,28 @@ def home(request):
         posts = paginator.page(paginator.num_pages)
     return render(
         request,
-        'blog/blog.html',
+        'blog/index.html',
         {
             'title': 'Home',
             'year': datetime.now().year,
-            'categories': categories,
+            'categories': get_categories(),
             'posts': posts,
+            'tip': tips()
         }
     )
 
 
+def about(request):
+    return render(request, 'blog/about.html',
+                  {
+                      'title': 'About',
+                      'year': datetime.now().year,
+                      'categories': get_categories(),
+                      'tip': tips()
+                  })
+
+
 def talks(request):
-    categories = get_categories()
     talk_list = Talk.objects.all().order_by('-pk')
 
     paginator = Paginator(talk_list, 5)  # Show 5 talks per page
@@ -68,16 +80,16 @@ def talks(request):
         request,
         'blog/talks.html',
         {
-            'categories': categories,
+            'categories': get_categories(),
             'title': 'Talks',
             'year': datetime.now().year,
-            'talks': talks
+            'talks': talks,
+            'tip': tips()
         }
     )
 
 
 def upcoming_events(request):
-    categories = get_categories()
     event_list = Event.objects.filter(ispast=False).order_by('fromdate')
 
     paginator = Paginator(event_list, 5)  # Show 5 events per page
@@ -94,16 +106,16 @@ def upcoming_events(request):
         request,
         'blog/upcoming_events.html',
         {
-            'categories': categories,
+            'categories': get_categories(),
             'title': 'Upcoming Events',
             'year': datetime.now().year,
             'events': events,
+            'tip': tips()
         }
     )
 
 
 def past_events(request):
-    categories = get_categories()
     past_event_list = Event.objects.filter(ispast=True).order_by('-fromdate')
 
     paginator = Paginator(past_event_list, 5)  # Show 5 events per page
@@ -120,10 +132,11 @@ def past_events(request):
         request,
         'blog/past_events.html',
         {
-            'categories': categories,
+            'categories': get_categories(),
             'title': 'Past Events',
             'year': datetime.now().year,
             'events': events,
+            'tip': tips()
         }
     )
 
@@ -189,6 +202,7 @@ class ThankYouView(TemplateView):
         context['categories'] = get_categories()
         context['title'] = ''
         context['year'] = datetime.now().year
+        context['tip'] = tips()
         return context
 
 
@@ -201,11 +215,11 @@ class PostView(TemplateView):
         context['post'] = get_object_or_404(Post, pk=pk)
         context['title'] = ''
         context['year'] = datetime.now().year
+        context['tip'] = tips()
         return context
 
 
 def posts_by_category(request, id):
-    categories = get_categories()
     category = Category.objects.get(id=id)
 
     post_list = Post.objects.filter(category=id).order_by('-published_date')
@@ -222,24 +236,24 @@ def posts_by_category(request, id):
         posts = paginator.page(paginator.num_pages)
     return render(
         request,
-        'blog/blog.html',
+        'blog/index.html',
         {
             'title': category.name,
             'year': datetime.now().year,
-            'categories': categories,
+            'categories': get_categories(),
             'posts': posts,
+            'tip': tips()
         }
     )
 
 
-def search(request, query):
-    categories = get_categories()
-    posts = Post.objects.filter(Q(title__contains=query) |
-                                Q(text__contains=query))
-    talks = Talk.objects.filter(Q(title__contains=query) | Q(description__contains=query))
-    results_list = chain(posts, talks)
+def search(request):
+    search_query = request.GET.get('search_query')
+    search_results = Post.objects.filter(Q(title__contains=search_query) |
+                                Q(text__contains=search_query))
 
-    paginator = Paginator(results_list, 5)  # Show 5 posts per page
+    count = len(search_results)
+    paginator = Paginator(search_results, 5)  # Show 5 posts per page
     page = request.GET.get('page')
     try:
         results = paginator.page(page)
@@ -253,9 +267,10 @@ def search(request, query):
         request,
         'blog/search.html',
         {
-            'title': f'Search results for {query}',
+            'title': f'{count} search results for "{search_query}"',
             'year': datetime.now().year,
-            'categories': categories,
+            'categories': get_categories(),
             'results': results,
+            'tip': tips()
         }
     )

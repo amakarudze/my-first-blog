@@ -15,24 +15,56 @@
   <!-- Bootstrap core CSS -->
   <link href="{% static 'vendor/bootstrap/css/bootstrap.min.css' %}" rel="stylesheet">
 
+  <!-- Custom fonts for this template-->
+  <link href="{% static 'vendor/fontawesome-free/css/all.min.css' %}" rel="stylesheet">
+  <link rel="stylesheet" href="{% static 'vendor/simple-line-icons/css/simple-line-icons.css' %}">
+  <link href="{% static 'vendor/fontawesome-free/css/fontawesome.min.css' %}" rel="stylesheet"
+        type="text/css">
+
   <!-- Custom styles for this template -->
   <link href="{% static 'css/blog-home.css' %}" rel="stylesheet">
+
 
 </head>
 
 <body>
 
   <!-- Navigation -->
-  <nav class="navbar navbar-expand-lg navbar-light bg-primary fixed-top">
+  <div class="fixed-top">
+  <nav class="navbar navbar-expand-lg navbar-light bg-light" id="socialNav">
+    <ul class="list-inline list-social ml-auto">
+      <li class="list-inline-item">
+        <a href="https://github.com/amakarudze">
+            <i class="fab fa-github"></i>
+          </a>
+      </li>
+      <li class="list-inline-item">
+          <a href="https://www.linkedin.com/in/anna-makarudze-b23b4527/">
+            <i class="fab fa-linkedin"></i>
+          </a>
+        </li>
+        <li class="list-inline-item">
+          <a href="https://twitter.com/amakarudze">
+            <i class="fab fa-twitter"></i>
+          </a>
+        </li>
+        <li class="list-inline-item">
+          <a href="https://m.facebook.com/amakarudze">
+            <i class="fab fa-facebook-f"></i>
+          </a>
+        </li>
+      </ul>
+  </nav>
+  <nav class="navbar navbar-expand-lg navbar-light bg-primary">
     <div class="container">
-      <a class="navbar-brand text-white" href="{% url 'core:home' %}">Home</a>
+      <a class="navbar-brand text-white" href="{% url 'blog:home' %}">Anna Makarudze</a>
       <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarResponsive" aria-controls="navbarResponsive" aria-expanded="false" aria-label="Toggle navigation">
         <span class="navbar-toggler-icon"></span>
       </button>
       <div class="collapse navbar-collapse" id="navbarResponsive">
         <ul class="navbar-nav ml-auto">
           <li class="nav-item active">
-            <a class="nav-link text-white" href="{% url 'blog:blog' %}">Blog
+            <a class="nav-link text-white" href="{% url 'blog:about' %}">About
               <span class="sr-only">(current)</span>
             </a>
           </li>
@@ -48,13 +80,16 @@
                   </div>
               </li>
           <li class="nav-item">
+            <a class="nav-link text-white" href="{% url 'resume:resume' %}">Resume</a>
+          </li>
+          <li class="nav-item">
             <a class="nav-link text-white" href="{% url 'blog:contact' %}">Contact</a>
           </li>
         </ul>
       </div>
     </div>
   </nav>
-
+  </div>
   <!-- Page Content -->
   <div class="container">
 
@@ -80,11 +115,12 @@
         <div class="card my-4">
           <h5 class="card-header">Search</h5>
           <div class="card-body">
-            <form method="GET" action="{% url 'search' %}">
+            <form method="GET" action="{% url 'blog:search' %}">
             <div class="input-group">
-              <input type="text" class="form-control" placeholder="Search for...">
+              <input type="search" name="search_query" class="form-control" placeholder="Search for...">
               <span class="input-group-append">
-                <button class="btn btn-secondary" type="button">Go!</button>
+                <button class="btn btn-primary" type="submit">
+                  Search  <i class="fa fa-search"></i></button>
               </span>
             </div>
             </form>
@@ -106,9 +142,17 @@
 
         <!-- Side Widget -->
         <div class="card my-4">
-          <h5 class="card-header">Coding Tip of the Day</h5>
+          <h5 class="card-header">Coding Tip</h5>
           <div class="card-body">
-            You can put anything you want inside of these side widgets. They are easy to use, and feature the new Bootstrap 4 card containers!
+            {% if tip %}
+              <h4>{{ tip.topic }}</h4>
+              <hr>
+              <h5>Category: {{ tip.category.name }}</h5>
+              <hr>
+              {{ tip.tip }}
+            {% else %}
+              Sorry, no tip to display for you today.
+            {% endif %}
           </div>
         </div>
 

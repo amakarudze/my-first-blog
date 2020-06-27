@@ -2,25 +2,10 @@
 
 {% block content %}
 
-<!-- Page Header -->
-    <header class="masthead" style="background-image: url('/static/blog/img/about-bg.jpg')">
-      <div class="overlay"></div>
-      <div class="container">
-        <div class="row">
-          <div class="col-lg-8 col-md-10 mx-auto">
-            <div class="page-heading">
-              <h1>About Me</h1>
-              <span class="subheading">This is what I do.</span>
-            </div>
-          </div>
-        </div>
-      </div>
-    </header>
-
 <!-- Main Content -->
     <div class="container">
       <div class="row">
-        <div class="col-lg-8 col-md-10 mx-auto">
+        <div class="col-md-12">
           <p>I am a freelance Full Stack Python Developer based in Harare,
           Zimbabwe. I am currently employed by Django Girls Foundation as the Fundraising
           Coordinator on a part-time basis. I am a volunteer and secretary of the Python
@@ -50,16 +35,4 @@
       </div>
     </div>
 
-<div class="row">
-  <div class="col-md-9">
-      {% for about in aboutpage %}
-        <div>
-          <h2><a href="#">{{ about.title }}</a></h2>
-          <p>{{ about.text|linebreaks }} </p> </div>
-          <br />
-        {% endfor %}
-  </div>
-
-</div>
-</div>
 {% endblock %}

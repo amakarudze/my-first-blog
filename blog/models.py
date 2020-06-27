@@ -98,7 +98,7 @@ class Talk(models.Model):
     presenter = models.CharField(max_length=200, default='')
     slides = models.URLField(verbose_name="slides URL")
     date_presented = models.DateTimeField(default=timezone.now)
-    cover = models.ImageField(upload_to='covers', default='http://placehold.it/750x300')
+    cover = models.URLField(default='http://placehold.it/750x300')
 
     class Meta:
         managed = True
@@ -108,4 +108,9 @@ class Talk(models.Model):
 
 
 class Tip(models.Model):
+    category = models.ForeignKey(Category, on_delete=models.CASCADE, default=1)
+    topic = models.CharField(max_length=200, default='Django')
     tip = models.TextField()
+
+    def __str__(self):
+        return self.topic
