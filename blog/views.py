@@ -148,7 +148,8 @@ class TalkView(TemplateView):
         context = super(TalkView, self).get_context_data(**kwargs)
         context['categories'] = get_categories()
         context['talk'] = get_object_or_404(Talk, pk=pk)
-        context['title'] = 'Talk'
+        context['tip'] = tips()
+        context['title'] = ''
         context['year'] = datetime.now().year
         return context
 
@@ -162,6 +163,7 @@ class ContactView(TemplateView):
         context['categories'] = get_categories()
         contact_form = ContactForm()
         context['contact_form'] = contact_form
+        context['tip'] = tips()
         context['title'] = 'Contact Details'
         context['year'] = datetime.now().year
         return context

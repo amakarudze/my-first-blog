@@ -33,7 +33,7 @@ class Post(models.Model):
     created_date = models.DateTimeField(default=timezone.now)
     published_date = models.DateTimeField(blank=True, null=True)
     slug = AutoSlugField(populate_from='title', unique=True)
-    cover = models.ImageField(upload_to='covers', default='http://placehold.it/750x300')
+    cover = models.URLField(default='http://placehold.it/750x300')
 
     def publish(self):
         self.published_date = timezone.now()
@@ -70,6 +70,7 @@ class Event(models.Model):
     published_date = models.DateTimeField(blank=True, null=True)
     ispast = models.BooleanField(default=True)
     isdisplayed = models.BooleanField(default=False)
+    cover = models.URLField(default='http://placehold.it/750x300')
 
     class Meta:
         managed = True
@@ -99,6 +100,7 @@ class Talk(models.Model):
     slides = models.URLField(verbose_name="slides URL")
     date_presented = models.DateTimeField(default=timezone.now)
     cover = models.URLField(default='http://placehold.it/750x300')
+    youtube_video = models.URLField(null=True, blank=True)
 
     class Meta:
         managed = True
