@@ -1,120 +1,181 @@
 <!DOCTYPE html>
-<html>
-<head>
-    <meta charset="utf-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
-    <meta name="description" content="">
-    <meta name="author" content="">
+<html lang="en">
 
-    <title>{{ title }} - Blog</title>
+<head>
+
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+  <meta name="description" content="">
+  <meta name="author" content="">
+
+  <title>Home - My Blog</title>
 
     {% load static %}
-    <!-- Bootstrap core CSS -->
-    <link rel="stylesheet" type="text/css" href="{% static 'blog/vendor/bootstrap/css/bootstrap.min.css' %}" />
 
-    <!-- Custom fonts for this template -->
-    <link rel="stylesheet" type="text/css" href="{% static 'blog/vendor/font-awesome/css/font-awesome.min.css' %}" />
-    <link href='https://fonts.googleapis.com/css?family=Lora:400,700,400italic,700italic' rel='stylesheet' type='text/css'>
-    <link href='https://fonts.googleapis.com/css?family=Open+Sans:300italic,400italic,600italic,700italic,800italic,400,300,600,700,800' rel='stylesheet' type='text/css'>
+  <!-- Bootstrap core CSS -->
+  <link href="{% static 'vendor/bootstrap/css/bootstrap.min.css' %}" rel="stylesheet">
 
-    <!-- Custom styles for this template -->
-    <link rel="stylesheet" type="text/css" href="{% static 'blog/css/clean-blog.min.css' %}" />
+  <!-- Custom fonts for this template-->
+  <link href="{% static 'vendor/fontawesome-free/css/all.min.css' %}" rel="stylesheet">
+  <link rel="stylesheet" href="{% static 'vendor/simple-line-icons/css/simple-line-icons.css' %}">
+  <link href="{% static 'vendor/fontawesome-free/css/fontawesome.min.css' %}" rel="stylesheet"
+        type="text/css">
+
+  <!-- Custom styles for this template -->
+  <link href="{% static 'css/blog-home.css' %}" rel="stylesheet">
+
+
 </head>
+
 <body>
-<!-- Navigation -->
-    <nav class="navbar navbar-expand-lg navbar-light fixed-top" id="mainNav">
-      <div class="container">
-        <a class="navbar-brand" href="{% url 'core:home' %}">Home</a>
-        <button class="navbar-toggler navbar-toggler-right" type="button" data-toggle="collapse" data-target="#navbarResponsive" aria-controls="navbarResponsive" aria-expanded="false" aria-label="Toggle navigation">
-          Menu
-          <i class="fa fa-bars"></i>
-        </button>
-        <div class="collapse navbar-collapse" id="navbarResponsive">
-          <ul class="navbar-nav ml-auto">
-            <li class="nav-item">
-              <a class="nav-link" href="{% url 'blog:blog' %}">Blog</a>
-            </li>
-            <li class="nav-item">
-              <a class="nav-link" href="{% url 'blog:talks' %}">Past Talks</a>
-            </li>
-            <li class="nav-item">
-              <a class="nav-link" href="{% url 'blog:upcoming_events' %}">Upcoming Events</a>
-            </li>
-              <li class="nav-item">
-              <a class="nav-link" href="{% url 'blog:past_events' %}">Past Events</a>
-            </li>
-            <li class="nav-item">
-              <a class="nav-link" href="{% url 'blog:contact' %}">Contact</a>
-            </li>
-          </ul>
-        </div>
+
+  <!-- Navigation -->
+  <div class="fixed-top">
+  <nav class="navbar navbar-expand-lg navbar-light bg-light" id="socialNav">
+    <ul class="list-inline list-social ml-auto">
+      <li class="list-inline-item">
+        <a href="https://github.com/amakarudze">
+            <i class="fab fa-github"></i>
+          </a>
+      </li>
+      <li class="list-inline-item">
+          <a href="https://www.linkedin.com/in/anna-makarudze-b23b4527/">
+            <i class="fab fa-linkedin"></i>
+          </a>
+        </li>
+        <li class="list-inline-item">
+          <a href="https://twitter.com/amakarudze">
+            <i class="fab fa-twitter"></i>
+          </a>
+        </li>
+        <li class="list-inline-item">
+          <a href="https://m.facebook.com/amakarudze">
+            <i class="fab fa-facebook-f"></i>
+          </a>
+        </li>
+      </ul>
+  </nav>
+  <nav class="navbar navbar-expand-lg navbar-light bg-primary">
+    <div class="container">
+      <a class="navbar-brand text-white" href="{% url 'blog:home' %}">Anna Makarudze</a>
+      <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarResponsive" aria-controls="navbarResponsive" aria-expanded="false" aria-label="Toggle navigation">
+        <span class="navbar-toggler-icon"></span>
+      </button>
+      <div class="collapse navbar-collapse" id="navbarResponsive">
+        <ul class="navbar-nav ml-auto">
+          <li class="nav-item active">
+            <a class="nav-link text-white" href="{% url 'blog:about' %}">About
+              <span class="sr-only">(current)</span>
+            </a>
+          </li>
+          <li class="nav-item">
+            <a class="nav-link text-white" href="{% url 'blog:talks' %}">Talks</a>
+          </li>
+          <li class="nav-item dropdown show">
+                <a class="nav-link text-white dropdown-toggle" href="#" role="button" id="dropdownMenuLink"
+                   data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">Events</a>
+                  <div class="dropdown-menu" aria-labelledby="dropdownMenuLink">
+                    <a class="nav-item dropdown-item" href="{% url 'blog:upcoming_events' %}">Upcoming Events</a>
+                    <a class="nav-item dropdown-item" href="{% url 'blog:past_events' %}">Past Events</a>
+                  </div>
+              </li>
+          <li class="nav-item">
+            <a class="nav-link text-white" href="{% url 'resume:resume' %}">Resume</a>
+          </li>
+          <li class="nav-item">
+            <a class="nav-link text-white" href="{% url 'blog:contact' %}">Contact</a>
+          </li>
+        </ul>
       </div>
-    </nav>
-
-
-
-
-    <div class="container-fluid">
-{% block content %}{% endblock %}
-
-        <hr/>
-        <!-- Footer -->
-        <footer>
-        <div class="container">
-            <div class="row">
-                <div class="col-lg-8 col-md-10 mx-auto">
-                    <ul class="list-inline text-center">
-                        <li class="list-inline-item">
-                            <a href="https://twitter.com/amakarudze">
-                                <span class="fa-stack fa-lg">
-                                    <i class="fa fa-circle fa-stack-2x"></i>
-                                    <i class="fa fa-twitter fa-stack-1x fa-inverse"></i>
-                                </span>
-                            </a>
-                        </li>
-                        <li class="list-inline-item">
-                        <a href="https://www.facebook.com/amakarudze">
-                            <span class="fa-stack fa-lg">
-                                <i class="fa fa-circle fa-stack-2x"></i>
-                                <i class="fa fa-facebook fa-stack-1x fa-inverse"></i>
-                            </span>
-                        </a>
-                        </li>
-                        <li class="list-inline-item">
-                        <a href="https://github.com/amakarudze">
-                            <span class="fa-stack fa-lg">
-                                <i class="fa fa-circle fa-stack-2x"></i>
-                                <i class="fa fa-github fa-stack-1x fa-inverse"></i>
-                            </span>
-                        </a>
-                        </li>
-                        <li class="list-inline-item">
-                        <a href="https://zw.linkedin.com/in/anna-makarudze-b23b4527">
-                            <span class="fa-stack fa-lg">
-                                <i class="fa fa-circle fa-stack-2x"></i>
-                                <i class="fa fa-linkedin fa-stack-1x fa-inverse"></i>
-                            </span>
-                        </a>
-                        </li>
-                    </ul>
-            <p class="copyright text-muted">Copyright &copy; Anna Makarudze {{ year }}</p>
-                </div>
-        </div>
-      </div>
-        </footer>
     </div>
+  </nav>
+  </div>
+  <!-- Page Content -->
+  <div class="container">
+
+    <div class="row">
+
+      <!-- Blog Entries Column -->
+      <div class="col-md-8">
+
+        <h1 class="my-4">{{ title }}
+          <small>{{ sub_title}}</small>
+        </h1>
+        {% block content %}
+
+        {% endblock %}
 
 
-{% block scripts %}
-    <!-- Bootstrap core JavaScript -->
-    <script src="{% static 'blog/vendor/jquery/jquery.min.js' %}"></script>
-    <script src="{% static 'blog/vendor/bootstrap/js/bootstrap.bundle.min.js' %}"></script>
+      </div>
 
-    <!-- Custom scripts for this template -->
-    <script src="{% static 'blog/js/clean-blog.min.js' %}"></script>
+      <!-- Sidebar Widgets Column -->
+      <div class="col-md-4">
 
+        <!-- Search Widget -->
+        <div class="card my-4">
+          <h5 class="card-header">Search</h5>
+          <div class="card-body">
+            <form method="GET" action="{% url 'blog:search' %}">
+            <div class="input-group">
+              <input type="search" name="search_query" class="form-control" placeholder="Search for...">
+              <span class="input-group-append">
+                <button class="btn btn-primary" type="submit">
+                  Search  <i class="fa fa-search"></i></button>
+              </span>
+            </div>
+            </form>
+          </div>
+        </div>
 
-{% endblock %}
+        <!-- Categories Widget -->
+        <div class="card my-4">
+          <h5 class="card-header">Categories</h5>
+          <div class="card-body">
+            {% for category in categories %}
+            {% if forloop.first %}<div class="row">{% endif %}
+            <div class="col-lg-6"> <a href="{% url 'blog:category' category.id %}">{{ category.name }}</a></div>
+            {% if forloop.counter|divisibleby:2 %}</div><div class="row">{% endif %}
+            {% if forloop.last %}</div>{% endif %}
+            {% endfor %}
+          </div>
+        </div>
+
+        <!-- Side Widget -->
+        <div class="card my-4">
+          <h5 class="card-header">Coding Tip</h5>
+          <div class="card-body">
+            {% if tip %}
+              <h4>{{ tip.topic }}</h4>
+              <hr>
+              <h5>Category: {{ tip.category.name }}</h5>
+              <hr>
+              {{ tip.tip }}
+            {% else %}
+              Sorry, no tip to display for you today.
+            {% endif %}
+          </div>
+        </div>
+
+      </div>
+
+    </div>
+    <!-- /.row -->
+
+  </div>
+  <!-- /.container -->
+
+  <!-- Footer -->
+  <footer class="py-5 bg-primary">
+    <div class="container">
+      <p class="m-0 text-center text-white">Copyright &copy; Anna Makarudze {{ year }}</p>
+    </div>
+    <!-- /.container -->
+  </footer>
+
+  <!-- Bootstrap core JavaScript -->
+  <script src="{% static 'vendor/jquery/jquery.min.js' %}"></script>
+  <script src="{% static 'vendor/bootstrap/js/bootstrap.bundle.min.js' %}"></script>
 
 </body>
+
 </html>

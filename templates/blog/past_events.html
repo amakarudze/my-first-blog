@@ -1,25 +1,10 @@
 {% extends "blog/layout.html" %}
 
 {% block content %}
-    <!-- Page Header -->
-    <header class="masthead" style="background-image: url('/static/blog/img/past-events-bg.jpg')">
-      <div class="overlay"></div>
-      <div class="container">
-        <div class="row">
-          <div class="col-lg-8 col-md-10 mx-auto">
-            <div class="page-heading">
-              <h1>Past Events</h1>
-              <span class="subheading">Events I have attended</span>
-            </div>
-          </div>
-        </div>
-      </div>
-    </header>
 
      <!-- Page Content -->
-     <div class="container">
       <div class="row">
-        <div class="col-lg-10 col-md-10 mx-auto">
+        <div class="col-md-12 col-md-12 mx-auto">
             {% if events %}
             {% for past_event in events %}
           <div class="post-preview">
@@ -48,6 +33,5 @@
             {% endif %}
         </div>
       </div>
-     </div>
 
 {% endblock %}

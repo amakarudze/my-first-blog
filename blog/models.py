@@ -3,14 +3,37 @@ from django.utils import timezone
 from autoslug import AutoSlugField
 
 
+LEVEL_CHOICES = [
+    ('Beginner', 'Beginner'),
+    ('Intermediate', 'Intermediate'),
+    ('Advanced', 'Advanced'),
+    ('Expert', 'Expert')
+]
+
+
+class Category(models.Model):
+    name = models.CharField(max_length=100)
+    description = models.TextField()
+
+    class Meta:
+        managed = True
+        verbose_name_plural = 'Categories'
+
+    def __str__(self):
+        return self.name
+
+
 class Post(models.Model):
-    author = models.ForeignKey('auth.User', on_delete=models.CASCADE)
+    user = models.ForeignKey('auth.User', on_delete=models.CASCADE)
     title = models.CharField(max_length=200)
     summary = models.CharField(max_length=200)
+    category = models.ForeignKey(Category, on_delete=models.CASCADE)
+    level = models.CharField(max_length=20, choices=LEVEL_CHOICES, blank=True)
     text = models.TextField()
     created_date = models.DateTimeField(default=timezone.now)
     published_date = models.DateTimeField(blank=True, null=True)
     slug = AutoSlugField(populate_from='title', unique=True)
+    cover = models.URLField(default='http://placehold.it/750x300')
 
     def publish(self):
         self.published_date = timezone.now()
@@ -47,6 +70,7 @@ class Event(models.Model):
     published_date = models.DateTimeField(blank=True, null=True)
     ispast = models.BooleanField(default=True)
     isdisplayed = models.BooleanField(default=False)
+    cover = models.URLField(default='http://placehold.it/750x300')
 
     class Meta:
         managed = True
@@ -69,13 +93,26 @@ class Talk(models.Model):
     title = models.CharField(max_length=200)
     description = models.TextField()
     code = models.URLField(verbose_name="demo code", blank=True, null=True)
+    category = models.ForeignKey(Category, on_delete=models.CASCADE)
+    level = models.CharField(max_length=20, choices=LEVEL_CHOICES, blank=True)
     event = models.ForeignKey(Event, on_delete=models.CASCADE)
     presenter = models.CharField(max_length=200, default='')
     slides = models.URLField(verbose_name="slides URL")
     date_presented = models.DateTimeField(default=timezone.now)
+    cover = models.URLField(default='http://placehold.it/750x300')
+    youtube_video = models.URLField(null=True, blank=True)
 
     class Meta:
         managed = True
 
     def __str__(self):
         return self.title
+
+
+class Tip(models.Model):
+    category = models.ForeignKey(Category, on_delete=models.CASCADE, default=1)
+    topic = models.CharField(max_length=200, default='Django')
+    tip = models.TextField()
+
+    def __str__(self):
+        return self.topic

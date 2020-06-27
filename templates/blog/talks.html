@@ -2,54 +2,39 @@
 
 {% block content %}
 
-<!-- Page Header -->
-    <header class="masthead" style="background-image: url('/static/blog/img/talks-bg.jpg')">
-      <div class="overlay"></div>
-      <div class="container">
-        <div class="row">
-          <div class="col-lg-8 col-md-10 mx-auto">
-            <div class="page-heading">
-              <h1>Past Talks</h1>
-              <span class="subheading">My previous conference talks.</span>
-            </div>
-          </div>
-        </div>
-      </div>
-    </header>
-
-<!-- Page Content -->
-     <div class="container">
+    <!-- Page Content -->
       <div class="row">
-        <div class="col-lg-10 col-md-10 mx-auto">
-          {% if talks %}
+        <div class="col-md-12 col-md-12 mx-auto">
+            {% if talks %}
             {% for talk in talks %}
-          <div class="post-preview">
-            <a href="{% url 'blog:talk' pk=talk.pk %}">
-              <h2 class="post-title">
-                {{ talk.title }}
-              </h2>
-              <h3 class="post-subtitle">
-                {{ talk.event }}
-              </h3>
-            </a>
-            <p class="post-meta">
-              <a href="{{ talk.slides }}">{{ talk.slides }}</a>
-              on {{ talk.date_presented }}</p>
-              <p class="btn btn-primary"><a href="{% url 'blog:talk' pk=talk.pk %}">Read more...</a></p>
-          </div>
+              <!-- Blog Post -->
+              <div class="card mb-4">
+                <img class="card-img-top" src="{{ talk.cover }}" width="900px" alt="Card image cap">
+                <div class="card-body">
+                  <h2 class="card-title">{{ talk.title }}</h2>
+                    <h3 class="post-subtitle">{{ talk.event }}</h3>
+                  <p class="card-text">{{ talk.summary }}</p>
+                  <a href="{% url 'blog:talk' pk=talk.pk %}" class="btn btn-primary">Read More &rarr;</a>
+                </div>
+                <div class="card-footer text-muted">
+                  {{ talk.date_presented }} by
+                  <a href="#">{{ talk.presenter }}</a>
+                </div>
+              </div>
+
             {% endfor %}
-          <nav>
-                <ul class="pagination">
+            <nav>
+                <ul class="pagination justify-content-center mb-4">
                     {% for page in talks.paginator.page_range %}
-                        <li class="page-item"><a class="page-link" href="?page={{ page }}">{{ page }}</a></li>
+                    <li class="page-item"><a class="page-link" href="?page={{ page }}">{{ page }}</a></li>
                     {% endfor %}
                 </ul>
             </nav>
-          {% else %}
-          <p>No past talks have been uploaded yet</p>
-          {% endif %}
+        {% else %}
+            <p>No talks available at this time</p>
+        {% endif %}
+
         </div>
       </div>
-     </div>
 
 {% endblock %}
