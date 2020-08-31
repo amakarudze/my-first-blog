@@ -16,4 +16,7 @@ mysite/settings.py
 geckodriver.log
 
 ~*.xml
-'.idea' 
+'.idea'
+
+resume/
+templates/resume/

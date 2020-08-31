@@ -55,7 +55,7 @@
         </li>
       </ul>
   </nav>
-  <nav class="navbar navbar-expand-lg navbar-light bg-primary">
+  <nav class="navbar navbar-expand-lg navbar-light" style="background-color: #6f42c1">
     <div class="container">
       <a class="navbar-brand text-white" href="{% url 'blog:home' %}">Anna Makarudze</a>
       <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarResponsive" aria-controls="navbarResponsive" aria-expanded="false" aria-label="Toggle navigation">
@@ -79,9 +79,6 @@
                     <a class="nav-item dropdown-item" href="{% url 'blog:past_events' %}">Past Events</a>
                   </div>
               </li>
-          <li class="nav-item">
-            <a class="nav-link text-white" href="{% url 'resume:resume' %}">Resume</a>
-          </li>
           <li class="nav-item">
             <a class="nav-link text-white" href="{% url 'blog:contact' %}">Contact</a>
           </li>
@@ -138,11 +135,11 @@
             {% if forloop.last %}</div>{% endif %}
             {% endfor %}
           </div>
-        </div>
+        </div>  
 
         <!-- Side Widget -->
         <div class="card my-4">
-          <h5 class="card-header">Coding Tip</h5>
+          <h5 class="card-header">Coding Tips</h5>
           <div class="card-body">
             {% if tip %}
               <h4>{{ tip.topic }}</h4>
@@ -165,7 +162,7 @@
   <!-- /.container -->
 
   <!-- Footer -->
-  <footer class="py-5 bg-primary">
+  <footer class="py-3" style="background-color: #6f42c1">
     <div class="container">
       <p class="m-0 text-center text-white">Copyright &copy; Anna Makarudze {{ year }}</p>
     </div>

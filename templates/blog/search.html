@@ -15,9 +15,9 @@
                   <p class="card-text">{{ result.summary }}</p>
                   <a href="{% url 'blog:post' pk=result.pk %}" class="btn btn-primary">Read More &rarr;</a>
                 </div>
-                <div class="card-footer text-muted">
+                <div class="card-footer text-white">
                   {{ post.published_date }} by
-                  <a href="{% url 'resume:resume' %}">{{ result.user.get_full_name }}</a>
+                  {{ result.user.get_full_name }}
                 </div>
               </div>
 

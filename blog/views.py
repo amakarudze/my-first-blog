@@ -44,7 +44,7 @@ def home(request):
         request,
         'blog/index.html',
         {
-            'title': 'Home',
+            'title': 'Welcome to my Blog!',
             'year': datetime.now().year,
             'categories': get_categories(),
             'posts': posts,

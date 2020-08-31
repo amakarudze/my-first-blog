@@ -8,3 +8,26 @@ body {
   padding-top: 105px;
 }
 
+a {
+  color: #6f42c1;
+}
+
+.bg-primary {
+  background-color: #6f42c1;
+}
+
+.card-header{
+  background-color: #6f42c1;
+  color: #ffffff;
+}
+
+.page-link {
+  background-color: #ffffff;
+  border-color: #4e555b;
+  color: #6f42c1;
+}
+
+.card-footer {
+  background-color: #6f42c1;
+  color: #ffffff;
+}
