@@ -4,7 +4,7 @@ attrs==18.1.0
 beautifulsoup4==4.8.2
 colorama==0.3.9
 coverage==4.5.1
-Django==3.0.3
+Django==3.0.7
 django-autoslug==1.9.6
 djangorestframework==3.11.0
 more-itertools==4.2.0
