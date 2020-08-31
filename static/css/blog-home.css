@@ -40,3 +40,9 @@ a {
   height:60px;
   line-height: 60px;
 }
+
+.text-truncate {
+  overflow: hidden;
+  text-overflow: ellipsis;
+  white-space: nowrap;
+}
