@@ -18,12 +18,38 @@
         <p>Want to get in touch? Fill out the form below to send me a message and
             I will get back to you as soon as possible!</p>
         <br />
-        {% load crispy_forms_tags %}
-        {% crispy contact_form contact_form.helper %}
+
          <form action="{% url 'blog:contact' %}" method=post>
-          {% csrf_token %}
-          {{ form }}
-        </form>
+             {% csrf_token %}
+             {% for field in form %}
+                <div class="form-group row">
+                    <label class="col-md-3 col-form-label">{{ field.label }}</label>
+                    <div class="col-md-9">{{ field }}</div>
+                </div>
+
+             {% if form.errors and not form.non_field_errors %}
+                {% for error in field.errors %}
+                    <div class="alert alert-danger">
+                        <strong>{{ error }}</strong>
+                    </div>
+                {% endfor %}
+             {% endif %}
+
+             {% if form.non_field_errors %}
+                {% for error in form.non_field_errors %}
+                    <div class="alert alert-danger">
+                        <strong>{{ error }}</strong>
+                    </div>
+                {% endfor %}
+             {% endif %}
+             {% endfor %}
+             <div class="g-recaptcha" data-sitekey=""></div>
+             <div class="row">
+                 <div class="col-md-4 offset-4">
+                     <button type="submit" class="btn btn-primary">Send Message</button>
+                 </div>
+             </div>
+         </form>
     </div>
 
 {% endblock %}
