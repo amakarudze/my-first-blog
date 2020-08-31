@@ -12,7 +12,7 @@
                 <img class="card-img-top" src="http://placehold.it/750x300" alt="Card image cap">
                 <div class="card-body">
                   <h2 class="card-title">{{ result.title }}</h2>
-                  <p class="card-text text-truncate text-wrap d-inline-block">{{ result.text }}</p>
+                  <p class="card-text text-truncate text-wrap d-inline-block">{{ result.text|linebreaks }}</p>
                     <br/>
                     <br/>
                   <a href="{% url 'blog:post' pk=result.pk %}" class="btn btn-primary">Read More &rarr;</a>
