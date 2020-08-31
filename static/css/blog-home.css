@@ -31,3 +31,8 @@ a {
   background-color: #6f42c1;
   color: #ffffff;
 }
+
+.footer.sticky-footer {
+  padding: 2rem 0;
+  flex-shrink: 0;
+}
