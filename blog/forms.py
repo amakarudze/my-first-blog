@@ -1,6 +1,5 @@
 from django import forms
-from crispy_forms.helper import FormHelper
-from crispy_forms.layout import Submit
+from django.utils.translation import gettext_lazy as _
 
 from blog.models import Contact
 
@@ -11,11 +10,59 @@ class ContactForm(forms.ModelForm):
         model = Contact
         fields = ('name', 'phone', 'email', 'subject', 'message',)
 
-    def __init__(self, *args, **kwargs):
-        super(ContactForm, self).__init__(*args, **kwargs)
-        self.helper = FormHelper()
-        self.helper.form_id = 'id-Crispy_ContactForm'
-        self.helper.form_class = 'form-horizontal'
-        self.helper.label_class = 'col-lg-4'
-        self.helper.field_class = 'col-lg-8'
-        self.helper.add_input(Submit('send', 'Send Email'))
+    name = forms.CharField(
+        max_length=100,
+        label=_('Full Name'),
+        widget=(forms.TextInput(
+            attrs={
+                'class': 'form-control',
+                'id': 'FullName',
+                'placeholder': 'Full Name'
+            }
+        ))
+    )
+    phone = forms.CharField(
+        max_length=100,
+        label=_('Phone Number'),
+        widget=(forms.TextInput(
+            attrs={
+                'class': 'form-control',
+                'id': 'PhoneNumber',
+                'placeholder': 'Phone Number'
+            }
+        ))
+    )
+    email = forms.CharField(
+        max_length=100,
+        label=_('Email Address'),
+        widget=(forms.EmailInput(
+            attrs={
+                'class': 'form-control',
+                'id': 'EmailAddress',
+                'placeholder': 'Email Address'
+            }
+        ))
+    )
+    subject = forms.CharField(
+        max_length=100,
+        label=_('Subject'),
+        widget=(forms.TextInput(
+            attrs={
+                'class': 'form-control',
+                'id': 'Subject',
+                'placeholder': 'Subject'
+            }
+        ))
+    )
+    message = forms.CharField(
+        max_length=100,
+        label=_('Message'),
+        widget=(forms.Textarea(
+            attrs={
+                'class': 'form-control',
+                'id': 'Message',
+                'rows': '8',
+                'placeholder': 'Message'
+            }
+        ))
+    )

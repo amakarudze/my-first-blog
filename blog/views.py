@@ -155,29 +155,29 @@ class TalkView(TemplateView):
 
 
 class ContactView(TemplateView):
-    contact_form = ContactForm()
+    form = ContactForm()
     template_name = "blog/contact.html"
 
     def get_context_data(self, **kwargs):
         context = super(ContactView, self).get_context_data(**kwargs)
         context['categories'] = get_categories()
-        contact_form = ContactForm()
-        context['contact_form'] = contact_form
+        form = ContactForm()
+        context['form'] = form
         context['tip'] = tips()
         context['title'] = 'Contact Details'
         context['year'] = datetime.now().year
         return context
 
     def post(self, request):
-        contact_form = ContactForm(request.POST)
+        form = ContactForm(request.POST)
 
-        if contact_form.is_valid():
-            contact_form.save()
-            name = contact_form.cleaned_data['name']
-            phone = contact_form.cleaned_data['phone']
-            email = contact_form.cleaned_data['email']
-            subject = contact_form.cleaned_data['subject']
-            details = contact_form.cleaned_data['message']
+        if form.is_valid():
+            form.save()
+            name = form.cleaned_data['name']
+            phone = form.cleaned_data['phone']
+            email = form.cleaned_data['email']
+            subject = form.cleaned_data['subject']
+            details = form.cleaned_data['message']
 
             message = render_to_string('emails/enquiry_email.html',
                                        {
