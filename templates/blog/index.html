@@ -15,7 +15,7 @@
                   <p class="card-text">{{ post.summary }}</p>
                   <a href="{% url 'blog:post' pk=post.pk %}" class="btn btn-primary">Read More &rarr;</a>
                 </div>
-                <div class="card-footer text-muted">
+                <div class="card-footer text-white">
                   {{ post.published_date }} by
                   {{ post.user.get_full_name }}
                 </div>
