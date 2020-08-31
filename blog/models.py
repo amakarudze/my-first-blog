@@ -26,7 +26,6 @@ class Category(models.Model):
 class Post(models.Model):
     user = models.ForeignKey('auth.User', on_delete=models.CASCADE)
     title = models.CharField(max_length=200)
-    summary = models.CharField(max_length=200)
     category = models.ForeignKey(Category, on_delete=models.CASCADE)
     level = models.CharField(max_length=20, choices=LEVEL_CHOICES, blank=True)
     text = models.TextField()
