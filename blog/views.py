@@ -252,7 +252,8 @@ def posts_by_category(request, id):
 def search(request):
     search_query = request.GET.get('search_query')
     search_results = Post.objects.filter(Q(title__contains=search_query) |
-                                Q(text__contains=search_query))
+                                Q(text__contains=search_query) |
+                                Q(category__name__contains=search_query))
 
     count = len(search_results)
     paginator = Paginator(search_results, 5)  # Show 5 posts per page
