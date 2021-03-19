@@ -6,7 +6,7 @@ colorama==0.3.9
 coverage==4.5.1
 Django==3.0.7
 django-autoslug==1.9.6
-djangorestframework==3.11.0
+djangorestframework==3.11.2
 more-itertools==4.2.0
 mysqlclient==1.4.6
 Pillow==7.1.2
