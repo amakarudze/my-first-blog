@@ -1,9 +1,9 @@
 ~*.pyc
 __pycache__
-myvenv
+venv
 db.sqlite3
 .DS_Store
-mysite/settings.py
+mysite/local_settings.py
 .idea/workspace.xml
 
 #IDE

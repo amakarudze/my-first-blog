@@ -21,12 +21,12 @@
         <hr>
 
         <!-- Preview Image -->
-        <img class="img-fluid rounded" src="{{ post.cover }}" width="900px" alt="">
+        <img class="img-fluid rounded" src="{{ post.cover.url }}" width="900px" alt="">
 
         <hr>
 
         <!-- Post Content -->
-        <p class="lead">{{ post.text|linebreaks }}</p>
+        <p class="lead">{{ post.text|safe }}</p>
   </div>
 </div>
 

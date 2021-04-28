@@ -1,6 +1,8 @@
 from django.db import models
 from django.utils import timezone
+
 from autoslug import AutoSlugField
+from djrichtextfield.models import RichTextField
 
 
 LEVEL_CHOICES = [
@@ -28,11 +30,11 @@ class Post(models.Model):
     title = models.CharField(max_length=200)
     category = models.ForeignKey(Category, on_delete=models.CASCADE)
     level = models.CharField(max_length=20, choices=LEVEL_CHOICES, blank=True)
-    text = models.TextField()
+    text = RichTextField()
     created_date = models.DateTimeField(default=timezone.now)
     published_date = models.DateTimeField(blank=True, null=True)
     slug = AutoSlugField(populate_from='title', unique=True)
-    cover = models.URLField(default='http://placehold.it/750x300')
+    cover = models.ImageField(default='http://placehold.it/750x300', upload_to='covers', blank=True)
 
     def publish(self):
         self.published_date = timezone.now()
@@ -48,7 +50,7 @@ class Contact(models.Model):
     email = models.CharField("email address", max_length=120)
     subject = models.CharField(max_length=120)
     message = models.TextField()
-    emaildate = models.DateTimeField(default=timezone.now)
+    email_date = models.DateTimeField(default=timezone.now)
     category = models.CharField(max_length=15, null=True, blank=True)
 
     class Meta:
@@ -60,16 +62,16 @@ class Contact(models.Model):
 
 class Event(models.Model):
     name = models.CharField(max_length=200)
-    fromdate = models.DateTimeField('from date', default=timezone.now)
-    todate = models.DateTimeField('to date', default=timezone.now)
+    from_date = models.DateTimeField('from date', default=timezone.now)
+    to_date = models.DateTimeField('to date', default=timezone.now)
     location = models.CharField(max_length=200)
-    website = models.TextField()
+    website = models.URLField(blank=True, null=True)
     comments = models.TextField()
-    dateposted = models.DateTimeField('Date posted', default=timezone.now)
+    date_posted = models.DateTimeField('Date posted', default=timezone.now)
     published_date = models.DateTimeField(blank=True, null=True)
-    ispast = models.BooleanField(default=True)
-    isdisplayed = models.BooleanField(default=False)
-    cover = models.URLField(default='http://placehold.it/750x300')
+    is_past = models.BooleanField(default=True)
+    is_displayed = models.BooleanField(default=False)
+    cover = models.ImageField(default='http://placehold.it/750x300', upload_to='covers', blank=True)
 
     class Meta:
         managed = True
@@ -98,7 +100,8 @@ class Talk(models.Model):
     presenter = models.CharField(max_length=200, default='')
     slides = models.URLField(verbose_name="slides URL")
     date_presented = models.DateTimeField(default=timezone.now)
-    cover = models.URLField(default='http://placehold.it/750x300')
+    cover = models.ImageField(default='http://placehold.it/750x300', upload_to='covers', blank=True)
+    alt_text = models.CharField(max_length=100, verbose_name="Alt Text", default="Post Cover")
     youtube_video = models.URLField(null=True, blank=True)
 
     class Meta:
@@ -111,7 +114,7 @@ class Talk(models.Model):
 class Tip(models.Model):
     category = models.ForeignKey(Category, on_delete=models.CASCADE, default=1)
     topic = models.CharField(max_length=200, default='Django')
-    tip = models.TextField()
+    tip = RichTextField()
 
     def __str__(self):
         return self.topic
