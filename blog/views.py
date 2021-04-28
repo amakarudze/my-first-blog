@@ -221,29 +221,21 @@ class PostView(TemplateView):
         return context
 
 
-def posts_by_category(request, id):
+def posts_and_talks_by_category(request, id):
     category = Category.objects.get(id=id)
 
-    post_list = Post.objects.filter(category=id).order_by('-published_date')
+    posts_list = Post.objects.filter(category=id).order_by('-created_date')
+    talks_list = Talk.objects.filter(category=id).order_by('-date_presented')
 
-    paginator = Paginator(post_list, 5)  # Show 5 posts per page
-    page = request.GET.get('page')
-    try:
-        posts = paginator.page(page)
-    except PageNotAnInteger:
-        # If page is not an integer, deliver first page.
-        posts = paginator.page(1)
-    except EmptyPage:
-        # If page is out of range (e.g. 9999), deliver last page of results.
-        posts = paginator.page(paginator.num_pages)
     return render(
         request,
-        'blog/index.html',
+        'blog/category.html',
         {
             'title': category.name,
             'year': datetime.now().year,
             'categories': get_categories(),
-            'posts': posts,
+            'posts_list': posts_list,
+            'talks_list': talks_list,
             'tip': tips()
         }
     )
@@ -251,29 +243,26 @@ def posts_by_category(request, id):
 
 def search(request):
     search_query = request.GET.get('search_query')
-    search_results = Post.objects.filter(Q(title__contains=search_query) |
-                                Q(text__contains=search_query) |
-                                Q(category__name__icontains=search_query))
+    posts_search_results = Post.objects.filter(Q(title__contains=search_query) |
+                                               Q(text__contains=search_query) |
+                                               Q(category__name__icontains=search_query)).order_by(
+        '-created_date')
+    talks_search_results = Talk.objects.filter(Q(title__contains=search_query) |
+                                               Q(description__contains=search_query) |
+                                               Q(category__name__icontains=search_query)).order_by(
+        '-date_presented')
 
-    count = len(search_results)
-    paginator = Paginator(search_results, 5)  # Show 5 posts per page
-    page = request.GET.get('page')
-    try:
-        results = paginator.page(page)
-    except PageNotAnInteger:
-        # If page is not an integer, deliver first page.
-        results = paginator.page(1)
-    except EmptyPage:
-        # If page is out of range (e.g. 9999), deliver last page of results.
-        results = paginator.page(paginator.num_pages)
+    count = len(posts_search_results) + len(talks_search_results)
+
     return render(
         request,
         'blog/search.html',
         {
-            'title': f'{count} search results for "{search_query}"',
+            'title': f'{count} search result(s) for "{search_query}"',
             'year': datetime.now().year,
             'categories': get_categories(),
-            'results': results,
+            'posts_search_results': posts_search_results,
+            'talks_search_results': talks_search_results,
             'tip': tips()
         }
     )
