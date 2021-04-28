@@ -24,6 +24,10 @@
   <!-- Custom styles for this template -->
   <link href="{% static 'css/blog-home.css' %}" rel="stylesheet">
 
+  <!-- Custom fonts for this template -->
+  <link href="//fonts.googleapis.com/css?family=Lobster&subset=latin,latin-ext" rel="stylesheet" type="text/css">
+  <link rel="preconnect" href="https://fonts.gstatic.com">
+  <link href="https://fonts.googleapis.com/css2?family=Nunito:wght@200&display=swap" rel="stylesheet">
 
 </head>
 
@@ -57,7 +61,9 @@
   </nav>
   <nav class="navbar navbar-expand-lg navbar-light" style="background-color: #6f42c1">
     <div class="container">
-      <a class="navbar-brand text-white" href="{% url 'blog:home' %}">Anna Makarudze</a>
+      <a class="navbar-brand navbar-branding text-white" href="{% url 'blog:home' %}">
+        <img class="img-profile rounded-circle" src="{% static 'img/anna_avatar.jpeg' %}">
+        Anna Makarudze</a>
       <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarResponsive" aria-controls="navbarResponsive" aria-expanded="false" aria-label="Toggle navigation">
         <span class="navbar-toggler-icon"></span>
       </button>
