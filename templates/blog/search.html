@@ -4,40 +4,55 @@
 
      <!-- Page Content -->
       <div class="row">
+          <h2>Posts matching query</h2>
         <div class="col-md-12 col-md-12 mx-auto">
-            {% if results %}
-            {% for result in results %}
+            {% if posts_search_results %}
+            {% for result in posts_search_results %}
               <!-- Blog Post -->
-              <div class="card mb-4">
-                <img class="card-img-top" src="http://placehold.it/750x300" alt="Card image cap">
+              <div>
                 <div class="card-body">
-                  <h2 class="card-title">{{ result.title }}</h2>
-                  <p class="card-text text-truncate text-wrap d-inline-block">{{ result.text|linebreaks }}</p>
+                    <h5 class="card-title"><a href="{% url 'blog:post' pk=result.pk %}">{{ result.title }}</a></h5>
+                  <div class="card-text text-truncate text-wrap d-inline-block" style="max-height: 4rem;">
+                      {{ result.text_rendered|safe }}</div>
                     <br/>
                     <br/>
-                  <a href="{% url 'blog:post' pk=result.pk %}" class="btn btn-primary">Read More &rarr;</a>
-                </div>
-
-                <div class="card-footer text-white">
-                  {{ post.published_date }} by
-                  {{ result.user.get_full_name }}
                 </div>
               </div>
 
             {% endfor %}
-            <nav>
-                <ul class="pagination justify-content-center mb-4">
-                    {% for page in results.paginator.page_range %}
-                    <li class="page-item"><a class="page-link" href="?page={{ page }}">{{ page }}</a></li>
-                    {% endfor %}
-                </ul>
-            </nav>
+
         {% else %}
             <p>Your search yielded no results at this time</p>
         {% endif %}
 
         </div>
       </div>
+
+    <hr>
+
+    <!-- Page Content -->
+    <div class="row">
+        <div class="col-md-12 col-md-12 mx-auto">
+            <h2>Talks matching query</h2>
+            {% if talks_search_results %}
+            {% for result in talks_search_results %}
+            <!-- Blog Post -->
+            <div>
+                <div class="card-body">
+                    <h5 class="card-title"><a href="{% url 'blog:talk' pk=result.pk %}">{{ result.title }}</a></h5>
+                    <div class="card-text text-truncate text-wrap d-inline-block" style="max-height: 4rem;">
+                        {{ result.description|linebreaks }}</div>
+                </div>
+            </div>
+
+            {% endfor %}
+
+            {% else %}
+            <p>Your search yielded no results at this time</p>
+            {% endif %}
+
+        </div>
+    </div>
 
 
 {% endblock %}

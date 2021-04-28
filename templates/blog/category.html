@@ -1,0 +1,55 @@
+{% extends "blog/layout.html" %}
+
+{% block content %}
+
+<!-- Page Content -->
+<div class="row">
+    <div class="col-md-12 col-md-12 mx-auto">
+        <h2>Posts in this category</h2>
+        {% if posts_list %}
+        {% for post in posts_list %}
+        <!-- Blog Post -->
+        <div>
+            <div class="card-body">
+                <a href="{% url 'blog:post' pk=post.pk %}"><h5 class="card-title">{{ post.title }}</h5></a>
+
+                <div class="card-text d-inline-block text-truncate text-wrap" style="max-height: 4rem;">
+                    {{ post.text_rendered|safe }}</div>
+            </div>
+        </div>
+
+        {% endfor %}
+        {% else %}
+        <p>No posts available in this category at this time</p>
+        {% endif %}
+
+    </div>
+</div>
+
+<hr>
+<div class="row">
+    <div class="col-md-12 col-md-12 mx-auto">
+        <h2>Talks in this category</h2>
+        {% if talks_list %}
+        {% for talk in talks_list %}
+        <!-- Blog Post -->
+        <div>
+            <div class="card-body">
+                <a href="{% url 'blog:talk' pk=talk.pk %}"><h5 class="card-title">{{ post.title }}</h5></a>
+
+                <div class="card-text d-inline-block text-truncate text-wrap" style="max-height: 4rem;">
+                    {{ post.text_rendered|safe }}</div>
+
+            </div>
+        </div>
+
+        {% endfor %}
+        {% else %}
+        <p>No talks available in this category at this time</p>
+        {% endif %}
+
+    </div>
+</div>
+
+{% endblock %}
+
