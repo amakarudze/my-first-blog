@@ -9,16 +9,16 @@
             {% for talk in talks %}
               <!-- Blog Post -->
               <div class="card mb-4">
-                <img class="card-img-top" src="{{ talk.cover }}" width="900px" alt="Card image cap">
+                <img class="card-img-top" src="{{ talk.cover.url }}" width="900px" alt="{{ talk.alt_text }}">
                 <div class="card-body">
                   <h2 class="card-title">{{ talk.title }}</h2>
                     <h3 class="post-subtitle">{{ talk.event }}</h3>
                   <p class="card-text">{{ talk.summary }}</p>
                   <a href="{% url 'blog:talk' pk=talk.pk %}" class="btn btn-primary">Read More &rarr;</a>
                 </div>
-                <div class="card-footer text-muted">
+                <div class="card-footer text-white">
                   {{ talk.date_presented }} by
-                  <a href="#">{{ talk.presenter }}</a>
+                  <a href="#" class="text-white">{{ talk.presenter }}</a>
                 </div>
               </div>
 
