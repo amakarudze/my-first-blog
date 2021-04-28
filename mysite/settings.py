@@ -35,10 +35,18 @@ INSTALLED_APPS = [
     'django.contrib.contenttypes',
     'django.contrib.sessions',
     'django.contrib.messages',
+    'django.contrib.sites',
     'django.contrib.staticfiles',
     'autoslug',
-    'blog',
+    'django_comments',
+    'django_markup',
     'djrichtextfield',
+    'markdown',
+    'markdownfield',
+    'mptt',
+    'pygments',
+
+    'blog',
 ]
 
 MIDDLEWARE = [
@@ -157,3 +165,5 @@ STATICFILES_DIRS = [os.path.join(BASE_DIR, 'static')]
 
 MEDIA_URL = '/media/'
 MEDIA_ROOT = os.path.join(BASE_DIR, 'media')
+
+SITE_URL = "https://makarudze.com"

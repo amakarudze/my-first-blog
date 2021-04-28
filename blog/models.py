@@ -2,8 +2,8 @@ from django.db import models
 from django.utils import timezone
 
 from autoslug import AutoSlugField
-from djrichtextfield.models import RichTextField
-
+from markdownfield.models import MarkdownField, RenderedMarkdownField
+from markdownfield.validators import VALIDATOR_STANDARD
 
 LEVEL_CHOICES = [
     ('Beginner', 'Beginner'),
@@ -30,7 +30,9 @@ class Post(models.Model):
     title = models.CharField(max_length=200)
     category = models.ForeignKey(Category, on_delete=models.CASCADE)
     level = models.CharField(max_length=20, choices=LEVEL_CHOICES, blank=True)
-    text = RichTextField()
+    text = MarkdownField(rendered_field='text_rendered', validator=VALIDATOR_STANDARD,
+                         use_editor=False, use_admin_editor=True)
+    text_rendered = RenderedMarkdownField()
     created_date = models.DateTimeField(default=timezone.now)
     published_date = models.DateTimeField(blank=True, null=True)
     slug = AutoSlugField(populate_from='title', unique=True)
@@ -114,7 +116,9 @@ class Talk(models.Model):
 class Tip(models.Model):
     category = models.ForeignKey(Category, on_delete=models.CASCADE, default=1)
     topic = models.CharField(max_length=200, default='Django')
-    tip = RichTextField()
+    tip = MarkdownField(rendered_field='text_rendered', validator=VALIDATOR_STANDARD,
+                        use_editor=False, use_admin_editor=True)
+    text_rendered = RenderedMarkdownField()
 
     def __str__(self):
         return self.topic

@@ -13,7 +13,7 @@
                 <div class="card-body">
                     <a href="{% url 'blog:post' pk=post.pk %}"><h2 class="card-title">{{ post.title }}</h2></a>
 
-                  <p class="card-text text-truncate text-wrap d-inline-block">{{ post.text|safe }}</p>
+                  <p class="card-text text-truncate text-wrap d-inline-block">{{ post.text_rendered|safe }}</p>
 
                   <a href="{% url 'blog:post' pk=post.pk %}" class="btn btn-primary">Read More &rarr;</a>
                 </div>
