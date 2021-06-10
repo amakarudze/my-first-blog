@@ -5,7 +5,7 @@ beautifulsoup4==4.8.2
 bleach==3.3.0
 colorama==0.3.9
 coverage==4.5.1
-Django==3.0.14
+Django==3.1.12
 django-autoslug==1.9.6
 django-contrib-comments==2.1.0
 django-js-asset==1.2.2
