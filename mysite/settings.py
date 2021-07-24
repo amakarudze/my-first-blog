@@ -167,4 +167,4 @@ STATIC_ROOT = os.path.join(BASE_DIR, 'staticfiles')
 MEDIA_URL = '/media/'
 MEDIA_ROOT = os.path.join(BASE_DIR, 'media').replace('\\', '/')
 
-SITE_URL = "https://makarudze.com"
+SITE_URL = "https://www.makarudze.com"
