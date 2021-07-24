@@ -4,10 +4,12 @@ venv
 db.sqlite3
 .DS_Store
 mysite/local_settings.py
+mysite/settings.py
 .idea/workspace.xml
 
 #IDE
 .idea/
+T@wana05
 
 #pycache
 .pycache/
