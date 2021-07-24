@@ -1,0 +1,54 @@
+name: Tests
+
+on:
+  push:
+    branches:
+    - main
+  pull_request:
+
+jobs:
+  build:
+    runs-on: ubuntu-latest
+
+    services:
+      mysql:
+        image: mysql:5.7
+        env:
+          MYSQL_ROOT_PASSWORD: mysql_password
+          MYSQL_DATABASE: blog
+        ports:
+          - 3306:3306
+        # needed because the mysql container does not provide a healthcheck
+        options: --health-cmd pg_isready --health-interval 10s --health-timeout 5s --health-retries 5
+
+    strategy:
+      max-parallel: 4
+      matrix:
+        python-version:
+        - 3.8
+
+    steps:
+      - uses: actions/checkout@v2
+
+      - name: Set up Python ${{ matrix.python-version }}
+        uses: actions/setup-python@v2
+        with:
+          python-version: ${{ matrix.python-version }}
+
+      - name: Install Dependencies
+        run: |
+          python -m pip install --upgrade pip setuptools wheel
+          pip install -r requirements.txt
+
+      - name: Run migrations
+        run: |
+          python manage.py migrate
+
+        env:
+          MYSQL_ROOT_PASSWORD: mysql_password
+
+      - name: Run Tests
+        run: |
+          py.test --cov
+        env:
+          MYSQL_ROOT_PASSWORD: mysql_password
