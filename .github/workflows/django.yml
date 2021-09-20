@@ -5,6 +5,7 @@ on:
     branches:
     - main
   pull_request:
+    - main
 
 jobs:
   build:
@@ -45,10 +46,22 @@ jobs:
           python manage.py migrate
 
         env:
-          MYSQL_ROOT_PASSWORD: mysql_password
+          env:
+            DBENGINE: django.db.backends.mysql
+            DBNAME: blog
+            DBUSER: root
+            DBPASSWORD: mysql_password
+            DBHOST: 127.0.0.1
+            DBPORT: ${{ job.services.mysql.ports[3306] }}
 
       - name: Run Tests
         run: |
           py.test --cov
         env:
-          MYSQL_ROOT_PASSWORD: mysql_password
+          env:
+            DBENGINE: django.db.backends.mysql
+            DBNAME: blog
+            DBUSER: root
+            DBPASSWORD: mysql_password
+            DBHOST: 127.0.0.1
+            DBPORT: ${{ job.services.mysql.ports[3306] }}
