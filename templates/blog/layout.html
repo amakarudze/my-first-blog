@@ -11,6 +11,8 @@
   <title>Home - Anna Makarudze</title>
 
     {% load static %}
+    {% load blog_extras %}
+    {% get_context as ctx %}
 
   <!-- Bootstrap core CSS -->
   <link href="{% static 'vendor/bootstrap/css/bootstrap.min.css' %}" rel="stylesheet">
@@ -28,6 +30,9 @@
   <link href="//fonts.googleapis.com/css?family=Lobster&subset=latin,latin-ext" rel="stylesheet" type="text/css">
   <link rel="preconnect" href="https://fonts.gstatic.com">
   <link href="https://fonts.googleapis.com/css2?family=Nunito:wght@200&display=swap" rel="stylesheet">
+
+  <!-- reCAPTCHA API -->
+  <script src='https://www.google.com/recaptcha/api.js?render={{ ctx.recaptcha_site_key }}'></script>
 
 </head>
 
@@ -172,7 +177,6 @@
   <!-- Bootstrap core JavaScript -->
   <script src="{% static 'vendor/jquery/jquery.min.js' %}"></script>
   <script src="{% static 'vendor/bootstrap/js/bootstrap.bundle.min.js' %}"></script>
-  <script src="https://www.google.com/recaptcha/api.js"></script>
 
 </body>
 

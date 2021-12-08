@@ -8,7 +8,14 @@
         </address>
 
     </div>
-
+    <script>
+        //global grecaptcha
+        grecaptcha.ready(function() {
+          grecaptcha.execute('{{ctx.recaptcha_site_key}}', {action: "/contact/"}).then(function(token) {
+            document.getElementById('g-recaptcha-response').value = token;
+          });
+        });
+      </script>
     <div>
         <h3>Send me a message:</h3>
         <p>Want to get in touch? Fill out the form below to send me a message and
@@ -39,7 +46,9 @@
                 {% endfor %}
              {% endif %}
              {% endfor %}
-             <div class="g-recaptcha" data-sitekey="6Ldk4cUZAAAAAOncqE-DWsfZQIV8KJoxbEEq4ZGc"></div>
+
+             <input type="hidden" id="g-recaptcha-response" name="g-recaptcha-response">
+             <!-- <div class="g-recaptcha" data-sitekey="6Ldk4cUZAAAAAOncqE-DWsfZQIV8KJoxbEEq4ZGc"></div> -->
 
              <div class="row">
                  <div class="col-md-4 offset-4">

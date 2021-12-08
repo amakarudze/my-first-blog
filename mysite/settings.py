@@ -196,3 +196,9 @@ sentry_sdk.init(
     # django.contrib.auth) you may enable sending PII data.
     send_default_pii=True
 )
+
+GOOGLE_RECAPTCHA_SITE_KEY = os.environ.get('GOOGLE_RECAPTCHA_SITE_KEY', '')
+GOOGLE_RECAPTCHA_SECRET_KEY = os.environ.get('GOOGLE_RECAPTCHA_SECRET_KEY', '')
+RECAPTCHA_REQUIRED_SCORE = 0.85
+
+SILENCED_SYSTEM_CHECKS = ['captcha.recaptcha_test_key_error']

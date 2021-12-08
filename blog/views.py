@@ -4,10 +4,14 @@ from random import randint
 from django.core.mail import send_mail
 from django.core.paginator import Paginator, EmptyPage, PageNotAnInteger
 from django.db.models import Q
+from django.conf import settings
+from django.http import BadHeaderError, HttpResponse
 from django.shortcuts import get_object_or_404, render, reverse
 from django.template.loader import render_to_string
 from django.utils import timezone
 from django.views.generic import TemplateView
+
+import requests
 
 from blog.forms import ContactForm
 from .models import Category, Event, Post, Talk, Tip
@@ -172,28 +176,39 @@ class ContactView(TemplateView):
         form = ContactForm(request.POST)
 
         if form.is_valid():
-            form.save()
-            name = form.cleaned_data['name']
-            phone = form.cleaned_data['phone']
-            email = form.cleaned_data['email']
-            subject = form.cleaned_data['subject']
-            details = form.cleaned_data['message']
+            recaptcha_response = request.POST.get('g-recaptcha-response')
+            data = {
+            'secret': settings.GOOGLE_RECAPTCHA_SECRET_KEY,
+            'response': recaptcha_response
+            }
+            r = requests.post('https://www.google.com/recaptcha/api/siteverify', data=data)
+            result = r.json()
 
-            message = render_to_string('emails/enquiry_email.html',
-                                       {
-                                           'name': name,
-                                           'phone': phone,
-                                           'email': email,
-                                           'details': details,
-                                           'subject': subject
-                                       })
+            if result['success']:
+                form.save()
+                name = form.cleaned_data['name']
+                phone = form.cleaned_data['phone']
+                email = form.cleaned_data['email']
+                subject = form.cleaned_data['subject']
+                details = form.cleaned_data['message']
 
-            from_email = None
-            to_email = ['anna@makarudze.com']
-            send_mail(subject, message, from_email, to_email)
+                message = render_to_string('emails/enquiry_email.html',
+                                        {
+                                            'name': name,
+                                            'phone': phone,
+                                            'email': email,
+                                            'details': details,
+                                            'subject': subject
+                                        })
 
-            # redirect to a new URL:
-            return reverse('blog:thankyou')
+                from_email = None
+                to_email = ['anna@makarudze.com']
+                try:
+                    send_mail(subject, message, from_email, to_email)
+                except BadHeaderError:
+                        return HttpResponse('Invalid header found.')
+                # redirect to a new URL:
+                return reverse('blog:thankyou')
 
 
 class ThankYouView(TemplateView):
