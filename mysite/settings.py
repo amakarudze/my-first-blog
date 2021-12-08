@@ -43,6 +43,7 @@ INSTALLED_APPS = [
     'django.contrib.sites',
     'django.contrib.staticfiles',
     'autoslug',
+    'captcha',
     'django_comments',
     'django_markup',
     'djrichtextfield',
@@ -50,7 +51,7 @@ INSTALLED_APPS = [
     'markdownfield',
     'mptt',
     'pygments',
-
+    
     'blog',
 ]
 
