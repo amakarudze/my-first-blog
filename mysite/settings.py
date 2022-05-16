@@ -11,6 +11,7 @@ https://docs.djangoproject.com/en/1.9/ref/settings/
 """
 
 import os
+import pymysql
 import sentry_sdk
 from sentry_sdk.integrations.django import DjangoIntegration
 
@@ -21,15 +22,18 @@ BASE_DIR = os.path.dirname(os.path.dirname(os.path.abspath(__file__)))
 # See https://docs.djangoproject.com/en/1.9/howto/deployment/checklist/
 
 # SECURITY WARNING: don't run with debug turned on in production!
-DEBUG = os.getenv('DJANGO_DEBUG') != 'FALSE'
+DEBUG = os.environ.get('DJANGO_DEBUG') != 'FALSE'
 
 # SECURITY WARNING: keep the secret key used in production secret!
 if DEBUG:
     SECRET_KEY = 'hello!'
 else:
-    SECRET_KEY = os.getenv('DJANGO_SECRET_KEY')
+    SECRET_KEY = os.environ.get('SECRET_KEY')
+    
+ALLOWED_HOSTS = []
 
-ALLOWED_HOSTS = ['www.makarudze.com', 'makarudze.com']
+if not DEBUG:
+    ALLOWED_HOSTS = [os.environ.get('ALLOWED_HOSTS')]
 
 SITE_ID = 1
 # Application definition
@@ -51,8 +55,9 @@ INSTALLED_APPS = [
     'markdownfield',
     'mptt',
     'pygments',
-    
     'blog',
+    "django_extensions",
+    'django.contrib.sitemaps',
 ]
 
 MIDDLEWARE = [
@@ -78,6 +83,7 @@ TEMPLATES = [
                 'django.template.context_processors.request',
                 'django.contrib.auth.context_processors.auth',
                 'django.contrib.messages.context_processors.messages',
+                'blog.context_processors.constants',
             ],
         },
     },
@@ -104,6 +110,20 @@ DATABASES = {
     }
 }
 
+pymysql.version_info = (1, 4, 2, "final", 0)
+pymysql.install_as_MySQLdb()
+
+if os.environ.get("GITHUB_WORKFLOW"):
+    DATABASES = {
+        "default": {
+            "ENGINE": "django.db.backends.mysql",
+            "NAME": "github_actions",
+            "USER": "root",
+            "PASSWORD": "mysql_password",
+            "HOST": "127.0.0.1",
+            "PORT": "3306",
+        }
+    }
 
 # Password validation
 # https://docs.djangoproject.com/en/1.11/ref/settings/#auth-password-validators

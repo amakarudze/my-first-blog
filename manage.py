@@ -2,6 +2,11 @@
 import os
 import sys
 
+from dotenv import find_dotenv, load_dotenv
+
+load_dotenv(find_dotenv(filename=".env"))
+
+
 if __name__ == "__main__":
     os.environ.setdefault("DJANGO_SETTINGS_MODULE", "mysite.settings")
 

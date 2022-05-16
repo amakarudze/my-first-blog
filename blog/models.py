@@ -5,6 +5,8 @@ from autoslug import AutoSlugField
 from markdownfield.models import MarkdownField, RenderedMarkdownField
 from markdownfield.validators import VALIDATOR_STANDARD
 
+from .managers import EventManager
+
 LEVEL_CHOICES = [
     ('Beginner', 'Beginner'),
     ('Intermediate', 'Intermediate'),
@@ -30,20 +32,25 @@ class Post(models.Model):
     title = models.CharField(max_length=200)
     category = models.ForeignKey(Category, on_delete=models.CASCADE)
     level = models.CharField(max_length=20, choices=LEVEL_CHOICES, blank=True)
-    text = MarkdownField(rendered_field='text_rendered', validator=VALIDATOR_STANDARD,
-                         use_editor=False, use_admin_editor=True)
+    text = MarkdownField(
+        rendered_field='text_rendered', validator=VALIDATOR_STANDARD,
+        use_editor=False, use_admin_editor=True)
     text_rendered = RenderedMarkdownField()
     created_date = models.DateTimeField(default=timezone.now)
     published_date = models.DateTimeField(blank=True, null=True)
     slug = AutoSlugField(populate_from='title', unique=True)
-    cover = models.ImageField(default='http://placehold.it/750x300', upload_to='covers', blank=True)
-
+    cover = models.ImageField(
+        default='http://placehold.it/750x300', upload_to='covers', blank=True)
+    
     def publish(self):
         self.published_date = timezone.now()
         self.save()
 
     def __str__(self):
         return self.title
+
+    def get_absolute_url(self):
+        return f'/{self.slug}'
 
 
 class Contact(models.Model):
@@ -71,9 +78,9 @@ class Event(models.Model):
     comments = models.TextField()
     date_posted = models.DateTimeField('Date posted', default=timezone.now)
     published_date = models.DateTimeField(blank=True, null=True)
-    is_past = models.BooleanField(default=True)
     is_displayed = models.BooleanField(default=False)
-    cover = models.ImageField(default='http://placehold.it/750x300', upload_to='covers', blank=True)
+    cover = models.ImageField(
+        default='http://placehold.it/750x300', upload_to='covers', blank=True)
 
     class Meta:
         managed = True
@@ -85,11 +92,8 @@ class Event(models.Model):
         self.published_date = timezone.now()
         self.save()
 
-    @property
-    def is_past_due(self):
-        if timezone.now() > self.todate:
-            return True
-        return False
+    objects = EventManager()
+    all_objects = models.Manager()
 
 
 class Talk(models.Model):
@@ -102,8 +106,10 @@ class Talk(models.Model):
     presenter = models.CharField(max_length=200, default='')
     slides = models.URLField(verbose_name="slides URL")
     date_presented = models.DateTimeField(default=timezone.now)
-    cover = models.ImageField(default='http://placehold.it/750x300', upload_to='covers', blank=True)
-    alt_text = models.CharField(max_length=100, verbose_name="Alt Text", default="Post Cover")
+    cover = models.ImageField(
+        default='http://placehold.it/750x300', upload_to='covers', blank=True)
+    alt_text = models.CharField(
+        max_length=100, verbose_name="Alt Text", default="Post Cover")
     youtube_video = models.URLField(null=True, blank=True)
 
     class Meta:
@@ -116,8 +122,9 @@ class Talk(models.Model):
 class Tip(models.Model):
     category = models.ForeignKey(Category, on_delete=models.CASCADE, default=1)
     topic = models.CharField(max_length=200, default='Django')
-    tip = MarkdownField(rendered_field='text_rendered', validator=VALIDATOR_STANDARD,
-                        use_editor=False, use_admin_editor=True)
+    tip = MarkdownField(
+        rendered_field='text_rendered', validator=VALIDATOR_STANDARD,
+        use_editor=False, use_admin_editor=True)
     text_rendered = RenderedMarkdownField()
 
     def __str__(self):

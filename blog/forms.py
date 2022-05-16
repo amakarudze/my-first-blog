@@ -1,7 +1,8 @@
 from django import forms
 from django.utils.translation import gettext_lazy as _
 
-from blog.models import Contact
+from .models import Contact
+from .validators import validate_email_message
 
 
 class ContactForm(forms.ModelForm):
@@ -66,3 +67,8 @@ class ContactForm(forms.ModelForm):
             }
         ))
     )
+
+    def clean_message(self):
+        message = self.cleaned_data.get('message')
+        validate_email_message(message)
+        return message

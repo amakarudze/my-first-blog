@@ -1,6 +1,3 @@
-from datetime import datetime
-from random import randint
-
 from django.core.mail import send_mail
 from django.core.paginator import Paginator, EmptyPage, PageNotAnInteger
 from django.db.models import Q
@@ -14,25 +11,12 @@ from django.views.generic import TemplateView
 import requests
 
 from blog.forms import ContactForm
-from .models import Category, Event, Post, Talk, Tip
+from .models import Category, Event, Post, Talk
 
 
-def get_categories():
-    categories = Category.objects.all()
-    return categories
-
-
-def tips():
-    try:
-        count = Tip.objects.count()
-        tip = Tip.objects.all()[randint(0, count - 1)]
-    except ValueError:
-        tip = None
-    return tip
-
-
-def home(request):
-    post_list = Post.objects.filter(published_date__lte=timezone.now()).order_by('-published_date')
+def blog(request):
+    post_list = Post.objects.filter(
+        published_date__lte=timezone.now()).order_by('-published_date')
 
     paginator = Paginator(post_list, 5)  # Show 5 posts per page
     page = request.GET.get('page')
@@ -46,13 +30,20 @@ def home(request):
         posts = paginator.page(paginator.num_pages)
     return render(
         request,
-        'blog/index.html',
+        'blog/blog.html',
         {
             'title': 'Welcome to my Blog!',
-            'year': datetime.now().year,
-            'categories': get_categories(),
             'posts': posts,
-            'tip': tips()
+        }
+    )
+
+
+def home(request):
+    return render(
+        request,
+        'blog/index.html',
+        {
+            'title': 'For Hire'
         }
     )
 
@@ -60,10 +51,7 @@ def home(request):
 def about(request):
     return render(request, 'blog/about.html',
                   {
-                      'title': 'About',
-                      'year': datetime.now().year,
-                      'categories': get_categories(),
-                      'tip': tips()
+                      'title': 'About me',
                   })
 
 
@@ -84,17 +72,14 @@ def talks(request):
         request,
         'blog/talks.html',
         {
-            'categories': get_categories(),
             'title': 'Talks',
-            'year': datetime.now().year,
             'talks': talks,
-            'tip': tips()
         }
     )
 
 
 def upcoming_events(request):
-    event_list = Event.objects.filter(ispast=False).order_by('fromdate')
+    event_list = Event.objects.future()
 
     paginator = Paginator(event_list, 5)  # Show 5 events per page
     page = request.GET.get('page')
@@ -110,17 +95,14 @@ def upcoming_events(request):
         request,
         'blog/upcoming_events.html',
         {
-            'categories': get_categories(),
             'title': 'Upcoming Events',
-            'year': datetime.now().year,
             'events': events,
-            'tip': tips()
         }
     )
 
 
 def past_events(request):
-    past_event_list = Event.objects.filter(ispast=True).order_by('-fromdate')
+    past_event_list = Event.objects.past()
 
     paginator = Paginator(past_event_list, 5)  # Show 5 events per page
     page = request.GET.get('page')
@@ -136,11 +118,8 @@ def past_events(request):
         request,
         'blog/past_events.html',
         {
-            'categories': get_categories(),
             'title': 'Past Events',
-            'year': datetime.now().year,
             'events': events,
-            'tip': tips()
         }
     )
 
@@ -150,11 +129,8 @@ class TalkView(TemplateView):
 
     def get_context_data(self, pk, **kwargs):
         context = super(TalkView, self).get_context_data(**kwargs)
-        context['categories'] = get_categories()
         context['talk'] = get_object_or_404(Talk, pk=pk)
-        context['tip'] = tips()
-        context['title'] = ''
-        context['year'] = datetime.now().year
+        context['title'] = context['talk'].title
         return context
 
 
@@ -164,12 +140,9 @@ class ContactView(TemplateView):
 
     def get_context_data(self, **kwargs):
         context = super(ContactView, self).get_context_data(**kwargs)
-        context['categories'] = get_categories()
         form = ContactForm()
         context['form'] = form
-        context['tip'] = tips()
         context['title'] = 'Contact Details'
-        context['year'] = datetime.now().year
         return context
 
     def post(self, request):
@@ -216,10 +189,7 @@ class ThankYouView(TemplateView):
 
     def get_context_data(self, **kwargs):
         context = super(ThankYouView, self).get_context_data(**kwargs)
-        context['categories'] = get_categories()
-        context['title'] = ''
-        context['year'] = datetime.now().year
-        context['tip'] = tips()
+        context['title'] = 'Thank You'
         return context
 
 
@@ -228,17 +198,13 @@ class PostView(TemplateView):
 
     def get_context_data(self, pk, **kwargs):
         context = super(PostView, self).get_context_data(**kwargs)
-        context['categories'] = get_categories()
         context['post'] = get_object_or_404(Post, pk=pk)
-        context['title'] = ''
-        context['year'] = datetime.now().year
-        context['tip'] = tips()
+        context['title'] = 'Blog Post'
         return context
 
 
 def posts_and_talks_by_category(request, id):
     category = Category.objects.get(id=id)
-
     posts_list = Post.objects.filter(category=id).order_by('-created_date')
     talks_list = Talk.objects.filter(category=id).order_by('-date_presented')
 
@@ -247,37 +213,38 @@ def posts_and_talks_by_category(request, id):
         'blog/category.html',
         {
             'title': category.name,
-            'year': datetime.now().year,
-            'categories': get_categories(),
             'posts_list': posts_list,
             'talks_list': talks_list,
-            'tip': tips()
         }
     )
 
 
 def search(request):
-    search_query = request.GET.get('search_query')
-    posts_search_results = Post.objects.filter(Q(title__contains=search_query) |
-                                               Q(text__contains=search_query) |
-                                               Q(category__name__icontains=search_query)).order_by(
-        '-created_date')
-    talks_search_results = Talk.objects.filter(Q(title__contains=search_query) |
-                                               Q(description__contains=search_query) |
-                                               Q(category__name__icontains=search_query)).order_by(
-        '-date_presented')
+    if request.GET.get('search_query') != None:
+        search_query = request.GET.get('search_query')
+        posts_search_results = Post.objects.filter(Q(title__contains=search_query) |
+                                                Q(text__contains=search_query) |
+                                                Q(category__name__icontains=search_query)).order_by(
+            '-created_date')
+        talks_search_results = Talk.objects.filter(Q(title__contains=search_query) |
+                                                Q(description__contains=search_query) |
+                                                Q(category__name__icontains=search_query)).order_by(
+            '-date_presented')
 
-    count = len(posts_search_results) + len(talks_search_results)
+        count = len(posts_search_results) + len(talks_search_results)
+
+    else:
+        count = 0
+        search_query = ''
+        posts_search_results = None
+        posts_search_results = None
 
     return render(
         request,
         'blog/search.html',
         {
             'title': f'{count} search result(s) for "{search_query}"',
-            'year': datetime.now().year,
-            'categories': get_categories(),
             'posts_search_results': posts_search_results,
-            'talks_search_results': talks_search_results,
-            'tip': tips()
+            'talks_search_results': posts_search_results,
         }
     )

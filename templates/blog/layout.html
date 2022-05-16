@@ -8,7 +8,7 @@
   <meta name="description" content="">
   <meta name="author" content="">
 
-  <title>Home - Anna Makarudze</title>
+  <title>{{ title }} - Anna Makarudze</title>
 
     {% load static %}
     {% load blog_extras %}
@@ -78,7 +78,13 @@
             <a class="nav-link text-white" href="{% url 'blog:home' %}">Home</a>
           </li>
           <li class="nav-item">
+            <a class="nav-link text-white" href="{% url 'blog:blog' %}">Blog</a>
+          </li>
+          <li class="nav-item">
             <a class="nav-link text-white" href="{% url 'blog:about' %}">About</a>
+          </li>
+          <li class="nav-item">
+            <a class="nav-link text-white" href="#">Resume</a>
           </li>
           <li class="nav-item">
             <a class="nav-link text-white" href="{% url 'blog:talks' %}">Talks</a>

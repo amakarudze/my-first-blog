@@ -1,22 +1,20 @@
-name: Tests
+name: CodeCov
 
-on:
-  push:
-    branches:
-    - main
-  pull_request:
-    - main
+on: [push, pull_request]
 
 jobs:
-  build:
+  run:
     runs-on: ubuntu-latest
+    env:
+      OS: ubuntu-latest
+      PYTHON: '3.9'
 
-    services:
+     services:
       mysql:
         image: mysql:5.7
         env:
           MYSQL_ROOT_PASSWORD: mysql_password
-          MYSQL_DATABASE: blog
+          MYSQL_DATABASE: github_actions
         ports:
           - 3306:3306
         # needed because the mysql container does not provide a healthcheck
@@ -41,19 +39,6 @@ jobs:
           python -m pip install --upgrade pip setuptools wheel
           pip install -r requirements.txt
 
-      - name: Run migrations
-        run: |
-          python manage.py migrate
-
-        env:
-          env:
-            DBENGINE: django.db.backends.mysql
-            DATABASE_NAME: github_actions
-            DATABASE_USER: root
-            DATABASE_PASSWORD: mysql_password
-            DATABASE_HOST: 127.0.0.1
-            DATABASE_PORT: ${{ job.services.mysql.ports[3306] }}
-
       - name: Run Tests
         run: |
           coverage run -m pytest
@@ -65,3 +50,15 @@ jobs:
             DATABASE_PASSWORD: mysql_password
             DATABASE_HOST: 127.0.0.1
             DATABASE_PORT: ${{ job.services.mysql.ports[3306] }}
+
+    - name: Generate Report
+      run: |
+        pip install -r requirements.txt
+        coverage run -m pytest
+        coverage xml
+      env:
+        DATABASE_HOST: localhost
+        DATABASE_PASSWORD: mysql_password
+        DATABASE_USER: root
+    - name: Upload Coverage to Codecov
+      uses: codecov/codecov-action@v2

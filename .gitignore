@@ -1,6 +1,6 @@
 ~*.pyc
 __pycache__
-venv
+venv/
 db.sqlite3
 .DS_Store
 mysite/local_settings.py
@@ -9,7 +9,6 @@ mysite/settings.py
 
 #IDE
 .idea/
-T@wana05
 
 #pycache
 .pycache/
@@ -22,3 +21,8 @@ geckodriver.log
 
 resume/
 templates/resume/
+
+.env
+env/
+cert*
+key.pem

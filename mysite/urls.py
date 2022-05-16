@@ -28,5 +28,4 @@ urlpatterns = [
     path('', include('blog.urls')),
     path('comments/', include('django_comments.urls')),
     path('djrichtextfield/', include('djrichtextfield.urls')),
-    # path('resume/', include('resume.urls')),
 ] + static(settings.MEDIA_URL, document_root=settings.MEDIA_ROOT)

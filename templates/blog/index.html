@@ -1,42 +1,82 @@
-{% extends "blog/layout.html" %}
+{% extends 'blog/layout.html' %}
+
 
 {% block content %}
 
-    <!-- Page Content -->
-      <div class="row">
-        <div class="col-md-12 col-md-12 mx-auto">
-            {% if posts %}
-            {% for post in posts %}
-              <!-- Blog Post -->
-              <div class="card mb-4">
-                <img class="card-img-top" src="{{ post.cover.url }}" width="900px" alt="{{ post.alt_text }}">
-                <div class="card-body">
-                    <a href="{% url 'blog:post' pk=post.pk %}"><h2 class="card-title">{{ post.title }}</h2></a>
+<div>
+  <p>
+    I am a Python/Django Developer currently on the market for a full-time programming position. Since 2020 I have been 
+    the President of the DSF (Django Software Foundation) and was previously a Software Engineer at BriteCore. I am based 
+    in Harare, Zimbabwe and have been working remotely for a couple of years now but am open to relocation if necessary.
+  </p>
 
-                  <div class="card-text d-inline-block text-truncate text-wrap" style="max-height: 3rem;">
-                      {{ post.text_rendered|safe }}</div>
+  <p>
+    If you already know me and are interested in discussing a job opportunity, <a href="{% url 'blog:contact' %}">please get in touch</a>. 
+    If you do not know me and are interested in getting to know me a bit, please read on ...
+  </p>
 
-                  <a href="{% url 'blog:post' pk=post.pk %}" class="btn btn-primary">Read More &rarr;</a>
-                </div>
-                <div class="card-footer text-white">
-                  {{ post.published_date }} by
-                  {{ post.user.get_full_name }}
-                </div>
-              </div>
+  <h2>Who am I</h2>
 
-            {% endfor %}
-            <nav>
-                <ul class="pagination justify-content-center mb-4">
-                    {% for page in posts.paginator.page_range %}
-                    <li class="page-item"><a class="page-link" href="?page={{ page }}">{{ page }}</a></li>
-                    {% endfor %}
-                </ul>
-            </nav>
-        {% else %}
-            <p>No posts available at this time</p>
-        {% endif %}
+  <p>
+    I started learning programming in high school at the age of 15 as part of my Computer Studies course for my Ordinary Level exams 
+    with the dream of becoming a software engineer. I went on to do Computing as one of my Advanced Level subjects and I hold a BSc (Hons) 
+    in Computer Science from Midlands State University, Zimbabwe. I have always loved and enjoyed algorithms and programming at school 
+    and I was pretty good at it.
+  </p>
 
-        </div>
-      </div>
+  <p>
+    Learning Computer Science as a subject from an early age has exposed me to various languages and databases including Visual Basic, 
+    Pascal, DBase III, C, C++ and Java, most of which I did not use much after school. So while I may not remember the syntax of all 
+    these languages, I can read programmes written in other languages and understand them.
+  </p>
+
+  <p>
+    While in my second year in university, I decided I needed to know more about ICT than just software engineering so for my 
+    work-related learning year in 2007, I chose to work at an internet service provider, Fbnet, where I learnt network engineering, 
+    web development and systems administration. I wanted to be all-rounded in technology so did not immediately choose the software 
+    engineering route. After graduating in 2009, I gave myself five years to continue on this path before returning on the software 
+    engineering career path.
+  </p>
+
+  <p>
+    After graduating, I worked for three months at Fbnet as a Network Technician, doing mostly web development, network engineering, 
+    systems administration and helpdesk support. I then moved to Women's University in Africa where I worked as a Senior ICT Technician. 
+    My role involved systems analysis and design of university systems, project management, website maintenance, user training and support, 
+    and network and systems administration.
+  </p>
+
+  <p>
+    I left that role in 2011 to join an internet access provider startup, Valley Technologies, as Network Operations Centre Technician. 
+    My role involved network and systems administration; configuring and maintaining core network elements, monitoring network systems and 
+    escalating issues to BTS Technicians on duty as required. I later moved to the Billing department where I worked as a Billing Analyst 
+    where I was responsible for the generation of customers’ invoices, writing and running SQL queries to automate invoice calculation, 
+    revenue feeds and revenue reconciliation.
+  </p>
+
+  <p>
+    I left this role to work for rubiem Technologies, a consultancy firm, as Senior BSS/OSS Consultant for the mcel (Mozambique Cellular) CRM and 
+    Converged Billing project in Mozambique. My role involved project management, business process analysis, chairing project meetings and a 
+    lot of document writing. I left this role in 2014 to complete my MSc in Strategic Management which I did with Chinhoyi University of Technology.
+  </p>
+  <p>After my Masters, I started learning Python through Muzinda Hub's Entrepreneurship and Digital Skills scholarship programme in 2015. I also 
+    learnt Flask and Django though most of my projects use Django. I started working as Fundraising Coordinator for Django Girls in June 2017, 
+    then worked for BriteCore as Software Engineer in 2019 and then became the lead maintainer of the Django Girls website in 2020, after the 
+    founding trustees stepped down.
+  </p>
+  <p>
+    My current role with Django Girls involves handling fundraising for the foundation as well as maintaining the organisation's online 
+    resources which include the website. I review contributors' pull requests, fix bugs, add new features to the website, suggest how contributors 
+    should implement certain features for the website as well as merge pull requests and deploy the changes to the website. I also get to contribute 
+    to the documentation of the Django Girls project resources. I also freelance and work on my own projects which I handle frontend development, 
+    backend development as well as deployment and maintenance.
+  </p>
+
+  <h2>Let's talk</h2>
+  <p>I am much more interested in finding the right thing than in just finding a thing. If you are hiring and what I have written above sounds 
+    like a good fit for you, <a href="{% url 'blog:contact' %}">please do get in touch</a>.
+  </p>
+
+</div>
 
 {% endblock %}
+

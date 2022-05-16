@@ -1,0 +1,13 @@
+source: .
+branch: True
+ignore:
+  - */tests/*
+  - */management/*
+  - */migrations/*
+  - venv/*
+  - env/*
+  - mysite/wsgi.py
+  - manage.py
+
+codecov:
+  token: 
