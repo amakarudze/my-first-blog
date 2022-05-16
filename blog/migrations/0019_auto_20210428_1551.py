@@ -7,30 +7,30 @@ import markdownfield.models
 class Migration(migrations.Migration):
 
     dependencies = [
-        ('blog', '0018_talk_alt_text'),
+        ("blog", "0018_talk_alt_text"),
     ]
 
     operations = [
         migrations.AddField(
-            model_name='post',
-            name='text_rendered',
-            field=markdownfield.models.RenderedMarkdownField(default=''),
+            model_name="post",
+            name="text_rendered",
+            field=markdownfield.models.RenderedMarkdownField(default=""),
             preserve_default=False,
         ),
         migrations.AddField(
-            model_name='tip',
-            name='text_rendered',
-            field=markdownfield.models.RenderedMarkdownField(default=''),
+            model_name="tip",
+            name="text_rendered",
+            field=markdownfield.models.RenderedMarkdownField(default=""),
             preserve_default=False,
         ),
         migrations.AlterField(
-            model_name='post',
-            name='text',
-            field=markdownfield.models.MarkdownField(rendered_field='text_rendered'),
+            model_name="post",
+            name="text",
+            field=markdownfield.models.MarkdownField(rendered_field="text_rendered"),
         ),
         migrations.AlterField(
-            model_name='tip',
-            name='tip',
-            field=markdownfield.models.MarkdownField(rendered_field='text_rendered'),
+            model_name="tip",
+            name="tip",
+            field=markdownfield.models.MarkdownField(rendered_field="text_rendered"),
         ),
     ]

@@ -20,7 +20,7 @@ def tips():
 
 def constants(request):
     return {
-        'year': datetime.now().year,
-        'tip': tips(),
-        'categories': get_categories(),
+        "year": datetime.now().year,
+        "tip": tips(),
+        "categories": get_categories(),
     }

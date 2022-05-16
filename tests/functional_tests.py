@@ -13,15 +13,16 @@ class NewVisitorTest(unittest.TestCase):
     def test_can_view_homepage(self):
         # Shingi has heard about a blog being run by one of her friends
         # from her workplace. She goes to check out its homepage
-        self.browser.get('http://localhost:8000')
+        self.browser.get("http://localhost:8000")
 
         # She notices the page title and header mention book boardroom
-        self.assertIn('Anna Makarudze', self.browser.title)
-        header_text = self.browser.find_element_by_tag_name('h1').text
-        self.assertIn('Blog', header_text)
+        self.assertIn("Anna Makarudze", self.browser.title)
+        header_text = self.browser.find_element_by_tag_name("h1").text
+        self.assertIn("Blog", header_text)
 
         # She visits another page
-        self.fail('Finish the test!')
+        self.fail("Finish the test!")
 
-if __name__ == '__main__':
-    unittest.main(warnings='ignore')
+
+if __name__ == "__main__":
+    unittest.main(warnings="ignore")

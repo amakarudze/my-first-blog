@@ -6,13 +6,15 @@ from django.db import migrations, models
 class Migration(migrations.Migration):
 
     dependencies = [
-        ('blog', '0017_auto_20210428_0347'),
+        ("blog", "0017_auto_20210428_0347"),
     ]
 
     operations = [
         migrations.AddField(
-            model_name='talk',
-            name='alt_text',
-            field=models.CharField(default='Post Cover', max_length=100, verbose_name='Alt Text'),
+            model_name="talk",
+            name="alt_text",
+            field=models.CharField(
+                default="Post Cover", max_length=100, verbose_name="Alt Text"
+            ),
         ),
     ]

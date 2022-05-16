@@ -6,18 +6,18 @@ from django.db import migrations, models
 class Migration(migrations.Migration):
 
     dependencies = [
-        ('blog', '0014_talk_youtube_video'),
+        ("blog", "0014_talk_youtube_video"),
     ]
 
     operations = [
         migrations.AddField(
-            model_name='event',
-            name='cover',
-            field=models.URLField(default='http://placehold.it/750x300'),
+            model_name="event",
+            name="cover",
+            field=models.URLField(default="http://placehold.it/750x300"),
         ),
         migrations.AlterField(
-            model_name='post',
-            name='cover',
-            field=models.URLField(default='http://placehold.it/750x300'),
+            model_name="post",
+            name="cover",
+            field=models.URLField(default="http://placehold.it/750x300"),
         ),
     ]

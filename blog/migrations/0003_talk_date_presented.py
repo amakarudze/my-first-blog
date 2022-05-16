@@ -9,13 +9,13 @@ import django.utils.timezone
 class Migration(migrations.Migration):
 
     dependencies = [
-        ('blog', '0002_auto_20180605_1457'),
+        ("blog", "0002_auto_20180605_1457"),
     ]
 
     operations = [
         migrations.AddField(
-            model_name='talk',
-            name='date_presented',
+            model_name="talk",
+            name="date_presented",
             field=models.DateTimeField(default=django.utils.timezone.now),
         ),
     ]

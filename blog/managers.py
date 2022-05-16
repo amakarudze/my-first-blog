@@ -11,7 +11,7 @@ class EventManager(models.Manager):
         return self.get_queryset().filter(is_displayed=True)
 
     def future(self):
-        return self.public().filter(to_date__gte=datetime.now()).order_by('from_date')
+        return self.public().filter(to_date__gte=datetime.now()).order_by("from_date")
 
     def past(self):
-        return self.public().filter(to_date__lte=datetime.now()).order_by('-to_date')
+        return self.public().filter(to_date__lte=datetime.now()).order_by("-to_date")

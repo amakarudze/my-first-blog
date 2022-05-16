@@ -6,28 +6,66 @@ from django.db import migrations, models
 class Migration(migrations.Migration):
 
     dependencies = [
-        ('blog', '0006_remove_talk_talk_date'),
+        ("blog", "0006_remove_talk_talk_date"),
     ]
 
     operations = [
         migrations.AddField(
-            model_name='post',
-            name='category',
-            field=models.CharField(blank=True, choices=[('Community', 'Community'), ('Python', 'Python'), ('Django', 'Django'), ('Serverless', 'Serverless'), ('DevOps', 'DevOps')], max_length=50),
+            model_name="post",
+            name="category",
+            field=models.CharField(
+                blank=True,
+                choices=[
+                    ("Community", "Community"),
+                    ("Python", "Python"),
+                    ("Django", "Django"),
+                    ("Serverless", "Serverless"),
+                    ("DevOps", "DevOps"),
+                ],
+                max_length=50,
+            ),
         ),
         migrations.AddField(
-            model_name='post',
-            name='level',
-            field=models.CharField(blank=True, choices=[('Beginner', 'Beginner'), ('Intermediate', 'Intermediate'), ('Advanced', 'Advanced'), ('Expert', 'Expert')], max_length=20),
+            model_name="post",
+            name="level",
+            field=models.CharField(
+                blank=True,
+                choices=[
+                    ("Beginner", "Beginner"),
+                    ("Intermediate", "Intermediate"),
+                    ("Advanced", "Advanced"),
+                    ("Expert", "Expert"),
+                ],
+                max_length=20,
+            ),
         ),
         migrations.AddField(
-            model_name='talk',
-            name='category',
-            field=models.CharField(blank=True, choices=[('Community', 'Community'), ('Python', 'Python'), ('Django', 'Django'), ('Serverless', 'Serverless'), ('DevOps', 'DevOps')], max_length=20),
+            model_name="talk",
+            name="category",
+            field=models.CharField(
+                blank=True,
+                choices=[
+                    ("Community", "Community"),
+                    ("Python", "Python"),
+                    ("Django", "Django"),
+                    ("Serverless", "Serverless"),
+                    ("DevOps", "DevOps"),
+                ],
+                max_length=20,
+            ),
         ),
         migrations.AddField(
-            model_name='talk',
-            name='level',
-            field=models.CharField(blank=True, choices=[('Beginner', 'Beginner'), ('Intermediate', 'Intermediate'), ('Advanced', 'Advanced'), ('Expert', 'Expert')], max_length=20),
+            model_name="talk",
+            name="level",
+            field=models.CharField(
+                blank=True,
+                choices=[
+                    ("Beginner", "Beginner"),
+                    ("Intermediate", "Intermediate"),
+                    ("Advanced", "Advanced"),
+                    ("Expert", "Expert"),
+                ],
+                max_length=20,
+            ),
         ),
     ]

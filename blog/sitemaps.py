@@ -6,7 +6,7 @@ from .models import Post
 
 class StaticViewSitemap(Sitemap):
     def items(self):
-        return ['blog:home', 'blog:about', 'blog:talks', 'blog:blog']
+        return ["blog:home", "blog:about", "blog:talks", "blog:blog"]
 
     def location(self, item):
         return reverse(item)
@@ -26,5 +26,4 @@ class BlogSitemap(Sitemap):
         return obj.created
 
     def _urls(self, page, protocol, domain):
-        return super(BlogSitemap, self)._urls(
-            page=page, protocol='https', domain='')
+        return super(BlogSitemap, self)._urls(page=page, protocol="https", domain="")

@@ -6,69 +6,84 @@ from .validators import validate_email_message
 
 
 class ContactForm(forms.ModelForm):
-
     class Meta:
         model = Contact
-        fields = ('name', 'phone', 'email', 'subject', 'message',)
+        fields = (
+            "name",
+            "phone",
+            "email",
+            "subject",
+            "message",
+        )
 
     name = forms.CharField(
         max_length=100,
-        label=_('Full Name'),
-        widget=(forms.TextInput(
-            attrs={
-                'class': 'form-control',
-                'id': 'FullName',
-                'placeholder': 'Full Name'
-            }
-        ))
+        label=_("Full Name"),
+        widget=(
+            forms.TextInput(
+                attrs={
+                    "class": "form-control",
+                    "id": "FullName",
+                    "placeholder": "Full Name",
+                }
+            )
+        ),
     )
     phone = forms.CharField(
         max_length=100,
-        label=_('Phone Number'),
-        widget=(forms.TextInput(
-            attrs={
-                'class': 'form-control',
-                'id': 'PhoneNumber',
-                'placeholder': 'Phone Number'
-            }
-        ))
+        label=_("Phone Number"),
+        widget=(
+            forms.TextInput(
+                attrs={
+                    "class": "form-control",
+                    "id": "PhoneNumber",
+                    "placeholder": "Phone Number",
+                }
+            )
+        ),
     )
     email = forms.CharField(
         max_length=100,
-        label=_('Email Address'),
-        widget=(forms.EmailInput(
-            attrs={
-                'class': 'form-control',
-                'id': 'EmailAddress',
-                'placeholder': 'Email Address'
-            }
-        ))
+        label=_("Email Address"),
+        widget=(
+            forms.EmailInput(
+                attrs={
+                    "class": "form-control",
+                    "id": "EmailAddress",
+                    "placeholder": "Email Address",
+                }
+            )
+        ),
     )
     subject = forms.CharField(
         max_length=100,
-        label=_('Subject'),
-        widget=(forms.TextInput(
-            attrs={
-                'class': 'form-control',
-                'id': 'Subject',
-                'placeholder': 'Subject'
-            }
-        ))
+        label=_("Subject"),
+        widget=(
+            forms.TextInput(
+                attrs={
+                    "class": "form-control",
+                    "id": "Subject",
+                    "placeholder": "Subject",
+                }
+            )
+        ),
     )
     message = forms.CharField(
         max_length=100,
-        label=_('Message'),
-        widget=(forms.Textarea(
-            attrs={
-                'class': 'form-control',
-                'id': 'Message',
-                'rows': '8',
-                'placeholder': 'Message'
-            }
-        ))
+        label=_("Message"),
+        widget=(
+            forms.Textarea(
+                attrs={
+                    "class": "form-control",
+                    "id": "Message",
+                    "rows": "8",
+                    "placeholder": "Message",
+                }
+            )
+        ),
     )
 
     def clean_message(self):
-        message = self.cleaned_data.get('message')
+        message = self.cleaned_data.get("message")
         validate_email_message(message)
         return message

@@ -9,60 +9,76 @@ import django.db.models.deletion
 class Migration(migrations.Migration):
 
     dependencies = [
-        ('blog', '0001_initial'),
+        ("blog", "0001_initial"),
     ]
 
     operations = [
         migrations.CreateModel(
-            name='Talk',
+            name="Talk",
             fields=[
-                ('id', models.AutoField(auto_created=True, primary_key=True, serialize=False, verbose_name='ID')),
-                ('title', models.CharField(max_length=200)),
-                ('description', models.TextField()),
-                ('code', models.URLField(blank=True, null=True, verbose_name='demo code')),
-                ('slides', models.URLField(verbose_name='slides URL')),
-                ('event', models.ForeignKey(on_delete=django.db.models.deletion.CASCADE, to='blog.Event')),
+                (
+                    "id",
+                    models.AutoField(
+                        auto_created=True,
+                        primary_key=True,
+                        serialize=False,
+                        verbose_name="ID",
+                    ),
+                ),
+                ("title", models.CharField(max_length=200)),
+                ("description", models.TextField()),
+                (
+                    "code",
+                    models.URLField(blank=True, null=True, verbose_name="demo code"),
+                ),
+                ("slides", models.URLField(verbose_name="slides URL")),
+                (
+                    "event",
+                    models.ForeignKey(
+                        on_delete=django.db.models.deletion.CASCADE, to="blog.Event"
+                    ),
+                ),
             ],
             options={
-                'managed': True,
+                "managed": True,
             },
         ),
         migrations.RemoveField(
-            model_name='aboutpage',
-            name='author',
+            model_name="aboutpage",
+            name="author",
         ),
         migrations.RemoveField(
-            model_name='article',
-            name='author',
+            model_name="article",
+            name="author",
         ),
         migrations.RemoveField(
-            model_name='comment',
-            name='post',
+            model_name="comment",
+            name="post",
         ),
         migrations.RemoveField(
-            model_name='djangoarticle',
-            name='author',
+            model_name="djangoarticle",
+            name="author",
         ),
         migrations.DeleteModel(
-            name='Project',
+            name="Project",
         ),
         migrations.RemoveField(
-            model_name='pythonarticle',
-            name='author',
+            model_name="pythonarticle",
+            name="author",
         ),
         migrations.DeleteModel(
-            name='AboutPage',
+            name="AboutPage",
         ),
         migrations.DeleteModel(
-            name='Article',
+            name="Article",
         ),
         migrations.DeleteModel(
-            name='Comment',
+            name="Comment",
         ),
         migrations.DeleteModel(
-            name='DjangoArticle',
+            name="DjangoArticle",
         ),
         migrations.DeleteModel(
-            name='PythonArticle',
+            name="PythonArticle",
         ),
     ]

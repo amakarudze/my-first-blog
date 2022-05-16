@@ -10,13 +10,11 @@ def allow_db_access_for_all(db):
 
 @pytest.fixture
 def test_server():
-    return 'https://testserver'
+    return "https://testserver"
 
 
 @pytest.fixture
 def user(db):
     return get_user_model().objects.create_user(
-        username='TestUser',
-        email='test@test.com',
-        password='testpass1234'
+        username="TestUser", email="test@test.com", password="testpass1234"
     )
