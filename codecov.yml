@@ -10,4 +10,4 @@ ignore:
   - manage.py
 
 codecov:
-  token: e3d9803e-e60e-4028-a95b-ded78ac5e61e
+  token: 
