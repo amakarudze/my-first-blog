@@ -3,28 +3,22 @@ name: CodeCov
 on: [push, pull_request]
 
 jobs:
-  run:
+  coverage:
     runs-on: ubuntu-latest
-    env:
-      OS: ubuntu-latest
-      PYTHON: '3.9'
-
     strategy:
       max-parallel: 4
       matrix:
         python-version:
-        - 3.9
+        - [3.9]
 
     services:
       mysql:
         image: mysql:5.7
         env:
           MYSQL_ROOT_PASSWORD: mysql_password
-          MYSQL_DATABASE: github_actions
+          MYSQL_DATABASE: mysql
         ports:
           - 3306:3306
-        # needed because the mysql container does not provide a healthcheck
-        options: --health-cmd="mysqladmin ping" --health-interval 10s --health-timeout 5s --health-retries 5
 
     steps:
       - uses: actions/checkout@v2
@@ -39,27 +33,17 @@ jobs:
           python -m pip install --upgrade pip setuptools wheel
           pip install -r requirements.txt
 
-      - name: Run Tests
+      - name: Generate Report
         run: |
           coverage run -m pytest
+          coverage xml
         env:
-          env:
-            DATABASE_ENGINE: django.db.backends.mysql
-            DATABASE_NAME: github_actions
-            DATABASE_USER: root
-            DATABASE_PASSWORD: mysql_password
-            DATABASE_HOST: 127.0.0.1
-            DATABASE_PORT: ${{ job.services.mysql.ports[3306] }}
+          DATABASE_ENGINE: django.db.backends.mysql
+          DATABASE_NAME: github_actions
+          DATABASE_USER: root
+          DATABASE_PASSWORD: mysql_password
+          DATABASE_HOST: 127.0.0.1
+          DATABASE_PORT: ${{ job.services.mysql.ports[3306] }}
 
-    - name: Generate Report
-      run: |
-        pip install -r requirements.txt
-        coverage run -m pytest
-        coverage xml
-      env:
-        DATABASE_HOST: localhost
-        DATABASE_PASSWORD: mysql_password
-        DATABASE_USER: root
     - name: Upload Coverage to Codecov
     - uses: codecov/codecov-action@v2
-
