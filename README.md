@@ -1,3 +1,5 @@
+[![codecov](https://codecov.io/gh/amakarudze/my-first-blog/branch/master/graph/badge.svg?token=WSeKNkk3gx)](https://codecov.io/gh/amakarudze/my-first-blog)
+
 # My personal blog
 
 This my personal blog I am developing while exploring Python and Django more. The online version is available at 
