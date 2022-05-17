@@ -56,7 +56,6 @@ jobs:
       - name: Run Tests
         run: |
           coverage run -m pytest
-          coverage xml
         env:  
           DATABASE_ENGINE: django.db.backends.mysql
           DATABASE_NAME: mysql
