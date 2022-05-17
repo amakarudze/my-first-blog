@@ -4,7 +4,7 @@ venv/
 db.sqlite3
 .DS_Store
 mysite/local_settings.py
-mysite/settings.py
+mysite/settings_prod.py
 .idea/workspace.xml
 
 #IDE
