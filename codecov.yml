@@ -1,10 +1,17 @@
-source: .
-branch: True
+coverage:
+  status:
+    patch:
+      default:
+        informational: true
+    project:
+      default:
+        informational: true
+
 ignore:
-  - */tests/*
-  - */management/*
-  - */migrations/*
-  - venv/*
-  - env/*
-  - mysite/wsgi.py
-  - manage.py
+  - "*/tests/*"
+  - "*/management/*"
+  - "*/migrations/*"
+  - "venv/*"
+  - "env/*"
+  - "mysite/wsgi.py"
+  - "manage.py"
