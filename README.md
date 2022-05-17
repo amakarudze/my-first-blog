@@ -1,4 +1,4 @@
-[![codecov](https://codecov.io/gh/amakarudze/my-first-blog/branch/master/graph/badge.svg?token=WSeKNkk3gx)](https://codecov.io/gh/amakarudze/my-first-blog)
+[![codecov](https://codecov.io/gh/amakarudze/my-first-blog/branch/main/graph/badge.svg?token=WSeKNkk3gx)](https://codecov.io/gh/amakarudze/my-first-blog)
 
 # My personal blog
 
