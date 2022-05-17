@@ -46,7 +46,6 @@ jobs:
 
         env:
           env:
-            DBENGINE: django.db.backends.mysql
             DATABASE_NAME: github_actions
             DATABASE_USER: root
             DATABASE_PASSWORD: mysql_password
