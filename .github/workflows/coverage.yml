@@ -43,6 +43,5 @@ jobs:
           DATABASE_NAME: mysql
           DATABASE_USER: root
           DATABASE_PASSWORD: mysql_password
-
       - name: Upload Coverage to Codecov
-      - uses: codecov/codecov-action@v2
+        uses: codecov/codecov-action@v2
