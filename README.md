@@ -14,7 +14,7 @@ This blog requires the following:
 ## Installation
 1. Clone this repo.
 2. Create a virtual environment.
-3. Install pip-tools.
+3. Run `pip install pip-tools` to install `pip-tools` which is used to manage the requirements for this project.
 4. Install required packages by running `pip install -r requirements.txt`.
 5. Create a MySQL database. 
 6. Edit the `.env-example` with your environment variables, including database name and run migrations.
