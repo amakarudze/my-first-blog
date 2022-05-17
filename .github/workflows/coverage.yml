@@ -5,7 +5,7 @@ on:
     branches:
     - main
   pull_request:
-
+  
 jobs:
   coverage:
     runs-on: ubuntu-latest
@@ -49,5 +49,5 @@ jobs:
           DATABASE_HOST: 127.0.0.1
           DATABASE_PORT: ${{ job.services.mysql.ports[3306] }}
 
-    - name: Upload Coverage to Codecov
-    - uses: codecov/codecov-action@v2
+      - name: Upload Coverage to Codecov
+      - uses: codecov/codecov-action@v2
