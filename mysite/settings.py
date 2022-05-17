@@ -11,6 +11,7 @@ https://docs.djangoproject.com/en/1.9/ref/settings/
 """
 
 import os
+# import pymysql
 import sentry_sdk
 from sentry_sdk.integrations.django import DjangoIntegration
 
@@ -108,6 +109,9 @@ DATABASES = {
     }
 }
 
+# pymysql.version_info = (1, 4, 2, "final", 0)
+# pymysql.install_as_MySQLdb()
+
 if os.environ.get("GITHUB_WORKFLOW"):
     DATABASES = {
         "default": {
@@ -187,7 +191,7 @@ STATIC_ROOT = os.path.join(BASE_DIR, 'staticfiles')
 MEDIA_URL = '/media/'
 MEDIA_ROOT = os.path.join(BASE_DIR, 'media').replace('\\', '/')
 
-SITE_URL = "https://www.makarudze.com"
+SITE_URL = os.environ.get('SITE_URL', '')
 
 SECURE_SSL_REDIRECT = True
 SESSION_COOKIE_SECURE = True
