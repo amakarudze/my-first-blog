@@ -7,7 +7,7 @@ jobs:
     env:
       OS: ubuntu-latest
       PYTHON: '3.9'
-      
+
     strategy:
       max-parallel: 4
       matrix:
@@ -28,8 +28,8 @@ jobs:
         with:
           fetch-depth: '2'
 
-      - name: Set up Python ${{ matrix.python-version }}
-        uses: actions/setup-python@v2
+      - name: Setup Python ${{ matrix.python-version }}
+        uses: actions/setup-python@master
         with:
           python-version: ${{ matrix.python-version }}
 
@@ -43,8 +43,6 @@ jobs:
           DATABASE_NAME: mysql
           DATABASE_USER: root
           DATABASE_PASSWORD: mysql_password
-          DATABASE_HOST: 127.0.0.1
-          DATABASE_PORT: ${{ job.services.mysql.ports[3306] }}
 
       - name: Upload Coverage to Codecov
       - uses: codecov/codecov-action@v2
