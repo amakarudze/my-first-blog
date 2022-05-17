@@ -7,7 +7,7 @@ on:
   pull_request:
   
 jobs:
-  coverage:
+  build:
     runs-on: ubuntu-latest
     strategy:
       max-parallel: 4
@@ -26,19 +26,17 @@ jobs:
 
     steps:
       - uses: actions/checkout@v2
+        with:
+          fetch-depth: '2'
 
       - name: Set up Python ${{ matrix.python-version }}
         uses: actions/setup-python@v2
         with:
           python-version: ${{ matrix.python-version }}
 
-      - name: Install Dependencies
-        run: |
-          python -m pip install --upgrade pip setuptools wheel
-          pip install -r requirements.txt
-
       - name: Generate Report
         run: |
+          pip install -r requirements.txt
           coverage run -m pytest
           coverage xml
         env:
