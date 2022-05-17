@@ -11,7 +11,6 @@ https://docs.djangoproject.com/en/1.9/ref/settings/
 """
 
 import os
-import pymysql
 import sentry_sdk
 from sentry_sdk.integrations.django import DjangoIntegration
 
@@ -109,9 +108,6 @@ DATABASES = {
         'PORT': os.environ.get('DATABASE_PORT'),
     }
 }
-
-pymysql.version_info = (1, 4, 2, "final", 0)
-pymysql.install_as_MySQLdb()
 
 if os.environ.get("GITHUB_WORKFLOW"):
     DATABASES = {
