@@ -53,9 +53,10 @@ jobs:
           DATABASE_HOST: 127.0.0.1
           DATABASE_PORT: ${{ job.services.mysql.ports[3306] }}
 
-      - name: Run Tests
+      - name: Run Tests and Generate Coverage Report
         run: |
           coverage run -m pytest
+          coverage xml
         env:  
           DATABASE_ENGINE: django.db.backends.mysql
           DATABASE_NAME: mysql
@@ -63,3 +64,6 @@ jobs:
           DATABASE_PASSWORD: mysql_password
           DATABASE_HOST: 127.0.0.1
           DATABASE_PORT: ${{ job.services.mysql.ports[3306] }}
+
+      - name: Upload Coverage to Codecov
+      - uses: codecov/codecov-action@v2
