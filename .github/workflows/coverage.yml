@@ -43,5 +43,6 @@ jobs:
           DATABASE_NAME: mysql
           DATABASE_USER: root
           DATABASE_PASSWORD: mysql_password
+          CODECOV_TOKEN: 'e3d9803e-e60e-4028-a95b-ded78ac5e61e'
       - name: Upload Coverage to Codecov
         uses: codecov/codecov-action@v2
