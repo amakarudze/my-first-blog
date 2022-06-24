@@ -200,8 +200,9 @@ class PostView(TemplateView):
 
     def get_context_data(self, slug, **kwargs):
         context = super(PostView, self).get_context_data(**kwargs)
-        context["post"] = get_object_or_404(Post, slug=slug)
-        context["title"] = "Blog Post"
+        post = get_object_or_404(Post, slug=slug)
+        context["post"] = post
+        context["title"] = post.title
         return context
 
 
