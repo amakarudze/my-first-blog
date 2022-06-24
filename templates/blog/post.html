@@ -1,4 +1,5 @@
 {% extends "blog/layout.html" %}
+{% load markdownify %}
 
 {% block content %}
 
@@ -26,7 +27,7 @@
         <hr>
 
         <!-- Post Content -->
-        <p class="lead">{{ post.text_rendered|safe }}</p>
+        <p class="lead">{{ post.text_rendered|markdownify }}</p>
   </div>
 </div>
 

@@ -12,8 +12,10 @@ beautifulsoup4==4.11.1
     # via -r requirements.in
 black==22.3.0
     # via -r requirements.in
-bleach==5.0.0
-    # via django-markdownfield
+bleach[css]==5.0.0
+    # via
+    #   django-markdownfield
+    #   django-markdownify
 certifi==2021.10.8
     # via
     #   requests
@@ -35,6 +37,7 @@ django==4.0.4
     #   django-extensions
     #   django-js-asset
     #   django-markdownfield
+    #   django-markdownify
     #   django-recaptcha
 django-autoslug==1.9.8
     # via -r requirements.in
@@ -45,6 +48,8 @@ django-extensions==3.1.5
 django-js-asset==2.0.0
     # via django-mptt
 django-markdownfield==0.10.0
+    # via -r requirements.in
+django-markdownify==0.9.2
     # via -r requirements.in
 django-mptt==0.13.4
     # via -r requirements.in
@@ -59,7 +64,9 @@ iniconfig==1.1.1
 lxml==4.8.0
     # via -r requirements.in
 markdown==3.3.6
-    # via django-markdownfield
+    # via
+    #   django-markdownfield
+    #   django-markdownify
 mypy-extensions==0.4.3
     # via black
 mysqlclient==2.1.0
@@ -111,6 +118,8 @@ soupsieve==2.3.2.post1
     # via beautifulsoup4
 sqlparse==0.4.2
     # via django
+tinycss2==1.1.1
+    # via bleach
 tomli==2.0.1
     # via
     #   black
@@ -120,6 +129,8 @@ urllib3==1.26.9
     #   requests
     #   sentry-sdk
 webencodings==0.5.1
-    # via bleach
+    # via
+    #   bleach
+    #   tinycss2
 werkzeug==2.1.2
     # via -r requirements.in
