@@ -141,11 +141,11 @@ TINY_API_KEY = os.environ.get("TINY_API_KEY", "no-api-key")
 
 
 DJRICHTEXTFIELD_CONFIG = {
-    "js": [f"https//cdn.tiny.cloud/1/{TINY_API_KEY}/tinymce/5/tinymce.min.js"],
+    "js": [f"//cdn.tiny.cloud/1/{TINY_API_KEY}/tinymce/5/tinymce.min.js"],
     "init_template": "djrichtextfield/init/tinymce.js",
     "settings": {
-        "menubar": True,
-        "plugins": "link image table",
+        "menubar": "file edit view insert format tools table help",
+        "plugins": "link image table code",
         "toolbar": "bold italic | link image | removeformat",
         "table_toolbar": "tableprops tabledelete | tableinsertrowbefore tableinsertrowafter tabledeleterow | tableinsertcolbefore tableinsertcolafter tabledeletecol",
         "width": 700,
