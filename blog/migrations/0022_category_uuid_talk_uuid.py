@@ -7,18 +7,18 @@ import uuid
 class Migration(migrations.Migration):
 
     dependencies = [
-        ('blog', '0021_remove_event_is_past'),
+        ("blog", "0021_remove_event_is_past"),
     ]
 
     operations = [
         migrations.AddField(
-            model_name='category',
-            name='uuid',
+            model_name="category",
+            name="uuid",
             field=models.UUIDField(db_index=True, default=uuid.uuid4, editable=False),
         ),
         migrations.AddField(
-            model_name='talk',
-            name='uuid',
+            model_name="talk",
+            name="uuid",
             field=models.UUIDField(db_index=True, default=uuid.uuid4, editable=False),
         ),
     ]
