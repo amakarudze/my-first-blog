@@ -37,7 +37,7 @@ class Post(models.Model):
     text = MarkdownField(
         rendered_field="text_rendered",
         validator=VALIDATOR_STANDARD,
-        use_editor=True,
+        use_editor=False,
         use_admin_editor=True,
     )
     text_rendered = RenderedMarkdownField()
@@ -135,7 +135,7 @@ class Tip(models.Model):
     tip = MarkdownField(
         rendered_field="text_rendered",
         validator=VALIDATOR_STANDARD,
-        use_editor=True,
+        use_editor=False,
         use_admin_editor=True,
     )
     text_rendered = RenderedMarkdownField()
