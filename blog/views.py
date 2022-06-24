@@ -125,9 +125,9 @@ def past_events(request):
 class TalkView(TemplateView):
     template_name = "blog/talk.html"
 
-    def get_context_data(self, pk, **kwargs):
+    def get_context_data(self, uuid, **kwargs):
         context = super(TalkView, self).get_context_data(**kwargs)
-        context["talk"] = get_object_or_404(Talk, pk=pk)
+        context["talk"] = get_object_or_404(Talk, uuid=uuid)
         context["title"] = context["talk"].title
         return context
 
@@ -198,9 +198,9 @@ class ThankYouView(TemplateView):
 class PostView(TemplateView):
     template_name = "blog/post.html"
 
-    def get_context_data(self, pk, **kwargs):
+    def get_context_data(self, slug, **kwargs):
         context = super(PostView, self).get_context_data(**kwargs)
-        context["post"] = get_object_or_404(Post, pk=pk)
+        context["post"] = get_object_or_404(Post, slug=slug)
         context["title"] = "Blog Post"
         return context
 

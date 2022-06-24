@@ -14,7 +14,7 @@
                   <h2 class="card-title">{{ talk.title }}</h2>
                     <h3 class="post-subtitle">{{ talk.event }}</h3>
                   <p class="card-text">{{ talk.summary }}</p>
-                  <a href="{% url 'blog:talk' pk=talk.pk %}" class="btn btn-primary">Read More &rarr;</a>
+                  <a href="{% url 'blog:talk' pk=talk.uuid %}" class="btn btn-primary">Read More &rarr;</a>
                 </div>
                 <div class="card-footer text-white">
                   {{ talk.date_presented }} by
