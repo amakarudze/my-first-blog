@@ -35,7 +35,6 @@ django==4.0.4
     #   django-extensions
     #   django-js-asset
     #   django-markdownfield
-    #   django-markup
     #   django-recaptcha
 django-autoslug==1.9.8
     # via -r requirements.in
@@ -46,8 +45,6 @@ django-extensions==3.1.5
 django-js-asset==2.0.0
     # via django-mptt
 django-markdownfield==0.10.0
-    # via -r requirements.in
-django-markup==1.5
     # via -r requirements.in
 django-mptt==0.13.4
     # via -r requirements.in

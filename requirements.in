@@ -6,7 +6,6 @@ django-autoslug
 django-contrib-comments
 django-extensions
 django-markdownfield
-django-markup
 django-mptt
 django-recaptcha
 django-richtextfield
