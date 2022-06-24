@@ -51,8 +51,8 @@ INSTALLED_APPS = [
     "django_comments",
     "djrichtextfield",
     "markdownfield",
+    "markdownify",
     "mptt",
-    "pygments",
     "blog",
     "django_extensions",
     "django.contrib.sitemaps",
@@ -215,3 +215,48 @@ GOOGLE_RECAPTCHA_SECRET_KEY = os.environ.get("GOOGLE_RECAPTCHA_SECRET_KEY", "")
 RECAPTCHA_REQUIRED_SCORE = 0.85
 
 SILENCED_SYSTEM_CHECKS = ["captcha.recaptcha_test_key_error"]
+
+MARKDOWNIFY = {
+    "default": {
+        "MARKDOWN_EXTENSIONS": [
+            "markdown.extensions.fenced_code",
+            "markdown.extensions.extra",
+        ],
+        "STRIP": False,
+        "WHITELIST_TAGS": [
+            "a",
+            "abbr",
+            "acronym",
+            "b",
+            "blockquote",
+            "em",
+            "i",
+            "li",
+            "ol",
+            "p",
+            "strong",
+            "ul",
+            "code",
+            "span",
+            "div",
+            "class",
+            "pre",
+            "h1",
+            "h2",
+            "h3",
+            "h4",
+            "h5",
+            "h6",
+        ],
+        "WHITELIST_ATTRS": [
+            "href",
+            "src",
+            "alt",
+            "class",
+        ],
+        "WHITELIST_PROTOCOLS": [
+            "http",
+            "https",
+        ],
+    }
+}
