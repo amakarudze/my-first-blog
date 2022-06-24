@@ -154,7 +154,7 @@
               <hr>
               <h5>Category: {{ tip.category.name }}</h5>
               <hr>
-              {{ tip.text_rendered|safe }}
+              {{ tip.text_rendered|apply_markup:"markdown"|safe }}
             {% else %}
               Sorry, no tip to display for you today.
             {% endif %}
