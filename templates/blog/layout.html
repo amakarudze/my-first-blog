@@ -98,7 +98,6 @@
   <div class="container">
 
     <div class="row">
-      {% load markup_tags %}
 
       <!-- Blog Entries Column -->
       <div class="col-md-8">
@@ -154,7 +153,7 @@
               <hr>
               <h5>Category: {{ tip.category.name }}</h5>
               <hr>
-              {{ tip.text_rendered|apply_markup:"markdown"|safe }}
+              {{ tip.text_rendered|safe }}
             {% else %}
               Sorry, no tip to display for you today.
             {% endif %}
