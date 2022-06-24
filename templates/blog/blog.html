@@ -16,7 +16,7 @@
                   <div class="card-text d-inline-block text-truncate text-wrap" style="max-height: 3rem;">
                       {{ post.text_rendered|safe }}</div>
 
-                  <a href="{% url 'blog:post' pk=post.pk %}" class="btn btn-primary">Read More &rarr;</a>
+                  <a href="{% url 'blog:post' pk=post.slug %}" class="btn btn-primary">Read More &rarr;</a>
                 </div>
                 <div class="card-footer text-white">
                   {{ post.published_date }} by

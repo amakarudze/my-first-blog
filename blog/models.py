@@ -1,3 +1,5 @@
+import uuid as uuid_lib
+
 from django.db import models
 from django.utils import timezone
 
@@ -102,6 +104,7 @@ class Event(models.Model):
 
 
 class Talk(models.Model):
+    uuid = models.UUIDField(db_index=True, default=uuid_lib.uuid4, editable=False)
     title = models.CharField(max_length=200)
     description = models.TextField()
     code = models.URLField(verbose_name="demo code", blank=True, null=True)

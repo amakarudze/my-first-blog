@@ -11,7 +11,7 @@
               <!-- Blog Post -->
               <div>
                 <div class="card-body">
-                    <h5 class="card-title"><a href="{% url 'blog:post' pk=result.pk %}">{{ result.title }}</a></h5>
+                    <h5 class="card-title"><a href="{% url 'blog:post' pk=result.uuid %}">{{ result.title }}</a></h5>
                   <div class="card-text text-truncate text-wrap d-inline-block" style="max-height: 4rem;">
                       {{ result.text_rendered|safe }}</div>
                     <br/>

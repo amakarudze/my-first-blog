@@ -52,15 +52,15 @@ def test_upcoming_events_view(client):
 
 
 def test_talk_view(client, talk):
-    response = client.get(reverse("blog:talk", args=(talk.pk,)), secure=True)
+    response = client.get(reverse("blog:talk", args=(talk.uuid,)), secure=True)
     assert response.status_code == 200
 
 
 def test_post_view(client, post):
-    response = client.get(reverse("blog:post", args=(post.pk,)), secure=True)
+    response = client.get(reverse("blog:post", args=(post.slug,)), secure=True)
     assert response.status_code == 200
 
 
 def test_category_view(client, category):
-    response = client.get(reverse("blog:category", args=(category.pk,)), secure=True)
+    response = client.get(reverse("blog:category", args=(category.id,)), secure=True)
     assert response.status_code == 200
