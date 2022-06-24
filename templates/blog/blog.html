@@ -11,12 +11,12 @@
               <div class="card mb-4">
                 <img class="card-img-top" src="{{ post.cover.url }}" width="900px" alt="{{ post.alt_text }}">
                 <div class="card-body">
-                    <a href="{% url 'blog:post' pk=post.pk %}"><h2 class="card-title">{{ post.title }}</h2></a>
+                    <a href="{% url 'blog:post' slug=post.slug %}"><h2 class="card-title">{{ post.title }}</h2></a>
 
                   <div class="card-text d-inline-block text-truncate text-wrap" style="max-height: 3rem;">
                       {{ post.text_rendered|safe }}</div>
 
-                  <a href="{% url 'blog:post' pk=post.slug %}" class="btn btn-primary">Read More &rarr;</a>
+                  <a href="{% url 'blog:post' slug=post.slug %}" class="btn btn-primary">Read More &rarr;</a>
                 </div>
                 <div class="card-footer text-white">
                   {{ post.published_date }} by
