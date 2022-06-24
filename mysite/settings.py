@@ -139,11 +139,12 @@ AUTH_PASSWORD_VALIDATORS = [
 
 TINY_API_KEY = os.environ.get("TINY_API_KEY", "no-api-key")
 
+
 DJRICHTEXTFIELD_CONFIG = {
-    "js": [f"//cdn.tiny.cloud/1/{TINY_API_KEY}/tinymce/5/tinymce.min.js"],
+    "js": [f"https//cdn.tiny.cloud/1/{TINY_API_KEY}/tinymce/5/tinymce.min.js"],
     "init_template": "djrichtextfield/init/tinymce.js",
     "settings": {
-        "menubar": False,
+        "menubar": True,
         "plugins": "link image table",
         "toolbar": "bold italic | link image | removeformat",
         "table_toolbar": "tableprops tabledelete | tableinsertrowbefore tableinsertrowafter tabledeleterow | tableinsertcolbefore tableinsertcolafter tabledeletecol",
