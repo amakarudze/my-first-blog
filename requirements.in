@@ -1,7 +1,7 @@
 beautifulsoup4
 black
 coverage
-Django==4.0.6
+Django==4.0.9
 django-autoslug
 django-contrib-comments
 django-extensions
