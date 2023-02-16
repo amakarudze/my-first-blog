@@ -67,6 +67,8 @@ markdown==3.3.6
     # via
     #   django-markdownfield
     #   django-markdownify
+markupsafe==2.1.2
+    # via werkzeug
 mypy-extensions==0.4.3
     # via black
 mysqlclient==2.1.0
@@ -121,9 +123,7 @@ sqlparse==0.4.2
 tinycss2==1.1.1
     # via bleach
 tomli==2.0.1
-    # via
-    #   black
-    #   pytest
+    # via pytest
 urllib3==1.26.9
     # via
     #   requests
@@ -132,5 +132,5 @@ webencodings==0.5.1
     # via
     #   bleach
     #   tinycss2
-werkzeug==2.1.2
+werkzeug==2.2.3
     # via -r requirements.in
