@@ -14,7 +14,7 @@ from blog.forms import ContactForm
 from .models import Category, Event, Post, Talk
 
 
-def blog(request):
+def home(request):
     post_list = Post.objects.filter(published_date__lte=timezone.now()).order_by(
         "-published_date"
     )
@@ -39,8 +39,10 @@ def blog(request):
     )
 
 
+"""
 def home(request):
     return render(request, "blog/index.html", {"title": "For Hire"})
+"""
 
 
 def about(request):
