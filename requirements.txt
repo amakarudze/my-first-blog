@@ -16,7 +16,7 @@ bleach[css]==5.0.0
     # via
     #   django-markdownfield
     #   django-markdownify
-certifi==2021.10.8
+certifi==2022.12.7
     # via
     #   requests
     #   sentry-sdk
