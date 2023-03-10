@@ -30,7 +30,7 @@ coverage==6.3.2
     # via -r requirements.in
 cryptography==39.0.1
     # via pyopenssl
-django==4.0.6
+django==4.0.10
     # via
     #   -r requirements.in
     #   django-contrib-comments
