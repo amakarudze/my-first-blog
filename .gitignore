@@ -24,5 +24,6 @@ templates/resume/
 
 .env
 env/
+.venv/
 cert*
 key.pem
