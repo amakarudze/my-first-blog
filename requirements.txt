@@ -118,14 +118,12 @@ six==1.16.0
     # via bleach
 soupsieve==2.3.2.post1
     # via beautifulsoup4
-sqlparse==0.4.2
+sqlparse==0.4.4
     # via django
 tinycss2==1.1.1
     # via bleach
 tomli==2.0.1
-    # via
-    #   black
-    #   pytest
+    # via pytest
 urllib3==1.26.9
     # via
     #   requests
