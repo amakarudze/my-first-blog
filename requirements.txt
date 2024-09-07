@@ -12,7 +12,7 @@ beautifulsoup4==4.11.1
     # via -r requirements.in
 black==22.3.0
     # via -r requirements.in
-bleach==5.0.1
+bleach[css]==5.0.1
     # via
     #   django-markdownfield
     #   django-markdownify
@@ -30,7 +30,7 @@ coverage==6.3.2
     # via -r requirements.in
 cryptography==39.0.1
     # via pyopenssl
-django==4.1.7
+django==4.1.13
     # via
     #   -r requirements.in
     #   django-contrib-comments
@@ -123,7 +123,9 @@ sqlparse==0.4.2
 tinycss2==1.1.1
     # via bleach
 tomli==2.0.1
-    # via pytest
+    # via
+    #   black
+    #   pytest
 urllib3==1.26.15
     # via
     #   requests
