@@ -57,7 +57,7 @@ django-recaptcha==3.0.0
     # via -r requirements.in
 django-richtextfield==1.6.1
     # via -r requirements.in
-idna==3.3
+idna==3.7
     # via requests
 iniconfig==1.1.1
     # via pytest
@@ -123,7 +123,9 @@ sqlparse==0.4.2
 tinycss2==1.1.1
     # via bleach
 tomli==2.0.1
-    # via pytest
+    # via
+    #   black
+    #   pytest
 urllib3==1.26.15
     # via
     #   requests
