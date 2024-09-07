@@ -123,8 +123,10 @@ sqlparse==0.4.2
 tinycss2==1.1.1
     # via bleach
 tomli==2.0.1
-    # via pytest
-urllib3==1.26.15
+    # via
+    #   black
+    #   pytest
+urllib3==1.26.19
     # via
     #   requests
     #   sentry-sdk
